@@ -1,6 +1,7 @@
 package org.exoplatform.task.model;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
@@ -8,7 +9,22 @@ import java.util.Date;
  */
 public class Comment implements Activity {
 
+    private String id;
+    
     public String text;
+
+    public Comment(String text) {
+        this.id = UUID.randomUUID().toString();
+        this.text = text;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     @Override
     public Date getDate() {
