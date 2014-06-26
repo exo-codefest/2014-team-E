@@ -11,6 +11,7 @@ public class TestProject extends TestCase {
         Project p = new Project("pro_1", "dec_1");
         service.createProject(p);
 
-        service.getProject("pro_1");
+        Project project = service.getProject("pro_1");
+        assertNotNull(project);
     }
 }

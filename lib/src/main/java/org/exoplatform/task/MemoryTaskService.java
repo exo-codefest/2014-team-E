@@ -2,22 +2,21 @@ package org.exoplatform.task;
 
 import org.exoplatform.task.model.Project;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MemoryTaskService implements TaskService {
 
-    private List<Project> list = new ArrayList<Project>();
+    private Map<String, Project> list = new HashMap<String, Project>();
 
     @Override
     public void createProject(Project p) {
-        list.add(p);
+        list.put(p.getName(), p);
     }
 
     @Override
-    public void getProject(String string) {
-        // TODO Auto-generated method stub
-        
+    public Project getProject(String name) {
+        return list.get(name);
     }
 
 }
