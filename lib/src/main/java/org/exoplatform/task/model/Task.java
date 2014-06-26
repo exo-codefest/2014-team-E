@@ -8,11 +8,21 @@ import java.util.List;
  * @version $Revision$
  */
 public class Task implements Activity {
+    private String id;
+
+    private String projectId;
+    
+    private String reporter;
+    
+    private List<String> assignee;
+    
+    private String status;
+    
     public String title;
 
     public List<Comment> comments;
 
-    private String projectId;
+    private List<String> labels;
 
     @Override
     public Date getDate() {

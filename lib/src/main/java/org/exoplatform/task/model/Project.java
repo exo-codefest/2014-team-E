@@ -7,18 +7,34 @@ import java.util.Set;
  * @version $Revision$
  */
 public class Project {
-    public String id;
+    private String id;
 
-    public String name;
+    private String name;
 
-    public String desc;
+    private String owner;
 
-    public Set<String> memberships;
+    private String desc;
 
-    public Project(String id, String name, String desc) {
-        this.id = id;
+    //user have permission can edit task in this project
+    //but only owner can edit project info, or delete project
+    private Set<String> memberships;
+
+    //We should use UTC time for this
+    private long dateCreated;
+
+    public Project(String owner, String name, String desc) {
         this.name = name;
+        this.owner = owner;
         this.desc = desc;
+        this.id = String.format("%s/%s", owner, name);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -27,6 +43,14 @@ public class Project {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public String getDesc() {
@@ -45,7 +69,12 @@ public class Project {
         this.memberships = memberships;
     }
 
-    public String getId() {
-        return id;
+    public long getDateCreated() {
+        return dateCreated;
     }
+
+    public void setDateCreated(long dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+    
 }
