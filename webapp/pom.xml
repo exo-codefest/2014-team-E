@@ -46,5 +46,10 @@
          <version>2.0</version>
          <scope>provided</scope>
       </dependency>
+      <dependency>
+         <groupId>org.exoplatform.addons.codefest.team_e</groupId>
+         <artifactId>team-e-addon-lib</artifactId>
+         <version>1.0.x-SNAPSHOT</version>
+      </dependency>
    </dependencies>
 </project>

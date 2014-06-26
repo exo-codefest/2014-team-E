@@ -1,0 +1,1 @@
+A page to manipulate Project entity

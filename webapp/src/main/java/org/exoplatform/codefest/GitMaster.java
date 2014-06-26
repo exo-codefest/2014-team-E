@@ -18,6 +18,9 @@
  */
 package org.exoplatform.codefest;
 
+import org.exoplatform.task.MemoryTaskService;
+import org.exoplatform.task.TaskService;
+
 import java.io.IOException;
 
 import javax.portlet.GenericPortlet;
@@ -30,8 +33,17 @@ import javax.portlet.RenderResponse;
  * @version $Revision$
  */
 public class GitMaster extends GenericPortlet {
+
+    TaskService service  = new MemoryTaskService();
+
     @Override
     protected void doView(RenderRequest request, RenderResponse response) throws PortletException, IOException {
+        String view = request.getParameter("view");
+        if (view != null) {
+            if (view.equals("projects")) {
+                getPortletContext().getRequestDispatcher("/projects.jsp").include(request, response);
+            }
+        }
         getPortletContext().getRequestDispatcher("/index.jsp").include(request, response);
     }
 }
