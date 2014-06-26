@@ -1,32 +1,31 @@
-/*
-    * JBoss, Home of Professional Open Source.
-    * Copyright 2012, Red Hat, Inc., and individual contributors
-    * as indicated by the @author tags. See the copyright.txt file in the
-    * distribution for a full listing of individual contributors.
-    *
-    * This is free software; you can redistribute it and/or modify it
-    * under the terms of the GNU Lesser General Public License as
-    * published by the Free Software Foundation; either version 2.1 of
-    * the License, or (at your option) any later version.
-    *
-    * This software is distributed in the hope that it will be useful,
-    * but WITHOUT ANY WARRANTY; without even the implied warranty of
-    * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-    * Lesser General Public License for more details.
-    *
-    * You should have received a copy of the GNU Lesser General Public
-    * License along with this software; if not, write to the Free
-    * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
-    * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
-    */
-  
 package org.exoplatform.task;
 
-/**
- * @author <a href="mailto:phuong.vu@exoplatform.com">Vu Viet Phuong</a>
- * @version $Id$
- *
- */
 public class TaskServiceException extends Exception {
+    private static final long serialVersionUID = -6739016122540813895L;
+
+    private int code;
+    
+    public static final int DUPLICATED = 1;
+    
+    public static final int NON_EXITS_PROJECT = 2;
+    
+    public static final int NON_EXITS_OWNER = 3;
+    
+    public TaskServiceException(String message, Throwable throwable) {
+        this(0, message, throwable);
+    }
+    
+    public TaskServiceException(int code, String message) {
+        this(code, message, null);
+    }
+    
+    public TaskServiceException(int code, String message, Throwable throwable) {
+        super(message, throwable);
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
 
 }

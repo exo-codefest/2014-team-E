@@ -1,5 +1,6 @@
 package org.exoplatform.task.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,12 +18,13 @@ public class Project {
 
     //user have permission can edit task in this project
     //but only owner can edit project info, or delete project
-    private Set<String> memberships;
+    private Set<String> memberships = new HashSet<String>();
 
     //We should use UTC time for this
     private long dateCreated;
 
     public Project(String owner, String name, String desc) {
+        
         this.name = name;
         this.owner = owner;
         this.desc = desc;
