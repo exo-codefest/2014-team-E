@@ -42,5 +42,6 @@ public interface TaskService {
 
     public Task getTask(String id);
 
+    public List<Task> getTasksByProject(String projectId);
     public List<Task> findTasks(Query query);
 }

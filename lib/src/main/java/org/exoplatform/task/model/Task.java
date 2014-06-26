@@ -34,6 +34,10 @@ public class Task implements Activity {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getReporter() {
         return reporter;
     }

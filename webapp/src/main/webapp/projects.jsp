@@ -1,41 +1,46 @@
 <%@ page import="javax.portlet.PortletURL" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.exoplatform.task.model.Project" %>
+<%@ page import="java.util.Collections" %>
 <%@include file="includes/header.jsp" %>
+<%
+    List<Project> projects = null;
+    try {
+        projects = (List<Project>)renderRequest.getAttribute("projects");
+    } catch (Throwable ex) {}
+
+    if(projects == null) {
+        projects = Collections.EMPTY_LIST;
+    }
+%>
 <div class="media">
+    <%if(projects.size() == 0) {%>
     <div class="media-body">
-        <%
-            PortletURL url = renderResponse.createRenderURL();
-            url.setParameter("view", "issues");
-            url.setParameter("projectId", "1");
+        There are no project of your account, please create one!
+    </div>
+    <%} else {
+        for(Project project : projects) {
+            PortletURL projectURL = renderResponse.createRenderURL();
+            projectURL.setParameter("view", "issues");
+            projectURL.setParameter("projectId", project.getId());
+
+            PortletURL deleteAction = renderResponse.createActionURL();
+            deleteAction.setParameter("objectType", "project");
+            deleteAction.setParameter("action", "delete");
+            deleteAction.setParameter("objectId", String.valueOf(project.getId()));
         %>
-        <h4 class="media-heading"><a href="<%=url.toString()%>">Project 1</a></h4>
-        <div class="media">
-            Project description here
-        </div>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading"><a href="<%=url.toString()%>">Project 2</a></h4>
-        <div class="media">
-            Project description here
-        </div>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading"><a href="<%=url.toString()%>">Project 3</a></h4>
-        <div class="media">
-            Project description here
-        </div>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading"><a href="<%=url.toString()%>">Project 4</a></h4>
-        <div class="media">
-            Project description here
-        </div>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading"><a href="<%=url.toString()%>">Project 5</a></h4>
-        <div class="media">
-            Project description here
-        </div>
-    </div>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="<%=projectURL.toString()%>"><%=project.getName()%></a>
+                    <a href="javascript:void(0);"><i class="icon-pencil"></i></a>
+                    <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
+                </h4>
+                <div class="media">
+                    <%= project.getDesc()%>
+                </div>
+            </div>
+        <%}
+    }%>
 </div>
 <div>
     <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
@@ -48,13 +53,13 @@
             <div class="control-group">
                 <label class="control-label" for="inputName">Project name</label>
                 <div class="controls">
-                    <input type="text" id="inputName" placeholder="Name of project">
+                    <input type="text" name="name" id="inputName" placeholder="Name of project">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">Description</label>
                 <div class="controls">
-                    <textarea rows="3"></textarea>
+                    <textarea name="description" rows="3"></textarea>
                 </div>
             </div>
             <div class="control-group">

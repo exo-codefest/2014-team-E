@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class MemoryTaskService implements TaskService {
 
@@ -32,7 +33,7 @@ public class MemoryTaskService implements TaskService {
     @Override
     public List<Project> getProjectsByUser(String username) {
         if (username == null) {
-            return Collections.emptyList();
+            return Collections.<Project>emptyList();
         }
         
         List<Project> results = new LinkedList<Project>();
@@ -79,6 +80,8 @@ public class MemoryTaskService implements TaskService {
     }
 
     public void addTask(Task t) {
+        //Generate ID
+        t.setId(UUID.randomUUID().toString());
         tasks.put(t.getId(), t);
     }
 
@@ -96,6 +99,21 @@ public class MemoryTaskService implements TaskService {
     public Task getTask(String id) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public List<Task> getTasksByProject(String projectId) {
+        if(projectId == null) {
+            return Collections.<Task>emptyList();
+        }
+
+        List<Task> tasks = new LinkedList<Task>();
+        for(Task task : this.tasks.values()) {
+            if(task.getProjectId().equals(projectId)) {
+                tasks.add(task);
+            }
+        }
+        return tasks;
     }
 
     @Override
