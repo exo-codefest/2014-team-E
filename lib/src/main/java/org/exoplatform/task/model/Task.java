@@ -12,9 +12,15 @@ public class Task implements Activity {
 
     public List<Comment> comments;
 
+    private String projectId;
+
     @Override
     public Date getDate() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    public String getProjectId() {
+        return projectId;
     }
 }

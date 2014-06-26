@@ -7,12 +7,20 @@ import java.util.Set;
  * @version $Revision$
  */
 public class Project {
+    public String id;
+
     public String name;
 
     public String desc;
 
     public Set<String> memberships;
-    
+
+    public Project(String id, String name, String desc) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+    }
+
     public String getName() {
         return name;
     }
@@ -37,8 +45,7 @@ public class Project {
         this.memberships = memberships;
     }
 
-    public Project(String name, String desc) {
-        this.name = name;
-        this.desc = desc;
+    public String getId() {
+        return id;
     }
 }

@@ -8,10 +8,11 @@ public class TestProject extends TestCase {
     private TaskService service = new MemoryTaskService();
 
     public void testProjectCreation() {
-        Project p = new Project("pro_1", "dec_1");
+        Project p = new Project("id_1", "pro_1", "desc_1");
         service.createProject(p);
 
-        Project project = service.getProject("pro_1");
+        Project project = service.getProject("id_1");
         assertNotNull(project);
+        assertEquals("desc_1", project.getDesc());
     }
 }
