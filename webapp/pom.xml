@@ -32,4 +32,19 @@
   <packaging>war</packaging>
   <name>Codefest 2014 - Team E Addon - Webapp</name>
   <description>Codefest 2014 - Team E Addon - A portlet or any webapp</description>
+
+   <dependencies>
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>servlet-api</artifactId>
+         <version>2.5</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <groupId>javax.portlet</groupId>
+         <artifactId>portlet-api</artifactId>
+         <version>2.0</version>
+         <scope>provided</scope>
+      </dependency>
+   </dependencies>
 </project>
