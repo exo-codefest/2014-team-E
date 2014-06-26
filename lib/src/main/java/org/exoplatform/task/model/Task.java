@@ -80,13 +80,19 @@ public class Task implements Activity {
         this.projectId = projectId;
     }
 
+    public String getProjectId() {
+        return projectId;
+    }
+
     @Override
-    public Date getDate() {
+    public Date getCreatedDate() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public String getProjectId() {
-        return projectId;
+    @Override
+    public Date getModifiedDate() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

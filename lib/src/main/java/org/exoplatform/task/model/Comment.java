@@ -26,13 +26,19 @@ public class Comment implements Activity {
         this.text = text;
     }
 
+    public String getText() {
+        return text;
+    }
+
     @Override
-    public Date getDate() {
+    public Date getCreatedDate() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public String getText() {
-        return text;
+    @Override
+    public Date getModifiedDate() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

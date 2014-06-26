@@ -7,5 +7,7 @@ import java.util.Date;
  * @version $Revision$
  */
 public interface Activity {
-    public Date getDate();
+    public Date getCreatedDate();
+
+    public Date getModifiedDate();
 }

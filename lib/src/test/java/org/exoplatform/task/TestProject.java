@@ -15,4 +15,7 @@ public class TestProject extends TestCase {
         assertNotNull(project);
         assertEquals("my own gatein", project.getDesc());
     }
+
+    public void testFindingProject() {
+    }
 }
