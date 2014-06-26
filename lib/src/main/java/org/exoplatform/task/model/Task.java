@@ -2,6 +2,7 @@ package org.exoplatform.task.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
@@ -22,7 +23,12 @@ public class Task implements Activity {
 
     public List<Comment> comments;
 
-    private List<String> labels;
+    private Set<String> labels;
+
+    public Task(String projectId, String title) {
+        this.projectId = projectId;
+        this.title = title;
+    }
 
     public String getId() {
         return id;
@@ -68,11 +74,11 @@ public class Task implements Activity {
         this.comments = comments;
     }
 
-    public List<String> getLabels() {
+    public Set<String> getLabels() {
         return labels;
     }
 
-    public void setLabels(List<String> labels) {
+    public void setLabels(Set<String> labels) {
         this.labels = labels;
     }
 

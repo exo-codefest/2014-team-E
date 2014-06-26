@@ -5,6 +5,7 @@ import org.exoplatform.services.organization.UserHandler;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -15,6 +16,8 @@ public class MemoryTaskService implements TaskService {
 
     private Map<String, Project> list = new HashMap<String, Project>();
     
+    private Map<String, Task> tasks = new HashMap<String, Task>();
+
     private UserHandler userHandler;
 
     public MemoryTaskService(OrganizationService service) {
@@ -75,8 +78,35 @@ public class MemoryTaskService implements TaskService {
         list.remove(id);
     }
 
-    @Override
     public void addTask(Task t) {
-        
+        tasks.put(t.getId(), t);
+    }
+
+    @Override
+    public Task removeTask(String id) {
+        return tasks.remove(id);
+    }
+
+    @Override
+    public void updateTask(Task t) {
+        tasks.put(t.getId(), t);
+    }
+
+    @Override
+    public Task getTask(String id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Task> findTasks(Query query) {
+        List<Task> t = new ArrayList<Task>();
+
+        for (Task task : tasks.values()) {
+           if (task.title.contains(query.getTitle())) {
+               t.add(task);
+           }
+        }
+        return t;
     }
 }

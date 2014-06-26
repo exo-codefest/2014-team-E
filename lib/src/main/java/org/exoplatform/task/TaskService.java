@@ -5,6 +5,8 @@ import java.util.List;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
+import java.util.List;
+
 public interface TaskService {
 
     /**
@@ -27,4 +29,18 @@ public interface TaskService {
     public void deleteProject(String id);
 
     public void addTask(Task t);
+
+    /**
+     * Remove the task for the given id if exist.
+     * 
+     * @param id
+     * @return the task with given id, or null if there was no task with given id.
+     */
+    public Task removeTask(String id);
+
+    public void updateTask(Task t);
+
+    public Task getTask(String id);
+
+    public List<Task> findTasks(Query query);
 }
