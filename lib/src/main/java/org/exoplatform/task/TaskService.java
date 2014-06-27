@@ -3,6 +3,7 @@ package org.exoplatform.task;
 import java.util.List;
 
 import org.exoplatform.task.model.Project;
+import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public interface TaskService {
 
     public void updateProject(Project p) throws TaskServiceException;
 
-    public Project getProject(String id);
+    public Project getProject(String owner);
 
     public void removeProject(String id);
 

@@ -3,6 +3,7 @@ package org.exoplatform.task;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.UserHandler;
 import org.exoplatform.task.model.Project;
+import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;
 
 import java.util.ArrayList;
@@ -46,7 +47,11 @@ public class MemoryTaskService implements TaskService {
     }
 
     @Override
-    public void createProject(Project p) throws TaskServiceException {        
+    public void createProject(Project p) throws TaskServiceException {
+        if (p.getName() == null || p.getName().trim().isEmpty()) {
+            throw new IllegalArgumentException("Project name can NOT be empty");
+        }
+
         if (getProject(p.getId()) != null) {
             throw new TaskServiceException(TaskServiceException.DUPLICATED, "Duplicated : " + p.getId());
         }
