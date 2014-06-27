@@ -18,125 +18,27 @@
  */
 package org.exoplatform.codefest;
 
-import org.exoplatform.container.ExoContainer;
-import org.exoplatform.container.ExoContainerContext;
-import org.exoplatform.task.MemoryTaskService;
-import org.exoplatform.task.TaskService;
 import org.exoplatform.task.TaskServiceException;
 import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
-import javax.portlet.GenericPortlet;
-import javax.portlet.PortletContext;
-import javax.portlet.PortletException;
-import javax.portlet.PortletURL;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
 
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
  * @version $Revision$
  */
-public class GitMaster extends GenericPortlet {
-
-    TaskService service;
+public class GitMaster extends AbstractPortlet {
 
     @Override
-    public void init() throws PortletException {
-        super.init();
-        ExoContainer container = ExoContainerContext.getCurrentContainer();
-        service = (TaskService)container.getComponentInstanceOfType(TaskService.class);
-    }
-
-    @Override
-    protected void doView(RenderRequest request, RenderResponse response) throws PortletException, IOException {
-        String user = request.getRemoteUser();
-        //TODO: process if user is not logged in
-
-        //Load recent project
-        List<Project> recentProjects = service.getProjectsByUser(user);
-        request.setAttribute("recentProjects", recentProjects);
-
-        String view = request.getParameter("view");
-        if (view != null) {
-            if (view.equals("issues")) {
-
-                String projectId = request.getParameter("projectId");
-
-                Project project = service.getProject(projectId);
-                List<Task> tasks = service.getTasksByProject(projectId);
-                request.setAttribute("project", project);
-                request.setAttribute("tasks", tasks);
-
-                render("/issues.jsp", request, response);
-                return;
-            }
-
-            if(view.equals("detail")) {
-                String taskId = request.getParameter("taskId");
-                Task task = service.getTask(taskId);
-                String projectId = task.getProjectId();
-                Project project = service.getProject(projectId);
-
-                request.setAttribute("project", project);
-                request.setAttribute("task", task);
-
-                render("/detail.jsp", request, response);
-                return;
-            }
-        }
-
-        //. Projects view
-        List<Project> projects;
-        if(user != null) {
-            projects = service.getProjectsByUser(user);
-        } else {
-            projects = new ArrayList<Project>();
-        }
-        request.setAttribute("projects", projects);
-
-        String action = request.getParameter("action");
-        if (action != null) {
-            request.setAttribute("_project", service.getProject(request.getParameter("objectId")));
-        }
-        render("/projects.jsp", request, response);
-    }
-
-    public void render(String template, RenderRequest request, RenderResponse response) throws PortletException, IOException {
-        PortletContext context = getPortletContext();
-        context.getRequestDispatcher("/includes/begin.jsp").include(request, response);
-        context.getRequestDispatcher(template).include(request, response);
-        context.getRequestDispatcher("/includes/end.jsp").include(request, response);
-    }
-
-    @Override
-    public void processAction(ActionRequest request, ActionResponse response) throws PortletException, IOException {
-        String objectType = request.getParameter("objectType");
-        String action = request.getParameter("action");
-
-        if("project".equals(objectType)) {
-            this.processProjectAction(action, request, response);
-        } else if("task".equals(objectType)) {
-            this.processTaskAction(action, request, response);
-        } else if("comment".equals(objectType)) {
-            this.processCommentAction(action, request, response);
-        }
-
-        return;
-    }
-
-    protected void processProjectAction(String action, ActionRequest request, ActionResponse response) {
+    protected void processProject(ActionRequest request, ActionResponse response) {
         response.setRenderParameter("view", "projects");
+        String action = request.getParameter("action");
 
         String user = request.getRemoteUser();
         if(user == null) {
@@ -167,13 +69,20 @@ public class GitMaster extends GenericPortlet {
 
         if ("edit".equals(action)) {
             String projectId = request.getParameter("projectId");
-            Project p = service.getProject(projectId);
-            p.setName(request.getParameter("name"));
-            p.setDesc(request.getParameter("description"));
+            Project p = new Project(user, request.getParameter("name"), request.getParameter("description"));
+            p.setId(projectId);
+            try {
+                service.updateProject(p);
+            } catch (TaskServiceException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 
-    protected void processTaskAction(String action, ActionRequest request, ActionResponse response) {
+    @Override
+    protected void processTask(ActionRequest request, ActionResponse response) {
+        String action = request.getParameter("action");
         String projectId = request.getParameter("projectId");
 
         response.setRenderParameter("view", "issues");
@@ -256,11 +165,13 @@ public class GitMaster extends GenericPortlet {
             task.setTitle(title);
             service.updateTask(task);
         }
-    }
+}
 
-    protected void processCommentAction(String action, ActionRequest request, ActionResponse response) {
+    @Override
+    protected void processComment(ActionRequest request, ActionResponse response) {
         String taskId = request.getParameter("taskId");
         Task task = service.getTask(taskId);
+        String action = request.getParameter("action");
 
         response.setRenderParameter("view", "detail");
         response.setRenderParameter("taskId", taskId);
@@ -320,7 +231,6 @@ public class GitMaster extends GenericPortlet {
             }
             task.setComments(comments);
             service.updateTask(task);
-        }
-
+        }        
     }
 }

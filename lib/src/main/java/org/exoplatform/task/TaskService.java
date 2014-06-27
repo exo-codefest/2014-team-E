@@ -1,7 +1,5 @@
 package org.exoplatform.task;
 
-import java.util.List;
-
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;

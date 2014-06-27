@@ -57,8 +57,8 @@
 </table>
 
 <%
-if (renderRequest.getParameter("action") != null && renderRequest.getParameter("action").equals("edit")) {
-    Project p = (Project)renderRequest.getAttribute("_project");
+Project p = (Project)renderRequest.getAttribute("_project");
+if (p != null) {
 %>
 <div>
     <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
