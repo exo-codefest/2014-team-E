@@ -132,7 +132,7 @@ public class GitMaster extends GenericPortlet {
         if("delete".equals(action)) {
             String id = request.getParameter("objectId");
             //String projectId = String.format("%s/%s", user, id);
-            service.deleteProject(id);
+            service.removeProject(id);
         }
     }
 

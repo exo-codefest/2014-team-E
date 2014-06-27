@@ -42,7 +42,6 @@
     <dependency>
       <groupId>org.exoplatform.core</groupId>
       <artifactId>exo.core.component.organization.api</artifactId>
-      <scope>provided</scope>
     </dependency>
     
     <dependency>
