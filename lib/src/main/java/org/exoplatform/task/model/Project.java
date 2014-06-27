@@ -2,6 +2,7 @@ package org.exoplatform.task.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
@@ -24,11 +25,10 @@ public class Project {
     private long dateCreated;
 
     public Project(String owner, String name, String desc) {
-        
         this.name = name;
         this.owner = owner;
         this.desc = desc;
-        this.id = String.format("%s/%s", owner, name);
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {

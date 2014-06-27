@@ -50,6 +50,7 @@
          <groupId>org.exoplatform.addons.codefest.team_e</groupId>
          <artifactId>team-e-addon-lib</artifactId>
          <version>1.0.x-SNAPSHOT</version>
+         <scope>provided</scope>
       </dependency>
    </dependencies>
 </project>

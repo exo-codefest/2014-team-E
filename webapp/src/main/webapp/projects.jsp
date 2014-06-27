@@ -13,12 +13,20 @@
         projects = Collections.EMPTY_LIST;
     }
 %>
-<div class="media">
-    <%if(projects.size() == 0) {%>
-    <div class="media-body">
-        There are no project of your account, please create one!
-    </div>
-    <%} else {
+<table class="table">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%if(projects.size() == 0) {%>
+    <tr>
+      <td colspan="3">There are no project of your account, please create one!</td>
+    </tr>
+  <%} else {
         for(Project project : projects) {
             PortletURL projectURL = renderResponse.createRenderURL();
             projectURL.setParameter("view", "issues");
@@ -29,19 +37,17 @@
             deleteAction.setParameter("action", "delete");
             deleteAction.setParameter("objectId", String.valueOf(project.getId()));
         %>
-            <div class="media-body">
-                <h4 class="media-heading">
-                    <a href="<%=projectURL.toString()%>"><%=project.getName()%></a>
-                    <a href="javascript:void(0);"><i class="icon-pencil"></i></a>
-                    <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
-                </h4>
-                <div class="media">
-                    <%= project.getDesc()%>
-                </div>
-            </div>
+    <tr>
+      <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
+      <td><%= project.getDesc()%></td>
+      <td><a href="javascript:void(0);"><i class="icon-pencil"></i></a>
+                    <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a></td>
+    </tr>
         <%}
     }%>
-</div>
+  </tbody>
+</table>
+
 <div>
     <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
         <fieldset>
