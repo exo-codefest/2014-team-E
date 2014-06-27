@@ -1,0 +1,11 @@
+.GitMasterPortlet {
+    background: #ffffff;
+    margin: 5px 10px;
+}
+.GitMasterPortlet .uiGrayLightBox {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.GitMasterPortlet .nav {
+    margin-bottom: 0px;
+}
