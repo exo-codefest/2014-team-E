@@ -29,7 +29,7 @@
         assignees = Collections.emptyList();
     }
 
-    DateFormat df = new SimpleDateFormat("dd/MM/YYYY HH:mm");
+    DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 %>
 <div>
     <div class="task-title">
