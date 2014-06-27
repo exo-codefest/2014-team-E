@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE configuration SYSTEM "http://www.exoplatform.org/dtd/indexing-configuration-1.2.dtd">
+<configuration xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0">
+<!--
+We'll tweek this later 
+	<index-rule nodeType="exo:project">
+  		<property boost="3.0">exo:id</property>
+ 		<property boost="2.0">exo:name</property>
+ 		<property boost="1.5">exo:owner</property>
+ 	</index-rule>
+-->
+</configuration>

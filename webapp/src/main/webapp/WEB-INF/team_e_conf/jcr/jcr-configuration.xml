@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+  xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+
+  <external-component-plugins>
+    <target-component>org.exoplatform.services.jcr.ext.hierarchy.NodeHierarchyCreator</target-component>
+    <component-plugin>
+      <name>addPaths</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.services.jcr.ext.hierarchy.impl.AddPathPlugin</type>            
+      <init-params>
+        <object-param>
+          <name>wiki.storage</name>
+          <description>wiki data storage tree</description>
+          <object type="org.exoplatform.services.jcr.ext.hierarchy.impl.HierarchyConfig">
+            <field name="workspaces">
+              <collection type="java.util.ArrayList">
+                <value><string>collaboration</string></value>
+              </collection>               
+            </field>
+            <field  name="jcrPaths">
+              <collection type="java.util.ArrayList">
+                <value>               
+                  <object type="org.exoplatform.services.jcr.ext.hierarchy.impl.HierarchyConfig$JcrPath">                 
+                    <field  name="alias"><string>eXoApplications</string></field>
+                    <field  name="path"><string>/exo:applications</string></field>                                          
+                    <field name="permissions">
+                      <collection type="java.util.ArrayList">               
+                        <value>                            
+                          <object type="org.exoplatform.services.jcr.ext.hierarchy.impl.HierarchyConfig$Permission">             
+                              <field name="identity"><string>*:/platform/administrators</string></field>
+                              <field name="read"><string>true</string></field>                
+                              <field name="addNode"><string>true</string></field>                
+                              <field name="setProperty"><string>true</string></field>                
+                              <field name="remove"><string>true</string></field>                
+                            </object>  
+                        </value>                        
+                      </collection>
+                    </field>                       
+                  </object>
+                </value>                
+                <value>              	
+	              	<object type="org.exoplatform.services.jcr.ext.hierarchy.impl.HierarchyConfig$JcrPath">              	 	
+	              		<field  name="alias"><string>groupsPath</string></field>
+	                  <field  name="path"><string>/Groups</string></field>
+	                  <field name="permissions">
+			                <collection type="java.util.ArrayList">               
+			                  <value>                            
+			                    <object type="org.exoplatform.services.jcr.ext.hierarchy.impl.HierarchyConfig$Permission">             
+			                      <field name="identity"><string>*:/platform/administrators</string></field>
+			                      <field name="read"><string>true</string></field>                
+			                      <field name="addNode"><string>true</string></field>                
+			                      <field name="setProperty"><string>true</string></field>                
+			                      <field name="remove"><string>true</string></field>                
+			                    </object>  
+			                  </value>
+			                  <value>                            
+			                    <object type="org.exoplatform.services.jcr.ext.hierarchy.impl.HierarchyConfig$Permission">             
+			                      <field name="identity"><string>any</string></field>
+			                      <field name="read"><string>true</string></field>                
+			                      <field name="addNode"><string>false</string></field>                
+			                      <field name="setProperty"><string>true</string></field>                
+			                      <field name="remove"><string>false</string></field>                
+			                    </object>  
+			                  </value>
+			                </collection>
+			              </field>   			               
+	              	</object>
+              	</value>
+                                           
+              </collection>                               
+            </field>
+          </object>
+        </object-param>
+      </init-params>            
+    </component-plugin>
+  </external-component-plugins>
+  
+  <external-component-plugins>
+    <!-- The full qualified name of the RepositoryServiceConfiguration -->
+    <target-component>org.exoplatform.services.jcr.config.RepositoryServiceConfiguration</target-component>
+    <component-plugin>
+      <!-- The name of the plugin -->
+      <name>Sample RepositoryServiceConfiguration Plugin</name>
+      <!-- The name of the method to call on the RepositoryServiceConfiguration in order to add the RepositoryServiceConfigurations -->
+      <set-method>addConfig</set-method>
+      <!-- The full qualified name of the RepositoryServiceConfigurationPlugin -->
+      <type>org.exoplatform.services.jcr.impl.config.RepositoryServiceConfigurationPlugin</type>
+      <init-params>
+        <value-param>
+          <name>conf-path</name>
+          <description>JCR configuration file</description>
+          <value>war:/team_e_conf/jcr/repository-configuration.xml</value>
+        </value-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+  
+  <external-component-plugins>
+    <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
+    <component-plugin>
+      <name>add.nodeType</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.services.jcr.impl.AddNodeTypePlugin</type>
+      <init-params>
+        <values-param>
+          <name>autoCreatedInNewRepository</name>
+          <description>Node types configuration file</description>
+          <value>jar:/conf/portal/team_e/task-nodetypes.xml</value>
+        </values-param>
+      </init-params>
+    </component-plugin>
+  </external-component-plugins>
+  
+</configuration>

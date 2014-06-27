@@ -32,10 +32,9 @@ public abstract class AbstractTest extends AbstractKernelTest {
 
     protected Session getSession() throws Exception {
         SessionProviderService providerService = getService(SessionProviderService.class);
-        RepositoryService repoService = getService(RepositoryService.class);        
+        RepositoryService repoService = getService(RepositoryService.class);
         ManageableRepository currentRepo = repoService.getDefaultRepository();
-        Session session = providerService.getSystemSessionProvider(null).getSession(currentRepo.getConfiguration().getDefaultWorkspaceName(),
-                                    currentRepo);
+        Session session = providerService.getSystemSessionProvider(null).getSession("team_e", currentRepo);
         return session;
     }
 
