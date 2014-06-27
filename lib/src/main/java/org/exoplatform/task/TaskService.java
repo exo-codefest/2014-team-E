@@ -25,7 +25,7 @@ public interface TaskService {
 
     public void updateProject(Project p) throws TaskServiceException;
 
-    public Project getProject(String owner);
+    public Project getProject(String id);
 
     public void removeProject(String id);
 

@@ -36,18 +36,62 @@
             deleteAction.setParameter("objectType", "project");
             deleteAction.setParameter("action", "delete");
             deleteAction.setParameter("objectId", String.valueOf(project.getId()));
+
+            PortletURL editURL = renderResponse.createRenderURL();
+            editURL.setParameter("objectType", "project");
+            editURL.setParameter("action", "edit");
+            editURL.setParameter("objectId", String.valueOf(project.getId()));
+            
         %>
     <tr>
       <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
       <td><%= project.getDesc()%></td>
-      <td><a href="javascript:void(0);"><i class="icon-pencil"></i></a>
-                    <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a></td>
+      <td>
+        <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
+        <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
+      </td>
     </tr>
         <%}
     }%>
   </tbody>
 </table>
 
+<%
+if (renderRequest.getParameter("action") != null && renderRequest.getParameter("action").equals("edit")) {
+    Project p = (Project)renderRequest.getAttribute("_project");
+%>
+<div>
+    <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
+        <fieldset>
+            <legend>Edit project</legend>
+            <div>
+                <input type="hidden" name="objectType" value="project"/>
+                <input type="hidden" name="action" value="edit"/>
+                <input type="hidden" name="projectId" value="<%=p.getId()%>"/>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputName">Project name</label>
+                <div class="controls">
+                    <input type="text" name="name" id="inputName" placeholder="Name of project" value="<%=p.getName()%>">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Description</label>
+                <div class="controls">
+                    <textarea name="description" rows="3"><%=p.getDesc()%></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Update</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<%    
+} else {
+%>
 <div>
     <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
         <fieldset>
@@ -76,3 +120,4 @@
         </fieldset>
     </form>
 </div>
+<%}%>

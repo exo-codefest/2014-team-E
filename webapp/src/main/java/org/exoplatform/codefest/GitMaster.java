@@ -105,6 +105,10 @@ public class GitMaster extends GenericPortlet {
         }
         request.setAttribute("projects", projects);
 
+        String action = request.getParameter("action");
+        if (action != null) {
+            request.setAttribute("_project", service.getProject(request.getParameter("objectId")));
+        }
         render("/projects.jsp", request, response);
     }
 
@@ -159,6 +163,13 @@ public class GitMaster extends GenericPortlet {
             String id = request.getParameter("objectId");
             //String projectId = String.format("%s/%s", user, id);
             service.removeProject(id);
+        }
+
+        if ("edit".equals(action)) {
+            String projectId = request.getParameter("projectId");
+            Project p = service.getProject(projectId);
+            p.setName(request.getParameter("name"));
+            p.setDesc(request.getParameter("description"));
         }
     }
 
