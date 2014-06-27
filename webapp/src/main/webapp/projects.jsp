@@ -13,7 +13,7 @@
         projects = Collections.EMPTY_LIST;
     }
 %>
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Project Name</th>
