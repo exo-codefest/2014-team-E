@@ -34,6 +34,7 @@ import java.util.List;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.GenericPortlet;
+import javax.portlet.PortletContext;
 import javax.portlet.PortletException;
 import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
@@ -59,6 +60,10 @@ public class GitMaster extends GenericPortlet {
         String user = request.getRemoteUser();
         //TODO: process if user is not logged in
 
+        //Load recent project
+        List<Project> recentProjects = service.getProjectsByUser(user);
+        request.setAttribute("recentProjects", recentProjects);
+
         String view = request.getParameter("view");
         if (view != null) {
             if (view.equals("issues")) {
@@ -70,16 +75,17 @@ public class GitMaster extends GenericPortlet {
                 request.setAttribute("project", project);
                 request.setAttribute("tasks", tasks);
 
-                getPortletContext().getRequestDispatcher("/issues.jsp").include(request, response);
+                render("/issues.jsp", request, response);
                 return;
             }
 
             if(view.equals("detail")) {
-                getPortletContext().getRequestDispatcher("/detail.jsp").include(request, response);
+                render("/detail.jsp", request, response);
                 return;
             }
         }
 
+        //. Projects view
         List<Project> projects;
         if(user != null) {
             projects = service.getProjectsByUser(user);
@@ -88,7 +94,14 @@ public class GitMaster extends GenericPortlet {
         }
         request.setAttribute("projects", projects);
 
-        getPortletContext().getRequestDispatcher("/projects.jsp").include(request, response);
+        render("/projects.jsp", request, response);
+    }
+
+    public void render(String template, RenderRequest request, RenderResponse response) throws PortletException, IOException {
+        PortletContext context = getPortletContext();
+        context.getRequestDispatcher("/includes/begin.jsp").include(request, response);
+        context.getRequestDispatcher(template).include(request, response);
+        context.getRequestDispatcher("/includes/end.jsp").include(request, response);
     }
 
     @Override
