@@ -102,8 +102,7 @@ public class MemoryTaskService implements TaskService {
 
     @Override
     public Task getTask(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        return tasks.get(id);
     }
 
     @Override

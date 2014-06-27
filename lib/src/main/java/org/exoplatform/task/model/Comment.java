@@ -11,11 +11,16 @@ public class Comment implements Activity {
 
     private String id;
     
-    public String text;
+    private String text;
+    private String author;
+    private Date createdDate;
 
-    public Comment(String text) {
+
+    public Comment(String author, String text) {
         this.id = UUID.randomUUID().toString();
         this.text = text;
+        this.author = author;
+        this.createdDate = new Date();
     }
 
     public String getId() {
@@ -32,13 +37,20 @@ public class Comment implements Activity {
 
     @Override
     public Date getCreatedDate() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.createdDate;
     }
 
     @Override
     public Date getModifiedDate() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

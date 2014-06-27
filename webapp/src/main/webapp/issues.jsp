@@ -28,7 +28,7 @@
       for(Task task : tasks) {
           PortletURL detailURL = renderResponse.createRenderURL();
           detailURL.setParameter("view", "detail");
-          detailURL.setParameter("taskId", "taskID");
+          detailURL.setParameter("taskId", task.getId());
 
           PortletURL deleteURL = renderResponse.createActionURL();
           deleteURL.setParameter("objectType", "task");
