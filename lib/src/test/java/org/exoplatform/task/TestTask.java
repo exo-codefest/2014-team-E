@@ -10,7 +10,10 @@ import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
 @ConfiguredBy({
-    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/configuration.xml")
+    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/org.exoplatform.addons.codefest.team_e.service_configuration.xml"),
+    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal-configuration.xml"),
+    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.test.jcr-configuration.xml"),
+    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/team_e/jcr_configuration.xml")
   })
 public class TestTask extends AbstractKernelTest {
     private final String username = "root";
