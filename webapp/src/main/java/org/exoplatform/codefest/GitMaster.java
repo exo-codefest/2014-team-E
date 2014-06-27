@@ -164,7 +164,6 @@ public class GitMaster extends GenericPortlet {
 
     protected void processTaskAction(String action, ActionRequest request, ActionResponse response) {
         String projectId = request.getParameter("projectId");
-        String title = request.getParameter("title");
 
         response.setRenderParameter("view", "issues");
         if(projectId != null) {
@@ -177,8 +176,13 @@ public class GitMaster extends GenericPortlet {
         }
 
         if("create".equals(action)) {
+            String title = request.getParameter("title");
             Task task = new Task(projectId, title);
             service.addTask(task);
+
+            response.setRenderParameter("view", "detail");
+            response.setRenderParameter("taskId", task.getId());
+
             return;
         }
 
@@ -228,6 +232,18 @@ public class GitMaster extends GenericPortlet {
                 task.setAssignee(assignees);
                 service.updateTask(task);
             }
+        }
+
+        if("update-title".equals(action)) {
+            String taskId = request.getParameter("objectId");
+            String title = request.getParameter("title");
+
+            response.setRenderParameter("view", "detail");
+            response.setRenderParameter("taskId", taskId);
+
+            Task task = service.getTask(taskId);
+            task.setTitle(title);
+            service.updateTask(task);
         }
     }
 

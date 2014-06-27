@@ -32,7 +32,17 @@
     DateFormat df = new SimpleDateFormat("dd/MM/YYYY HH:mm");
 %>
 <div>
-    <h2><%=task.getTitle()%></h2>
+    <div class="task-title">
+        <h2><%=task.getTitle()%><a class="action" action="update-title" href="javascript:void(0);"><i class="icon-pencil"></i></a></h2>
+        <form action="<portlet:actionURL />" method="POST" class="form-inline" style="display: none">
+            <input type="hidden" name="objectType" value="task"/>
+            <input type="hidden" name="action" value="update-title"/>
+            <input type="hidden" name="objectId" value="<%=task.getId()%>"/>
+            <input class="span5" type="text" name="title" placeholder="" value="<%=task.getTitle()%>">
+            <button type="submit" class="btn">Update</button>
+            <button type="reset" class="btn">Cancel</button>
+        </form>
+    </div>
     <div>
         <div class="assignee">
             <span>Assignee: </span>

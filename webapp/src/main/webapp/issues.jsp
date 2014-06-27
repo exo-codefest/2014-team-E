@@ -39,8 +39,7 @@
     <tr>
       <td><input type="checkbox" name="taskId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>"><%=task.getTitle()%></a></td>
-      <td><a href="javascript:void(0);"><i class="icon-pencil"></i></a>
-                    <a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
+      <td><a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
     </tr>
         <%}
     }%>
