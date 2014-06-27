@@ -75,7 +75,7 @@ public class MemoryTaskService implements TaskService {
     }
 
     @Override
-    public void deleteProject(String id) {
+    public void removeProject(String id) {
         list.remove(id);
     }
 

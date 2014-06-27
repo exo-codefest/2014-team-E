@@ -1,18 +1,39 @@
 package org.exoplatform.task;
 
-import org.exoplatform.services.organization.impl.mock.DummyOrganizationService;
+import java.util.List;
+
+import org.exoplatform.component.test.AbstractKernelTest;
+import org.exoplatform.component.test.ConfigurationUnit;
+import org.exoplatform.component.test.ConfiguredBy;
+import org.exoplatform.component.test.ContainerScope;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
-import java.util.List;
+@ConfiguredBy({
+    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/configuration.xml")
+  })
+public class TestTask extends AbstractKernelTest {
+    private final String username = "root";
+    
+    private TaskService service;
 
-import junit.framework.TestCase;
-
-public class TestTask extends TestCase {
-    private TaskService service = new MemoryTaskService(new DummyOrganizationService());
+    @Override
+    protected void setUp() throws Exception {        
+        super.setUp();
+        this.service = (TaskService)getContainer().getComponentInstanceOfType(TaskService.class);
+    }
+    
+    @Override
+    protected void tearDown() throws Exception {
+        List<Project> projects = this.service.getProjectsByUser(username);
+        for (Project p : projects) {
+            this.service.removeProject(p.getId());
+        }
+        super.tearDown();
+    }
 
     public void testCreateTask() throws TaskServiceException {
-        Project p = new Project("root", "gatein", "my own gatein");
+        Project p = new Project(username, "gatein", "my own gatein");
         service.createProject(p);
 
         Task task = new Task(p.getId(), "hi john");
@@ -23,7 +44,7 @@ public class TestTask extends TestCase {
     }
 
     public void testCreateTaskWithNonExistingProject() throws TaskServiceException {
-        Project p = new Project("root", "gatein", "my own gatein");
+        Project p = new Project(username, "gatein", "my own gatein");
         service.createProject(p);
 
         Project project = service.getProject("root/gatein");

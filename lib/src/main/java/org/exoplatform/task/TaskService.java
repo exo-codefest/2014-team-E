@@ -26,7 +26,7 @@ public interface TaskService {
 
     public Project getProject(String id);
 
-    public void deleteProject(String id);
+    public void removeProject(String id);
 
     public void addTask(Task t);
 
