@@ -2,38 +2,10 @@ package org.exoplatform.task;
 
 import java.util.List;
 
-import org.exoplatform.component.test.AbstractKernelTest;
-import org.exoplatform.component.test.ConfigurationUnit;
-import org.exoplatform.component.test.ConfiguredBy;
-import org.exoplatform.component.test.ContainerScope;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
-@ConfiguredBy({
-    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/org.exoplatform.addons.codefest.team_e.service_configuration.xml"),
-    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal-configuration.xml"),
-    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/exo.portal.component.test.jcr-configuration.xml"),
-    @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/team_e/jcr_configuration.xml")
-  })
-public class TestTask extends AbstractKernelTest {
-    private final String username = "root";
-    
-    private TaskService service;
-
-    @Override
-    protected void setUp() throws Exception {        
-        super.setUp();
-        this.service = (TaskService)getContainer().getComponentInstanceOfType(TaskService.class);
-    }
-    
-    @Override
-    protected void tearDown() throws Exception {
-        List<Project> projects = this.service.getProjectsByUser(username);
-        for (Project p : projects) {
-            this.service.removeProject(p.getId());
-        }
-        super.tearDown();
-    }
+public class TestTask extends AbstractTest {   
 
     public void testCreateTask() throws TaskServiceException {
         Project p = new Project(username, "gatein", "my own gatein");

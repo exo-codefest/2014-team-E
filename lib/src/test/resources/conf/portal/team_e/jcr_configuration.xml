@@ -22,10 +22,6 @@
   xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
   xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
 
-  <component>
-    <type>org.exoplatform.services.jcr.ext.app.ThreadLocalSessionProviderService</type>
-  </component>
-  
 	<external-component-plugins>
 	    <target-component>org.exoplatform.services.jcr.RepositoryService</target-component>
 	    <component-plugin>
