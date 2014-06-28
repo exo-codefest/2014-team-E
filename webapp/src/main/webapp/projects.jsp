@@ -208,7 +208,7 @@ if (p != null) {
                       }
                       memberships.append(membership);
                   %>
-                  <span class="membership"><span><%=membership%></span> <a class="close" href="javascript:void(0);">&times;</a></span>
+                  <span class="membership"><span class="badge"><%=membership%></span> <a class="close" href="javascript:void(0);">&times;</a></span>
                   <%}%>
                 </div>
                 <input type="hidden" name="memberships" value="<%=memberships.toString()%>"/>
@@ -219,16 +219,6 @@ if (p != null) {
                     while(it.hasNext()) {
                       Group g = (Group)it.next();%>
                   <option value="<%=g.getId()%>"><%=g.getId()%></option>
-                  <%}
-                  %>
-                </select>
-                <select class="span2" name="membershipType">
-                  <option value="">Select membership type</option>
-                  <%
-                    it = membershipTypes.iterator();
-                    while(it.hasNext()) {
-                      MembershipType type = (MembershipType)it.next();%>
-                  <option value="<%=type.getName()%>"><%=type.getName()%></option>
                   <%}
                   %>
                 </select>
@@ -290,16 +280,6 @@ if (p != null) {
                   <%}
                   %>
                 </select>
-                <select class="span2" name="membershipType">
-                  <option value="">Select membership type</option>
-                  <%
-                    Iterator itm = membershipTypes.iterator();
-                    while(itm.hasNext()) {
-                      MembershipType type = (MembershipType)itm.next();%>
-                  <option value="<%=type.getName()%>"><%=type.getName()%></option>
-                  <%}
-                  %>
-                </select>
                 <button class="btn" type="button" name="add-membership">Add</button>
               </div>
             </div>
@@ -310,50 +290,5 @@ if (p != null) {
             </div>
         </fieldset>
     </form>
-</div>
-<div class="UIPopupWindow uiPopup UIDragObject NormalStyle" id="UIPopupAddMembership" style="width: 500px;display: none; visibility: visible; z-index: 11; top: 88px; left: 328px;">
-  <div class="popupHeader clearfix">
-
-    <%--<a class="uiIconClose pull-right" title="Close Window" href="javascript:void(0);"></a>--%>
-
-    <span class="PopupTitle popupTitle">Select Group and Membership</span>
-  </div>
-  <div class="PopupContent popupContent">
-    <form action="<portlet:actionURL />" method="POST" class="form-inline">
-      <div class="uiDocActivitySelector" id="UIDocActivitySelector">
-        <div>
-          <input type="hidden" name="objectType" value="project"/>
-          <input type="hidden" name="action" value="share"/>
-          <input type="hidden" name="projectId" value=""/>
-        </div>
-        <div>
-          <select class="span3" name="group">
-            <option value="">Select group</option>
-            <%
-              Iterator it = groups.iterator();
-              while(it.hasNext()) {
-                Group g = (Group)it.next();%>
-                <option value="<%=g.getId()%>"><%=g.getId()%></option>
-              <%}
-            %>
-          </select>
-          <select class="span2" name="membershipType">
-            <option value="">Select membership type</option>
-            <%
-              it = membershipTypes.iterator();
-              while(it.hasNext()) {
-                MembershipType type = (MembershipType)it.next();%>
-                <option value="<%=type.getName()%>"><%=type.getName()%></option>
-              <%}
-            %>
-          </select>
-        </div>
-        <div class="uiAction uiActionBorder">
-          <button class="btn" type="submit">Add</button>
-          <button class="btn" type="reset">Cancel</button>
-        </div>
-      </div>
-    </form>
-  </div>
 </div>
 <%}%>

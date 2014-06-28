@@ -66,25 +66,22 @@
     var arrayMemberships = memberships.split(',');
 
     var $group = $form.find('select[name="group"]');
-    var $membershipType = $form.find('select[name="membershipType"]');
     var group = $group.val();
-    var membershipType = $membershipType.val();
 
-    if(group == '' || membershipType == '') {
+    if(group == '') {
       return;
     }
 
-    var membership = membershipType + ":" + group;
     for(var i = 0; i < arrayMemberships.length; i++) {
       var m = arrayMemberships[i];
-      if(m == membership) return;
+      if(m == group) return;
     }
 
     if(memberships.length > 0) {
       memberships += ',';
     }
-    memberships += membership;
-    var $label = $('<span class="membership"><span>'+membership+'</span><a class="close" href="javascript:void(0);">&times;</a></span>');
+    memberships += group;
+    var $label = $('<span class="membership"><span class="badge">'+group+'</span><a class="close" href="javascript:void(0);">&times;</a></span>');
     $label.appendTo($form.find('div.list-memberships'));
     $memberships.val(memberships);
   });
@@ -96,7 +93,7 @@
     var $form = $label.closest('form');
     var $memberships = $form.find('input[name="memberships"]');
     var memberships = $memberships.val();
-    var arrayMemberships = memberships.split(',');
+    var arrayMemberships = membership == '' ? new Array() : memberships.split(',');
 
     var newArrayMemberships = new Array();
     for(var i = 0; i < arrayMemberships.length; i++) {
