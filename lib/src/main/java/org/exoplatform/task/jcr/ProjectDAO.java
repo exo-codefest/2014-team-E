@@ -68,7 +68,7 @@ public class ProjectDAO {
             }
 
             // shared projects
-            Collection memberships = orgService.getMembershipHandler().findMembershipsByUser(username);
+            Collection<?> memberships = orgService.getMembershipHandler().findMembershipsByUser(username);
             for (Object membership : memberships) {
                 Membership m = (Membership) membership;
                 Node sharedHome = taskService.getOrCreateSharedHome(new MembershipEntry(m.getGroupId(), m.getMembershipType())
@@ -99,13 +99,8 @@ public class ProjectDAO {
             throw new TaskServiceException(e.getMessage(), e);
         }
 
-
         try {
             Node userHome = taskService.getOrCreateUserHome(p.getOwner());
-            if (userHome.hasNode(p.getId())) {
-                throw new TaskServiceException(TaskServiceException.DUPLICATED, "Duplicated : " + p.getId());
-            }
-            
             Node projectNode = userHome.addNode(p.getId(), "exo:project");
             setProperties(projectNode, p);
             userHome.save();
@@ -126,7 +121,8 @@ public class ProjectDAO {
             }
             
             Node project = userHome.getNode(p.getId());
-            if (p.getName().equals(project.getProperty("exo:name")) && p.getOwner().equals(project.getProperty("exo:owner"))) {
+            //Don't allow to change the owner
+            if (p.getOwner().equals(project.getProperty("exo:owner"))) {
                 setProperties(project, p);
                 project.save();
                 
@@ -153,9 +149,9 @@ public class ProjectDAO {
         
     }
 
-    private Node getProjectNode(String id) throws RepositoryException {
+    public Node getProjectNode(String id) throws RepositoryException {
         StringBuilder sql = new StringBuilder("select * from exo:project where jcr:path like '");
-        sql.append(taskService.USERS_PATH).append("/%/").append(taskService.APP_PATH);
+        sql.append(JCRTaskService.USERS_PATH).append("/%/").append(JCRTaskService.APP_PATH);
         sql.append("/").append(Utils.queryEscape(id)).append("'");
 
         Session session = taskService.getSession();

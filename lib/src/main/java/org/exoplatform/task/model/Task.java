@@ -1,6 +1,8 @@
 package org.exoplatform.task.model;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -15,16 +17,24 @@ public class Task implements Activity {
     
     private String reporter;
     
-    private List<String> assignee;
+    private Set<String> assignee = new HashSet<String>();
     
     private String status;
     
     public String title;
 
-    public List<Comment> comments;
+    public Set<Comment> comments;
 
-    private Set<String> labels;
+    private Set<String> labels = new HashSet<String>();
+    
+    private long createdDate;
+    
+    private long modifedDate;
 
+    public Task() {
+        this(null, null);
+    }
+    
     public Task(String projectId, String title) {
         this.projectId = projectId;
         this.title = title;
@@ -46,11 +56,11 @@ public class Task implements Activity {
         this.reporter = reporter;
     }
 
-    public List<String> getAssignee() {
-        return assignee;
+    public Set<String> getAssignee() {
+        return Collections.unmodifiableSet(assignee);
     }
 
-    public void setAssignee(List<String> assignee) {
+    public void setAssignee(Set<String> assignee) {
         this.assignee = assignee;
     }
 
@@ -70,16 +80,16 @@ public class Task implements Activity {
         this.title = title;
     }
 
-    public List<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
 
     public Set<String> getLabels() {
-        return labels;
+        return Collections.unmodifiableSet(labels);
     }
 
     public void setLabels(Set<String> labels) {
@@ -96,13 +106,20 @@ public class Task implements Activity {
 
     @Override
     public Date getCreatedDate() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Date(createdDate);
     }
 
     @Override
     public Date getModifiedDate() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Date(modifedDate);
     }
+
+    public void setModifedDate(long modifedDate) {
+        this.modifedDate = modifedDate;
+    }
+
+    public void setCreatedDate(long createdDate) {
+        this.createdDate = createdDate;
+    }
+    
 }

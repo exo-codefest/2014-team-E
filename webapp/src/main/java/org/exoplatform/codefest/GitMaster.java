@@ -18,19 +18,17 @@
  */
 package org.exoplatform.codefest;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.exoplatform.task.TaskServiceException;
 import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Status;
 import org.exoplatform.task.model.Task;
-
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
 
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
@@ -188,9 +186,9 @@ public class GitMaster extends AbstractPortlet {
             response.setRenderParameter("view", "detail");
             response.setRenderParameter("taskId", taskId);
 
-            List<String> assignees = task.getAssignee();
+            Set<String> assignees = task.getAssignee();
             if(assignees == null) {
-                assignees = new LinkedList<String>();
+                assignees = new HashSet<String>();
             }
             if(assignees.contains(assignee)) {
                 return;
@@ -209,9 +207,9 @@ public class GitMaster extends AbstractPortlet {
             response.setRenderParameter("view", "detail");
             response.setRenderParameter("taskId", taskId);
 
-            List<String> assignees = task.getAssignee();
+            Set<String> assignees = task.getAssignee();
             if(assignees == null) {
-                assignees = new LinkedList<String>();
+                assignees = new HashSet<String>();
             }
             if(!assignees.contains(assignee)) {
                 return;
@@ -253,9 +251,9 @@ public class GitMaster extends AbstractPortlet {
             String comment = request.getParameter("comment");
             if(comment != null && !comment.isEmpty()) {
                 Comment cmt = new Comment(user, comment);
-                List<Comment> comments = task.getComments();
+                Set<Comment> comments = task.getComments();
                 if(comments == null) {
-                    comments = new LinkedList<Comment>();
+                    comments = new HashSet<Comment>();
                 }
                 comments.add(cmt);
                 task.setComments(comments);
@@ -265,9 +263,9 @@ public class GitMaster extends AbstractPortlet {
         } else if("delete".equals(action)) {
             //TODO: process delete comment by service
             String commentId = request.getParameter("commentId");
-            List<Comment> comments = task.getComments();
+            Set<Comment> comments = task.getComments();
             if(comments == null) {
-                comments = new LinkedList<Comment>();
+                comments = new HashSet<Comment>();
             }
 
             Comment delete = null;
@@ -286,9 +284,9 @@ public class GitMaster extends AbstractPortlet {
             //TODO: process update comment by service
             String commentId = request.getParameter("commentId");
             String text = request.getParameter("comment");
-            List<Comment> comments = task.getComments();
+            Set<Comment> comments = task.getComments();
             if(comments == null) {
-                comments = new LinkedList<Comment>();
+                comments = new HashSet<Comment>();
             }
 
             for(Comment comment : comments) {

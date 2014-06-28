@@ -28,16 +28,22 @@
     <type>org.exoplatform.services.jcr.ext.app.ThreadLocalSessionProviderService</type>
   </component>
    
+  <!--  
   <component>
     <key>org.exoplatform.task.TaskService</key>
     <type>org.exoplatform.task.MemoryTaskService</type>
   </component>
-  <!--  
+-->
   <component>
     <key>org.exoplatform.task.TaskService</key>
     <type>org.exoplatform.task.JCRTaskService</type>
+    <init-params>
+      <value-param>
+        <name>workspace</name>
+        <value>${org.exoplatform.addons.codefest.team_e.workspace:team_e}</value>
+      </value-param>
+    </init-params>
   </component>
--->
   <component>
     <key>org.exoplatform.services.organization.OrganizationService</key>
     <type>org.exoplatform.services.organization.impl.mock.DummyOrganizationService</type>

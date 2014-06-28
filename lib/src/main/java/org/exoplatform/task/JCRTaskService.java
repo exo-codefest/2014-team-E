@@ -6,6 +6,8 @@ import javax.jcr.Session;
 
 import java.util.List;
 
+import org.exoplatform.container.xml.InitParams;
+import org.exoplatform.container.xml.ValueParam;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
@@ -30,7 +32,7 @@ public class JCRTaskService implements TaskService {
 
     public static final String SHARED_PATH = "/exo:applications/taskApplication/sharedProjects/groups";
     
-    public static final String WORKSPACE = "team_e";
+    public String workspace = "team_e";
 
     private ProjectDAO projectDAO;
 
@@ -44,8 +46,15 @@ public class JCRTaskService implements TaskService {
 
     private static final Log log = ExoLogger.getLogger(JCRTaskService.class);
 
-    public JCRTaskService(OrganizationService orgService, SessionProviderService sessionService, RepositoryService repositoryService,
+    public JCRTaskService(InitParams params, OrganizationService orgService, SessionProviderService sessionService, RepositoryService repositoryService,
             DataDistributionManager dataDistributionManager) {
+        if (params != null) {
+            ValueParam param = params.getValueParam("workspace");
+            if (param != null) {
+                workspace = param.getValue();
+            }
+        }
+        
         this.projectDAO = new ProjectDAO(this, orgService);
         this.taskDAO = new TaskDAO(this);
         this.sessionService = sessionService;
@@ -86,7 +95,7 @@ public class JCRTaskService implements TaskService {
         projectDAO.removeProject(id);
     }
 
-    public void addTask(Task t) {
+    public void addTask(Task t) throws TaskServiceException {
         taskDAO.addTask(t);
     }
 
@@ -96,7 +105,7 @@ public class JCRTaskService implements TaskService {
     }
 
     @Override
-    public void updateTask(Task t) {
+    public void updateTask(Task t) throws TaskServiceException {
         taskDAO.updateTask(t);
     }
 
@@ -142,6 +151,6 @@ public class JCRTaskService implements TaskService {
     public Session getSession() throws RepositoryException {
         ManageableRepository repo = repositoryService.getCurrentRepository();
         SessionProvider sessionProvider = sessionService.getSystemSessionProvider(null); 
-        return sessionProvider.getSession(WORKSPACE, repo);
+        return sessionProvider.getSession(workspace, repo);
     }
 }

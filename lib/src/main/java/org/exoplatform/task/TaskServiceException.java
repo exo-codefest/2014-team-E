@@ -1,6 +1,6 @@
 package org.exoplatform.task;
 
-public class TaskServiceException extends Exception {
+public class TaskServiceException extends RuntimeException {
     private static final long serialVersionUID = -6739016122540813895L;
 
     private int code;
@@ -9,7 +9,9 @@ public class TaskServiceException extends Exception {
     
     public static final int NON_EXITS_PROJECT = 2;
     
-    public static final int NON_EXITS_OWNER = 3;
+    public static final int NON_EXITS_TASK = 3;    
+    
+    public static final int NON_EXITS_OWNER = 4;
     
     public TaskServiceException(String message, Throwable throwable) {
         this(0, message, throwable);

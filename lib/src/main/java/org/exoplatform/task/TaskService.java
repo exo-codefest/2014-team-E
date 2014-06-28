@@ -27,7 +27,7 @@ public interface TaskService {
 
     public void removeProject(String id);
 
-    public void addTask(Task t);
+    public void addTask(Task t) throws TaskServiceException;
 
     /**
      * Remove the task for the given id if exist.
@@ -37,7 +37,7 @@ public interface TaskService {
      */
     public Task removeTask(String id);
 
-    public void updateTask(Task t);
+    public void updateTask(Task t) throws TaskServiceException;
 
     public Task getTask(String id);
 

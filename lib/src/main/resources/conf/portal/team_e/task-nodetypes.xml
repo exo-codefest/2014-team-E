@@ -68,6 +68,12 @@
         </propertyDefinition>    
         <propertyDefinition name="exo:labels" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="true">
           <valueConstraints/>
+        </propertyDefinition>
+        <propertyDefinition name="exo:createdDate" requiredType="Long" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+          <valueConstraints/>
+        </propertyDefinition>
+        <propertyDefinition name="exo:modifiedDate" requiredType="Long" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+          <valueConstraints/>
         </propertyDefinition>        
       </propertyDefinitions>
       <childNodeDefinitions>
