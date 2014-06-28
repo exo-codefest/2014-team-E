@@ -210,6 +210,8 @@
           html = html.replace('%TASKID%', comment.taskId);
           html = html.replace('%COMMENT_ID%', comment.id);
           html = html.replace('%COMMENT_TEXT%', comment.text);
+          html = html.replace('%UPDATE_URL%', comment.updateURL);
+          html = "<li>" + html + "</li>";
 
           $(html).insertAfter($li);
         })
@@ -280,8 +282,11 @@
         html = html.replace('%TASKID%', comment.taskId);
         html = html.replace('%COMMENT_ID%', comment.id);
         html = html.replace('%COMMENT_TEXT%', comment.text);
+        html = html.replace('%UPDATE_URL%', comment.updateURL);
+        html = "<li>" + html + "</li>";
 
         $(html).insertBefore($li);
+        $textarea.val('');
       }
     });
 

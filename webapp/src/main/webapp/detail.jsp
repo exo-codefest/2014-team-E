@@ -142,7 +142,7 @@
               </div>
               <div class="body">%COMMENT_TEXT%</div>
               <div class="edit" style="display: none">
-                <form action="<portlet:actionURL />" method="POST" class="form-update-comment ">
+                <form action="%UPDATE_URL%" method="POST" class="form-update-comment ">
                   <div>
                     <input type="hidden" name="objectType" value="comment"/>
                     <input type="hidden" name="action" value="update"/>
@@ -156,7 +156,7 @@
                   </div>
                   <div class="control-group">
                     <div class="controls">
-                      <button type="submit" class="btn">Update</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
                       <button type="reset" class="btn">Cancel</button>
                     </div>
                   </div>

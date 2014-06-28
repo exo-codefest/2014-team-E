@@ -161,6 +161,13 @@ public abstract class AbstractPortlet extends GenericPortlet {
 
                 c.put("deleteURL", delete.toString());
 
+                ResourceURL update = response.createResourceURL();
+                update.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+                update.setParameter(PARAM_ACTION, "update");
+                update.setParameter(PARAM_OBJECT_ID, cmt.getId());
+
+                c.put("updateURL", update.toString());
+
                 array.put(c);
             }
             json.put("comments", array);
@@ -198,6 +205,13 @@ public abstract class AbstractPortlet extends GenericPortlet {
 
             json.put("deleteURL", delete.toString());
 
+            ResourceURL update = response.createResourceURL();
+            update.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+            update.setParameter(PARAM_ACTION, "update");
+            update.setParameter(PARAM_OBJECT_ID, comment.getId());
+
+            json.put("updateURL", update.toString());
+
             result.put("code", 200);
             result.put("message", "update successfully");
             result.put("data", json);
@@ -228,6 +242,13 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 delete.setParameter(PARAM_OBJECT_ID, c.getId());
 
                 json.put("deleteURL", delete.toString());
+
+                ResourceURL update = response.createResourceURL();
+                update.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+                update.setParameter(PARAM_ACTION, "update");
+                update.setParameter(PARAM_OBJECT_ID, c.getId());
+
+                json.put("updateURL", update.toString());
 
                 result.put("code", 201);
                 result.put("message", "Created successfully");
