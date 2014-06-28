@@ -203,6 +203,7 @@ public class GitMaster extends AbstractPortlet {
                 set.add(s);
             }
             task.setLabels(set);
+            task.setStatus(Status.valueOf(status));
 
             service.updateTask(task);
         }
