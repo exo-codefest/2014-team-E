@@ -18,6 +18,8 @@
     <tr>
       <th>Project Name</th>
       <th>Description</th>
+      <th>Owner</th>
+      <th>Members</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -46,6 +48,13 @@
     <tr>
       <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
       <td><%= project.getDesc()%></td>
+      <td><%=project.getOwner()%></td>
+      <td class="memberships">
+        Add text here?
+        <a class="action" action="add" projectId="<%=project.getId()%>" href="#">
+          <i class="icon-plus-sign"></i>
+        </a>
+      </td>
       <td>
         <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
         <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
@@ -119,5 +128,36 @@ if (p != null) {
             </div>
         </fieldset>
     </form>
+</div>
+<div class="UIPopupWindow uiPopup UIDragObject NormalStyle" id="UIPopupAddMembership" style="width: 500px;display: none; visibility: visible; z-index: 11; top: 88px; left: 328px;">
+  <div class="popupHeader clearfix">
+
+    <%--<a class="uiIconClose pull-right" title="Close Window" href="javascript:void(0);"></a>--%>
+
+    <span class="PopupTitle popupTitle">Select Group and Membership</span>
+  </div>
+  <div class="PopupContent popupContent">
+    <form action="<portlet:actionURL />" method="POST" class="form-inline">
+      <div class="uiDocActivitySelector" id="UIDocActivitySelector">
+        <div>
+          <input type="hidden" name="objectType" value="project"/>
+          <input type="hidden" name="action" value="share"/>
+          <input type="hidden" name="projectId" value=""/>
+        </div>
+        <div>
+          <select class="span3" name="group">
+            <option>Select group</option>
+          </select>
+          <select class="span2" name="membershipType">
+            <option>Select membership type</option>
+          </select>
+        </div>
+        <div class="uiAction uiActionBorder">
+          <button class="btn" type="submit">Add</button>
+          <button class="btn" type="reset">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 <%}%>

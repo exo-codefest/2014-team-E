@@ -33,6 +33,31 @@
     $title.find('form').hide();
   });
 
+  //. Add membership
+  $('td.memberships').on('click', 'a.action', function(e){
+    var $action = $(e.target || e.srcElement).closest('a');
+    var action = $action.attr('action');
+    if(action == "add") {
+      var $popup = $('#UIPopupAddMembership');
+      var windowWidth = $(window).width();
+      var windowHeight = $(window).height();
+      var popupWidth = $popup.width();
+      var popupHeight = $popup.height();
+
+      var left = (windowWidth - popupWidth) / 2;
+      var top = (windowHeight - popupHeight) / 2;
+
+      $popup.css("left", left + "px");
+      $popup.css("top", top + "px");
+
+      $popup.find('input[name="projectId"]').val($action.attr('projectId'));
+      $popup.show();
+    }
+  });
+  $('#UIPopupAddMembership').on('click', 'button[type="reset"]', function(e){
+    var $popup = $('#UIPopupAddMembership');
+    $popup.hide();
+  });
 
 })($);
 
