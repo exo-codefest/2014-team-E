@@ -3,6 +3,8 @@ package org.exoplatform.task.model;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,7 +24,7 @@ public class Task implements Activity {
     
     public String title;
 
-    public Set<Comment> comments;
+    public List<Comment> comments = new LinkedList<Comment>();
 
     private Set<String> labels = new HashSet<String>();
     
@@ -79,11 +81,11 @@ public class Task implements Activity {
         this.title = title;
     }
 
-    public Set<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Comment> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 

@@ -22,6 +22,8 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import org.exoplatform.task.TaskServiceException;
@@ -233,9 +235,9 @@ public class GitMaster extends AbstractPortlet {
             String comment = request.getParameter("comment");
             if(comment != null && !comment.isEmpty()) {
                 Comment cmt = new Comment(user, comment);
-                Set<Comment> comments = task.getComments();
+                List<Comment> comments = task.getComments();
                 if(comments == null) {
-                    comments = new HashSet<Comment>();
+                    comments = new LinkedList<Comment>();
                 }
                 comments.add(cmt);
                 task.setComments(comments);
@@ -245,9 +247,9 @@ public class GitMaster extends AbstractPortlet {
         } else if("delete".equals(action)) {
             //TODO: process delete comment by service
             String commentId = request.getParameter("commentId");
-            Set<Comment> comments = task.getComments();
+            List<Comment> comments = task.getComments();
             if(comments == null) {
-                comments = new HashSet<Comment>();
+                comments = new LinkedList<Comment>();
             }
 
             Comment delete = null;
@@ -266,9 +268,9 @@ public class GitMaster extends AbstractPortlet {
             //TODO: process update comment by service
             String commentId = request.getParameter("commentId");
             String text = request.getParameter("comment");
-            Set<Comment> comments = task.getComments();
+            List<Comment> comments = task.getComments();
             if(comments == null) {
-                comments = new HashSet<Comment>();
+                comments = new LinkedList<Comment>();
             }
 
             for(Comment comment : comments) {
