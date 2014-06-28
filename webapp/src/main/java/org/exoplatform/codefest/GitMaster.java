@@ -109,7 +109,7 @@ public class GitMaster extends AbstractPortlet {
             String groupId = request.getParameter("group");
             String membershipType = request.getParameter("membershipType");
 
-            String membership = groupId + ":" + membershipType;
+            String membership = membershipType + ":" + groupId;
             Project project = service.getProject(projectId);
             Set<String> memberships = new HashSet<String>();
             memberships.addAll(project.getMemberships());

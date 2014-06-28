@@ -74,7 +74,7 @@
       return;
     }
 
-    var membership = group + ":" + membershipType;
+    var membership = membershipType + ":" + group;
     for(var i = 0; i < arrayMemberships.length; i++) {
       var m = arrayMemberships[i];
       if(m == membership) return;
