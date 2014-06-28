@@ -81,6 +81,6 @@ See the following diagram to understand the progess of our team for MasterTask:
 A list of projects will be displayed. If you have no project, there will be a message: *No project is available, please create one!*. 
 
 
-2. Click *Create new project* to open the form.
+1. Click *Create new project* to open the form.
 
-3. Enter 
+1. Enter 
