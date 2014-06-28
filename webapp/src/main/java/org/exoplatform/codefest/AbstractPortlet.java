@@ -115,7 +115,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
             String limitParam = request.getParameter("limit");
 
             int offset = 0;
-            int limit = 5;
+            int limit = 10;
             try {
                 offset = Integer.parseInt(offsetParam);
             } catch (Exception ex) {
@@ -128,7 +128,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
             }
 
             List<Comment> comments = service.getCommentByTask(taskId, offset, limit);
-            Collections.reverse(comments);
+            //Collections.reverse(comments);
 
             String nextURL = "";
             if(comments.size() >= limit) {
@@ -322,22 +322,27 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 }
 
                 //. Load comment of task
-                List<Comment> comments = service.getCommentByTask(taskId, 0, 5);
+                List<Comment> comments = service.getCommentByTask(taskId, 0, 10);
+                Collections.reverse(comments);
 
                 //. Link for load more comments
-                ResourceURL moreCommentURL = response.createResourceURL();
-                moreCommentURL.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
-                moreCommentURL.setParameter(PARAM_ACTION, "get");
-                moreCommentURL.setParameter("taskId", task.getId());
-                moreCommentURL.setParameter("offset", "5");
-                moreCommentURL.setParameter("limit", "5");
+                String linkLoadMore = "";
+                if(comments.size() >= 10) {
+                    ResourceURL moreCommentURL = response.createResourceURL();
+                    moreCommentURL.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+                    moreCommentURL.setParameter(PARAM_ACTION, "get");
+                    moreCommentURL.setParameter("taskId", task.getId());
+                    moreCommentURL.setParameter("offset", "10");
+                    moreCommentURL.setParameter("limit", "10");
+
+                    linkLoadMore = moreCommentURL.toString();
+                }
 
                 request.setAttribute("project", project);
                 request.setAttribute("task", task);
                 request.setAttribute("comments", comments);
-                request.setAttribute("moreCommentURL", moreCommentURL.toString());
+                request.setAttribute("moreCommentURL", linkLoadMore);
                 request.setAttribute("usersInProject", users);
-                request.setAttribute("comments", service.getCommentByTask(taskId, 0, -1));
 
 
                 render("/detail.jsp", request, response);

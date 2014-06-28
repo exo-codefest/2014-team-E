@@ -75,3 +75,13 @@
 .text-center {
     text-align: center;
 }
+
+.comments li {
+    border: solid 1px #ccc;
+    margin: 3px;
+    padding: 7px;
+    border-radius: 3px;
+}
+.comments ul li:first-child {
+    border: none;
+}
