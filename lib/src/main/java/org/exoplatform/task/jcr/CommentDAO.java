@@ -199,7 +199,7 @@ public class CommentDAO {
         if (id != null) {
             sql.append(Utils.queryEscape(id)).append("' ");
         } else {
-            sql.append("%' ");
+            sql.append("%' order by exo:createdDate ASC");
         }
 
         Session session = taskService.getSession();
