@@ -11,6 +11,7 @@
 <%@ page import="org.exoplatform.task.model.Status" %>
 <%@ page import="javax.portlet.ResourceURL" %>
 <%@ page import="org.exoplatform.codefest.AbstractPortlet" %>
+<%@ page import="org.exoplatform.task.model.Priority" %>
 <%@include file="includes/header.jsp" %>
 <%
   Project project = (Project) renderRequest.getAttribute("project");
@@ -40,6 +41,17 @@
         <label class="control-label" for="inputTitle">Title</label>
         <div class="controls">
           <input type="text" name="title" id="inputTitle" placeholder="Task title" value="<%=task.getTitle()%>">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputPriority">Priority:</label>
+
+        <div class="controls">
+          <select name="priority" id="inputPriority">
+            <% for(Priority p : Priority.values()) {%>
+            <option value="<%=p.priority()%>" <%=(p.priority() == task.getPriority().priority() ? "selected = \"selected\"" : "")%>><%=p.name()%></option>
+            <%}%>
+          </select>
         </div>
       </div>
       <div class="control-group">
@@ -112,6 +124,10 @@
     <div class="span12">
       <span class="label label-info"><%=task.getStatus()%></span>
       <span><strong><%=(task.getReporter() == null ? "guest" : task.getReporter())%></strong> created this project at <%=task.getCreatedDate()%></span>
+    </div>
+    <div class="span12">
+      <span>Priority: </span>
+      <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority()%></span>
     </div>
     <div class="span12">
       <div class="span4">Assignee: <%=(task.getAssignee() == null ? "none" : task.getReporter())%></div>

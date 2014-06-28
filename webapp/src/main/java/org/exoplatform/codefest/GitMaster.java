@@ -166,6 +166,7 @@ public class GitMaster extends AbstractPortlet {
             response.setRenderParameter("taskId", taskId);
 
             String title = request.getParameter("title");
+            String priority = request.getParameter("priority");
             String status = request.getParameter("status");
             String assignee = request.getParameter("assignee");
             String labels = request.getParameter("labels");
@@ -178,6 +179,7 @@ public class GitMaster extends AbstractPortlet {
                 set.add(s);
             }
             task.setLabels(set);
+            task.setPriority(Priority.getPriority(Integer.parseInt(priority)));
             task.setStatus(Status.getStatus(Integer.parseInt(status)));
 
             service.updateTask(task);
