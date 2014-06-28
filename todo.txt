@@ -1,0 +1,59 @@
+==== Home page (List all projects)
+
+1. Adding “Create project” button to show the form
+
+2. Add label style for membership
+
+3. Project form validation
+
+4. Change “Memberships” label to “Collaborators”
+
+5. Sort the project list by Created Date
+
+6. Filter projects by Project name and description (in client only by js)
+
+7. Having two tabs [My Projects, Shared Projects]
+
+8. Make sure user can not edit shared project’s information
+
+
+
+
+
+
+
+======== Task List page =========
+
+1. Loading More in the Task List
+
+2. Add “check all” checkbox
+
+3. Adding “select box” in the status to change Status of the issue directly
+
+4. Sort the task list by “Created Date”
+
+5. Remove Action column
+
+6. Move the “quick add” form to top
+
+7. “them gach di” cho Resolved/Refused tasks
+
+8. Adding “assignee” column and quick assign select box
+
+9. Adding Priority field
+
+10. Search from on top
+	Having Status / Priority select box and Title input 
+
+
+11. Edit inline for Title field
+
+============ Details task =================
+
+1. Show all fields of a task in vertical list
+
+2. Full Form for edit a task
+
+3. A Status button somewhere.
+
+4. Implement Comment service: save/edit/delete(projected, taskId)

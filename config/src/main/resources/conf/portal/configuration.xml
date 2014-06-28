@@ -28,6 +28,12 @@
 
   <component>
     <key>org.exoplatform.task.TaskService</key>
-    <type>org.exoplatform.task.MemoryTaskService</type>
+    <type>org.exoplatform.task.JCRTaskService</type>
+    <init-params>
+      <value-param>
+        <name>workspace</name>
+        <value>${org.exoplatform.addons.codefest.team_e.workspace:team_e}</value>
+      </value-param>
+    </init-params>
   </component>
 </configuration>
