@@ -20,10 +20,12 @@ package org.exoplatform.codefest;
 
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
+import org.exoplatform.portal.application.PortalRequestContext;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.task.TaskService;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
+import org.exoplatform.web.application.ApplicationMessage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,6 +56,11 @@ public abstract class AbstractPortlet extends GenericPortlet {
         ExoContainer container = ExoContainerContext.getCurrentContainer();
         orgService = (OrganizationService)container.getComponentInstanceOfType(OrganizationService.class);
         service = (TaskService)container.getComponentInstanceOfType(TaskService.class);
+    }
+
+    public void pushNotification(String message) {
+        PortalRequestContext ctx = org.exoplatform.portal.webui.util.Util.getPortalRequestContext();
+        ctx.getUIApplication().getUIPopupMessages().addMessage(new ApplicationMessage(message, null));
     }
 
     @Override

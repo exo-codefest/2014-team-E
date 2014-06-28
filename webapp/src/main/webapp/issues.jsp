@@ -13,7 +13,6 @@
 
     PortletURL deleteURL = renderResponse.createActionURL();
     deleteURL.setParameter("objectType", "task");
-    deleteURL.setParameter("action", "delete");
     deleteURL.setParameter("projectId", project.getId());
 %>
 <form action="<%=deleteURL.toString() %>" method="post">
@@ -37,6 +36,8 @@
           detailURL.setParameter("view", "detail");
           detailURL.setParameter("taskId", task.getId());
 
+          //
+          deleteURL.setParameter("action", "delete");
           deleteURL.setParameter("objectId", task.getId());
           %>
     <tr>
@@ -49,7 +50,7 @@
     }%>
   </tbody>
 </table>
-<button class="btn btn-primary" type="submit" name="act" value="delete">Delete</button>
+<button class="btn btn-primary" type="submit" name="action" value="delete">Delete</button>
 </form>
 
 <div>

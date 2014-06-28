@@ -66,9 +66,11 @@ public class GitMaster extends AbstractPortlet {
             project.setMemberships(set);
             try {
                 service.createProject(project);
-            } catch (TaskServiceException ex) {
-                //TODO: need handle this error
-                ex.printStackTrace();
+            } catch (IllegalArgumentException ex) {
+                pushNotification("You need to enter valid information");
+            } catch (TaskServiceException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
 
             return;
