@@ -32,7 +32,7 @@ Even you are good at technique or not, this app is totally in your hand! Use thi
 * Easy to use and friendly to users
 * Manage projects and their tasks easily and flexibly
 
-# All you need to manage your jobs and life better - MasterTask*
+# All to manage your jobs and life better - MasterTask
 
 We would like to summarize our ideas, which can be used now, and which will be next. 
 Why? Because of time limitation of two development days and limitation to the members that are required by eXo Jury, 
@@ -71,4 +71,7 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 
 = How to use?
+*Creating a new project*
+1. Click
+2. Apply 
 
