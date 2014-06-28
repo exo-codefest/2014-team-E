@@ -22,6 +22,7 @@
     <tr>
       <th>#</th>
       <th>Task</th>
+      <th>Status</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -41,6 +42,7 @@
     <tr>
       <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>"><%=task.getTitle()%></a></td>
+      <td><a href="<%=detailURL.toString()%>"><%=task.getStatus()%></a></td>
       <td><a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
     </tr>
         <%}

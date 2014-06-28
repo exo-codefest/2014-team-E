@@ -21,6 +21,7 @@ package org.exoplatform.codefest;
 import org.exoplatform.task.TaskServiceException;
 import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
+import org.exoplatform.task.model.Status;
 import org.exoplatform.task.model.Task;
 
 import java.util.HashSet;
@@ -150,10 +151,10 @@ public class GitMaster extends AbstractPortlet {
         if("create".equals(action)) {
             String title = request.getParameter("title");
             Task task = new Task(projectId, title);
+            task.setStatus(Status.OPEN.toString());
             service.addTask(task);
 
-            response.setRenderParameter("view", "detail");
-            response.setRenderParameter("taskId", task.getId());
+            response.setRenderParameter("view", "issues");
 
             return;
         }
