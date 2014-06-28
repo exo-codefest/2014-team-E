@@ -20,7 +20,7 @@ public class Task implements Activity {
     
     private String assignee;
     
-    private String status;
+    private Status status;
     
     private String title;
 
@@ -66,11 +66,11 @@ public class Task implements Activity {
         this.assignee = assignee;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

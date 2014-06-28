@@ -23,6 +23,7 @@ import org.exoplatform.task.TaskServiceException;
 import org.exoplatform.task.Utils;
 import org.exoplatform.task.model.Priority;
 import org.exoplatform.task.model.Query;
+import org.exoplatform.task.model.Status;
 import org.exoplatform.task.model.Task;
 
 public class TaskDAO {
@@ -151,7 +152,7 @@ public class TaskDAO {
         taskNode.setProperty("exo:reporter", t.getReporter());
         taskNode.setProperty("exo:assignee", t.getAssignee());
         taskNode.setProperty("exo:title", t.getTitle());
-        taskNode.setProperty("exo:status", t.getStatus());
+        taskNode.setProperty("exo:status", t.getStatus().status());
         taskNode.setProperty("exo:priority", t.getPriority().priority());
         Set<String> labels = t.getLabels();
         taskNode.setProperty("exo:labels", labels.toArray(new String[labels.size()]));
@@ -188,7 +189,7 @@ public class TaskDAO {
             } else if (name.equals("exo:title")) {
                 task.setTitle(p.getString());
             } else if (name.equals("exo:status")) {
-                task.setStatus(p.getString());
+                task.setStatus(Status.getStatus((int) p.getLong()));
             } else if (name.equals("exo:priority")) {
                 task.setPriority(Priority.getPriority((int) p.getLong()));
             } else if (name.equals("exo:labels")) {
