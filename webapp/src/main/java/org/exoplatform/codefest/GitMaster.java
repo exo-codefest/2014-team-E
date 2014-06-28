@@ -186,17 +186,8 @@ public class GitMaster extends AbstractPortlet {
             response.setRenderParameter("view", "detail");
             response.setRenderParameter("taskId", taskId);
 
-            Set<String> assignees = task.getAssignee();
-            if(assignees == null) {
-                assignees = new HashSet<String>();
-            }
-            if(assignees.contains(assignee)) {
-                return;
-            } else {
-                assignees.add(assignee);
-                task.setAssignee(assignees);
-                service.updateTask(task);
-            }
+            task.setAssignee(assignee);
+            service.updateTask(task);
         }
 
         if("unassign".equals(action)) {
@@ -207,17 +198,8 @@ public class GitMaster extends AbstractPortlet {
             response.setRenderParameter("view", "detail");
             response.setRenderParameter("taskId", taskId);
 
-            Set<String> assignees = task.getAssignee();
-            if(assignees == null) {
-                assignees = new HashSet<String>();
-            }
-            if(!assignees.contains(assignee)) {
-                return;
-            } else {
-                assignees.remove(assignee);
-                task.setAssignee(assignees);
-                service.updateTask(task);
-            }
+            task.setAssignee(assignee);
+            service.updateTask(task);
         }
 
         if("update-title".equals(action)) {

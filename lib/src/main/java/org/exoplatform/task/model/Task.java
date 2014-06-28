@@ -3,7 +3,6 @@ package org.exoplatform.task.model;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,7 +16,7 @@ public class Task implements Activity {
     
     private String reporter;
     
-    private Set<String> assignee = new HashSet<String>();
+    private String assignee;
     
     private String status;
     
@@ -56,11 +55,11 @@ public class Task implements Activity {
         this.reporter = reporter;
     }
 
-    public Set<String> getAssignee() {
-        return Collections.unmodifiableSet(assignee);
+    public String getAssignee() {
+        return assignee;
     }
 
-    public void setAssignee(Set<String> assignee) {
+    public void setAssignee(String assignee) {
         this.assignee = assignee;
     }
 

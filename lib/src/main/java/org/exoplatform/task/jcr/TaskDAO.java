@@ -148,8 +148,7 @@ public class TaskDAO {
         taskNode.setProperty("exo:id", t.getId());
         taskNode.setProperty("exo:projectId", t.getProjectId());
         taskNode.setProperty("exo:reporter", t.getReporter());
-        Set<String> assignee = t.getAssignee();
-        taskNode.setProperty("exo:assignee", assignee.toArray(new String[assignee.size()]));
+        taskNode.setProperty("exo:assignee", t.getAssignee());
         taskNode.setProperty("exo:title", t.getTitle());
         taskNode.setProperty("exo:status", t.getStatus());
         Set<String> labels = t.getLabels();
@@ -183,11 +182,7 @@ public class TaskDAO {
             } else if (name.equals("exo:reporter")) {
                 task.setReporter(p.getString());
             } else if (name.equals("exo:assignee")) {
-                Set<String> assignee = new HashSet<String>();
-                for (Value a : p.getValues()) {
-                    assignee.add(a.getString());
-                }
-                task.setAssignee(assignee);
+                task.setAssignee(p.getString());
             } else if (name.equals("exo:title")) {
                 task.setTitle(p.getString());
             } else if (name.equals("exo:status")) {
