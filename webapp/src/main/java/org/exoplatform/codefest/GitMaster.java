@@ -177,7 +177,7 @@ public class GitMaster extends AbstractPortlet {
                 set.add(s);
             }
             task.setLabels(set);
-            task.setStatus(Status.valueOf(status));
+            task.setStatus(Status.getStatus(Integer.parseInt(status)));
 
             service.updateTask(task);
         }

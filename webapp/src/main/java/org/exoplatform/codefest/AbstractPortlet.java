@@ -25,11 +25,16 @@ import org.exoplatform.portal.application.PortalRequestContext;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.User;
 import org.exoplatform.task.TaskService;
+import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 import org.exoplatform.web.application.ApplicationMessage;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -45,14 +50,23 @@ import javax.portlet.ActionResponse;
 import javax.portlet.GenericPortlet;
 import javax.portlet.PortletContext;
 import javax.portlet.PortletException;
+import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
+import javax.portlet.ResourceURL;
 
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
  * @version $Revision$
  */
 public abstract class AbstractPortlet extends GenericPortlet {
+    public static final String PARAM_OBJECT_TYPE = "objectType";
+    public static final String PARAM_ACTION = "action";
+    public static final String PARAM_OBJECT_ID = "objectId";
+
+    public static final String OBJECT_TYPE_COMMENT = "comment";
 
     TaskService service;
     OrganizationService orgService;
@@ -68,6 +82,164 @@ public abstract class AbstractPortlet extends GenericPortlet {
     public void pushNotification(String message) {
         PortalRequestContext ctx = org.exoplatform.portal.webui.util.Util.getPortalRequestContext();
         ctx.getUIApplication().getUIPopupMessages().addMessage(new ApplicationMessage(message, null));
+    }
+
+    @Override
+    public void serveResource(ResourceRequest request, ResourceResponse response) throws PortletException, IOException {
+        String objectType = request.getParameter(PARAM_OBJECT_TYPE);
+        String action = request.getParameter(PARAM_ACTION);
+
+        if(OBJECT_TYPE_COMMENT.equals(objectType)) {
+            try {
+            serveComment(action, request, response);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            super.serveResource(request, response);
+        }
+    }
+
+    protected void serveComment(String action, ResourceRequest request, ResourceResponse response) throws PortletException, IOException, JSONException {
+        String user = request.getRemoteUser();
+        PrintWriter out = response.getWriter();
+
+        JSONObject result = new JSONObject();
+        result.put("code", 400);
+        result.put("message", "Bad Request");
+        result.put("data", "");
+
+        if("get".equals(action)) {
+            String taskId = request.getParameter("taskId");
+            String offsetParam = request.getParameter("offset");
+            String limitParam = request.getParameter("limit");
+
+            int offset = 0;
+            int limit = 5;
+            try {
+                offset = Integer.parseInt(offsetParam);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            try {
+                limit = Integer.parseInt(limitParam);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            List<Comment> comments = service.getCommentByTask(taskId, offset, limit);
+            Collections.reverse(comments);
+
+            String nextURL = "";
+            if(comments.size() >= limit) {
+                ResourceURL url = response.createResourceURL();
+                url.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+                url.setParameter(PARAM_ACTION, "get");
+                url.setParameter("taskId", taskId);
+                url.setParameter("offset", String.valueOf(offset + limit));
+                url.setParameter("limit", String.valueOf(limit));
+
+                nextURL = url.toString();
+            }
+
+            JSONObject json = new JSONObject();
+            json.put("nextURL", nextURL);
+
+            JSONArray array = new JSONArray();
+            for(Comment cmt : comments) {
+                JSONObject c = new JSONObject();
+                c.put("id", cmt.getId());
+                c.put("taskId", cmt.getTaskId());
+                c.put("author", cmt.getAuthor());
+                c.put("created", cmt.getCreatedDate());
+                c.put("text", cmt.getText());
+
+                ResourceURL delete = response.createResourceURL();
+                delete.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+                delete.setParameter(PARAM_ACTION, "delete");
+                delete.setParameter(PARAM_OBJECT_ID, cmt.getId());
+
+                c.put("deleteURL", delete.toString());
+
+                array.put(c);
+            }
+            json.put("comments", array);
+
+            result.put("code", 200);
+            result.put("message", "OK");
+            result.put("data", json);
+
+        } else if ("delete".equals(action)) {
+            String commentId = request.getParameter(PARAM_OBJECT_ID);
+            service.removeComment(commentId);
+
+            result.put("code", 200);
+            result.put("message", "OK");
+            result.put("data", "");
+
+        } else if("update".equals(action)) {
+            String commentId = request.getParameter("commentId");
+            String text = request.getParameter("comment");
+            Comment comment = service.getCommentById(commentId);
+            comment.setText(text);
+            comment = service.updateComment(comment);
+
+            JSONObject json = new JSONObject();
+            json.put("id", comment.getId());
+            json.put("taskId", comment.getTaskId());
+            json.put("author", comment.getAuthor());
+            json.put("created", comment.getCreatedDate());
+            json.put("text", comment.getText());
+
+            ResourceURL delete = response.createResourceURL();
+            delete.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+            delete.setParameter(PARAM_ACTION, "delete");
+            delete.setParameter(PARAM_OBJECT_ID, comment.getId());
+
+            json.put("deleteURL", delete.toString());
+
+            result.put("code", 200);
+            result.put("message", "update successfully");
+            result.put("data", json);
+
+        } else if("create".equals(action)) {
+            String comment = request.getParameter("comment");
+            String taskId = request.getParameter("taskId");
+            Task task = service.getTask(taskId);
+
+            Comment c = null;
+            if(comment != null && !comment.isEmpty()) {
+                Comment cmt = new Comment(user, comment);
+                cmt.setTaskId(task.getId());
+                c = service.addComment(cmt);
+            }
+
+            if(c != null) {
+                JSONObject json = new JSONObject();
+                json.put("id", c.getId());
+                json.put("taskId", c.getTaskId());
+                json.put("author", c.getAuthor());
+                json.put("created", c.getCreatedDate());
+                json.put("text", c.getText());
+
+                ResourceURL delete = response.createResourceURL();
+                delete.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+                delete.setParameter(PARAM_ACTION, "delete");
+                delete.setParameter(PARAM_OBJECT_ID, c.getId());
+
+                json.put("deleteURL", delete.toString());
+
+                result.put("code", 201);
+                result.put("message", "Created successfully");
+                result.put("data", json);
+            } else {
+                result.put("code", 500);
+                result.put("message", "can not add comment");
+                result.put("data", "");
+            }
+        }
+
+        out.println(result.toString());
     }
 
     @Override
@@ -122,11 +294,24 @@ public abstract class AbstractPortlet extends GenericPortlet {
                     }
                 }
 
+                //. Load comment of task
+                List<Comment> comments = service.getCommentByTask(taskId, 0, 5);
+
+                //. Link for load more comments
+                ResourceURL moreCommentURL = response.createResourceURL();
+                moreCommentURL.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_COMMENT);
+                moreCommentURL.setParameter(PARAM_ACTION, "get");
+                moreCommentURL.setParameter("taskId", task.getId());
+                moreCommentURL.setParameter("offset", "5");
+                moreCommentURL.setParameter("limit", "5");
 
                 request.setAttribute("project", project);
                 request.setAttribute("task", task);
+                request.setAttribute("comments", comments);
+                request.setAttribute("moreCommentURL", moreCommentURL.toString());
                 request.setAttribute("usersInProject", users);
                 request.setAttribute("comments", service.getCommentByTask(taskId, 0, -1));
+
 
                 render("/detail.jsp", request, response);
                 return;

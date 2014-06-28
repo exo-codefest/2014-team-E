@@ -22,6 +22,7 @@ public class Comment implements Activity {
     public Comment(String author, String text) {
         this.text = text;
         this.author = author;
+        this.createdDate = new Date();
     }
 
     public String getTaskId() {

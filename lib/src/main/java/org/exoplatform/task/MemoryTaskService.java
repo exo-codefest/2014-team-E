@@ -6,9 +6,9 @@ import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;
-
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,6 +20,7 @@ public class MemoryTaskService implements TaskService {
     private Map<String, Project> list = new HashMap<String, Project>();
     
     private Map<String, Task> tasks = new HashMap<String, Task>();
+    private Map<String, Comment> comments = new HashMap<String, Comment>();
 
     private UserHandler userHandler;
 
@@ -147,8 +148,7 @@ public class MemoryTaskService implements TaskService {
 
     @Override
     public Comment getCommentById(String id) {
-        // TODO Auto-generated method stub
-        return null;
+        return comments.get(id);
     }
     
 
@@ -157,25 +157,57 @@ public class MemoryTaskService implements TaskService {
      */
     @Override
     public List<Comment> getCommentByTask(String taskId, int offset, int limit) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Comment> cmts = new LinkedList<Comment>();
+        for(Comment c : this.comments.values()) {
+            if(c.getTaskId().equals(taskId)) {
+                cmts.add(c);
+            }
+        }
+
+        Collections.sort(cmts, new Comparator<Comment>() {
+            @Override
+            public int compare(Comment o1, Comment o2) {
+                if(o2.getCreatedDate() == null) {
+                    if(o1.getCreatedDate() == null) {
+                        return 0;
+                    } else {
+                        return -1;
+                    }
+                } else if(o1.getCreatedDate() == null) {
+                    return 1;
+                }
+                return o2.getCreatedDate().compareTo(o1.getCreatedDate());
+            }
+        });
+        Collections.reverse(cmts);
+
+        int size = cmts.size();
+        if(size < offset) {
+            return Collections.emptyList();
+        }
+        int end = offset + limit;
+        if(end > size) {
+            end = size;
+        }
+
+        return cmts.subList(offset, end);
     }
 
     @Override
     public Comment addComment(Comment comment) {
-        // TODO Auto-generated method stub
-        return null;
+        comment.setId(UUID.randomUUID().toString());
+        comments.put(comment.getId(), comment);
+        return comment;
     }
 
     @Override
     public Comment removeComment(String commentId) {
-        // TODO Auto-generated method stub
-        return null;
+        return comments.remove(commentId);
     }
 
     @Override
     public Comment updateComment(Comment comment) {
-        // TODO Auto-generated method stub
-        return null;
+        comments.put(comment.getId(), comment);
+        return comment;
     }
 }

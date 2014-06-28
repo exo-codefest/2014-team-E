@@ -1,16 +1,18 @@
 (function($){
-  $('.comment').on('click', 'a.action', function(e) {
+  $('.comments').on('click', 'a.action', function(e) {
     var $action = $(e.target || e.srcElement).closest('a');
     var $comment = $action.closest(".comment");
     var action = $action.attr('action');
     if(action == "edit") {
+      var $comments = $comment.closest('div.comments');
+      $comments.find('.edit').hide();
       $comment.find(".body").hide();
       $comment.find('.edit').show();
     }
     return false;
   });
 
-  $('.comment').on('click', 'button[type="reset"]', function(e){
+  $('.comments').on('click', 'button[type="reset"]', function(e){
     var $action = $(e.target || e.srcElement);
     var $comment = $action.closest(".comment");
     $comment.find(".body").show();
@@ -144,7 +146,7 @@
 
     for(var i = 0 ; i < arrayLabels.length; i++) {
       if(label != arrayLabels[i]) {
-        newArrayLabels.push(newArrayLabels[i])
+        newArrayLabels.push(arrayLabels[i])
       }
     }
 
@@ -157,6 +159,7 @@
     var $detail = $view.find('div.task-detail');
     var $comments = $view.find('div.comments');
 
+    $comments.find('div.task-edit').hide();
     $form.show();
     $detail.hide();
     $comments.hide();
@@ -171,5 +174,166 @@
     $form.hide();
     $detail.show();
     $comments.show();
+  });
+
+  $('div.comments').on('click', 'a.load-more-comment', function(e) {
+    var $a = $(e.target || e.srcElement).closest('a');
+    var $comments = $a.closest('div.comments');
+    var $li = $a.closest('li');
+    var $ul = $li.closest('ul');
+    var $template = $li.find('#comment_template');
+
+    var url = $a.attr('url');
+    $.ajax({
+      url: url,
+      method: 'GET',
+      data: {},
+      dataType: 'json',
+      success: function(response) {
+        if(response.code != 200) {
+          return;
+        }
+        var data = response.data;
+        if(data.nextURL) {
+          $a.attr('url', data.nextURL);
+        } else {
+          $a.remove();
+        }
+        var comments = data.comments;
+        $.each(comments, function(index, comment) {
+          var $html = $template.clone();
+          var html = $html.html();
+          html = html.replace('%AUTHOR%', comment.author);
+          html = html.replace('%COMMENT_TIME%', comment.created);
+          html = html.replace('%DELETE_URL%', comment.deleteURL);
+          html = html.replace('%COMMENT_TEXT%', comment.text);
+          html = html.replace('%TASKID%', comment.taskId);
+          html = html.replace('%COMMENT_ID%', comment.id);
+          html = html.replace('%COMMENT_TEXT%', comment.text);
+
+          $(html).insertAfter($li);
+        })
+      }
+    });
+
+    return false;
+  });
+
+  $('div.comments').on('click', 'a.delete-comment', function(e) {
+    var $a = $(e.target || e.srcElement).closest('a');
+    var $li = $a.closest('li');
+    var url = $a.attr('url');
+    $.ajax({
+      url: url,
+      method: 'GET',
+      data: {},
+      dataType: 'json',
+      success: function(response) {
+        if(response.code == 200) {
+          $li.remove();
+        }
+      }
+    });
+  });
+
+  $('#form-add-comment').on('submit', function(e){
+    e.preventDefault();
+    var $form = $(e.target || e.srcElement);
+    var $textarea = $form.find('textarea');
+    var $taskId = $form.find('input[name="taskId"]')
+
+
+    var url = $form.attr('action');
+    var method = $form.attr('method');
+    var taskId = $taskId.val();
+    var text = $.trim($textarea.val());
+    if(text == '') {
+      return false;
+    }
+    var data = {
+      objectType: 'comment',
+      action: 'create',
+      taskId: taskId,
+      comment: text
+    };
+    $.ajax({
+      url: url,
+      method: method,
+      data: data,
+      dataType: 'json',
+      success: function(response) {
+        if(response.code != 201) {
+          return;
+        }
+        var comment = response.data;
+
+        var $li = $form.closest('li');
+        var $comments = $form.closest('div.comments');
+        var $template = $comments.find('div#comment_template');
+        var $html = $template.clone();
+
+        var html = $html.html();
+        html = html.replace('%AUTHOR%', comment.author);
+        html = html.replace('%COMMENT_TIME%', comment.created);
+        html = html.replace('%DELETE_URL%', comment.deleteURL);
+        html = html.replace('%COMMENT_TEXT%', comment.text);
+        html = html.replace('%TASKID%', comment.taskId);
+        html = html.replace('%COMMENT_ID%', comment.id);
+        html = html.replace('%COMMENT_TEXT%', comment.text);
+
+        $(html).insertBefore($li);
+      }
+    });
+
+
+    return false;
+  });
+
+  $('div.detail-view').on('submit', 'form.form-update-comment', function(e){
+    e.preventDefault();
+    var $form = $(e.target || e.srcElement);
+    var $textarea = $form.find('textarea');
+    var $taskId = $form.find('input[name="taskId"]')
+    var $commentId = $form.find('input[name="commentId"]');
+
+
+    var url = $form.attr('action');
+    var method = $form.attr('method');
+    var taskId = $taskId.val();
+    var commentId = $commentId.val();
+    var text = $.trim($textarea.val());
+    if(text == '') {
+      return false;
+    }
+    var data = {
+      objectType: 'comment',
+      action: 'update',
+      taskId: taskId,
+      commentId: commentId,
+      comment: text
+    };
+    $.ajax({
+      url: url,
+      method: method,
+      data: data,
+      dataType: 'json',
+      success: function(response) {
+        if(response.code != 200) {
+          return;
+        }
+        var comment = response.data;
+
+        var $li = $form.closest('li');
+        var $body = $li.find('div.body');
+        var $edit = $li.find('div.edit');
+        $edit.hide();
+        $body.show();
+        $body.html(comment.text);
+        $textarea.val(comment.text);
+
+      }
+    });
+
+    return false;
   });
 })($);

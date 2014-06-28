@@ -9,6 +9,8 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="org.exoplatform.services.organization.User" %>
 <%@ page import="org.exoplatform.task.model.Status" %>
+<%@ page import="javax.portlet.ResourceURL" %>
+<%@ page import="org.exoplatform.codefest.AbstractPortlet" %>
 <%@include file="includes/header.jsp" %>
 <%
   Project project = (Project) renderRequest.getAttribute("project");
@@ -18,9 +20,12 @@
 
   Task task = (Task) renderRequest.getAttribute("task");
   List<Comment> comments = (List<Comment>)renderRequest.getAttribute("comments");
+  if (comments == null) {
+    comments = Collections.emptyList();
+  }
+  String moreCommentURL = (String)renderRequest.getAttribute("moreCommentURL");
 
   Map<String, User> usersInProject = (Map<String, User>)renderRequest.getAttribute("usersInProject");
-
   DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 %>
 <div class="container-fluid detail-view">
@@ -43,7 +48,7 @@
         <div class="controls">
           <select name="status" id="inputStatus">
             <% for(Status status : Status.values()) {%>
-              <option value="<%=status.name()%>" <%=(status.name().equals(task.getStatus()) ? "selected = \"selected\"" : "")%>><%=status.name()%></option>
+              <option value="<%=status.status()%>" <%=(status.status() == task.getStatus().status() ? "selected = \"selected\"" : "")%>><%=status.name()%></option>
             <%}%>
           </select>
         </div>
@@ -123,25 +128,64 @@
   <div class="row-fluid comments">
     <div class="span12">
       <ul>
+        <li>
+          <%if(moreCommentURL != null && !moreCommentURL.isEmpty()) {%>
+          <a class="load-more-comment" href="javascript:void(0);" url="<%=moreCommentURL%>">Load more</a>
+          <%}%>
+          <!-- Template of display a comment -->
+          <div id="comment_template" style="display: none">
+            <div class="comment">
+              <div class="header">
+                %AUTHOR% comment at %COMMENT_TIME%
+                <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
+                <a class="delete-comment" action="delete" url="%DELETE_URL%" href="javascript:void(0);"><i class="icon-trash"></i></a>
+              </div>
+              <div class="body">%COMMENT_TEXT%</div>
+              <div class="edit" style="display: none">
+                <form action="<portlet:actionURL />" method="POST" class="form-update-comment ">
+                  <div>
+                    <input type="hidden" name="objectType" value="comment"/>
+                    <input type="hidden" name="action" value="update"/>
+                    <input type="hidden" name="taskId" value="%TASKID%"/>
+                    <input type="hidden" name="commentId" value="%COMMENT_ID%"/>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <textarea name="comment" rows="2">%COMMENT_TEXT%</textarea>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">Update</button>
+                      <button type="reset" class="btn">Cancel</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </li>
         <%for (Comment comment : comments) {%>
         <li>
           <%
-            PortletURL deleteCommentURL = renderResponse.createActionURL();
-            deleteCommentURL.setParameter("objectType", "comment");
-            deleteCommentURL.setParameter("action", "delete");
-            deleteCommentURL.setParameter("taskId", task.getId());
-            deleteCommentURL.setParameter("commentId", comment.getId());
+            ResourceURL deleteCommentURL = renderResponse.createResourceURL();
+            deleteCommentURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_COMMENT);
+            deleteCommentURL.setParameter(AbstractPortlet.PARAM_ACTION, "delete");
+            deleteCommentURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, comment.getId());
           %>
           <div class="comment">
             <div class="header">
               <%=(comment.getAuthor() == null ? "anonymous" : comment.getAuthor())%> comment
               at <%=(df.format(comment.getCreatedDate() == null ? new Date() : comment.getCreatedDate()))%>
               <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
-              <a href="<%=deleteCommentURL.toString()%>"><i class="icon-trash"></i></a>
+              <a class="delete-comment" action="delete" url="<%=deleteCommentURL.toString()%>" href="javascript:void(0);"><i class="icon-trash"></i></a>
             </div>
             <div class="body"><%=comment.getText()%></div>
             <div class="edit" style="display: none">
-              <form action="<portlet:actionURL />" method="POST" class="">
+              <%
+                ResourceURL updateURL = renderResponse.createResourceURL();
+              %>
+              <form action="<%=updateURL%>" method="POST" class="form-update-comment">
                 <div>
                   <input type="hidden" name="objectType" value="comment"/>
                   <input type="hidden" name="action" value="update"/>
@@ -150,13 +194,12 @@
                 </div>
                 <div class="control-group">
                   <div class="controls">
-                    <textarea name="comment" rows="2"><%=comment.getText()%>
-                    </textarea>
+                    <textarea name="comment" rows="2"><%=comment.getText()%></textarea>
                   </div>
                 </div>
                 <div class="control-group">
                   <div class="controls">
-                    <button type="submit" class="btn">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     <button type="reset" class="btn">Cancel</button>
                   </div>
                 </div>
@@ -166,7 +209,10 @@
         </li>
         <%}%>
         <li>
-          <form action="<portlet:actionURL />" method="POST" class="">
+          <%
+            ResourceURL createURL = renderResponse.createResourceURL();
+          %>
+          <form id="form-add-comment" action="<%=createURL%>" method="POST" class="">
             <div>
               <input type="hidden" name="objectType" value="comment"/>
               <input type="hidden" name="action" value="create"/>
