@@ -116,7 +116,7 @@ public class ProjectDAO {
         Node userHome = taskService.getOrCreateUserHome(p.getOwner());
 
         try {
-            if (userHome.hasNode(p.getId())) {
+            if (!userHome.hasNode(p.getId())) {
                 throw new TaskServiceException(TaskServiceException.NON_EXITS_PROJECT, "Can't update. Non exists: " + p.getId());
             }
             

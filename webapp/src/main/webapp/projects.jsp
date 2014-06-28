@@ -25,64 +25,148 @@
     groups = Collections.emptyList();
   }
 %>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Project Name</th>
-      <th>Description</th>
-      <th>Owner</th>
-      <th>Members</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-  <%if(projects.size() == 0) {%>
-    <tr>
-      <td colspan="5">There are no project of your account, please create one!</td>
-    </tr>
-  <%} else {
-        for(Project project : projects) {
-            PortletURL projectURL = renderResponse.createRenderURL();
-            projectURL.setParameter("view", "issues");
-            projectURL.setParameter("projectId", project.getId());
 
-            PortletURL deleteAction = renderResponse.createActionURL();
-            deleteAction.setParameter("objectType", "project");
-            deleteAction.setParameter("action", "delete");
-            deleteAction.setParameter("objectId", String.valueOf(project.getId()));
 
-            PortletURL editURL = renderResponse.createRenderURL();
-            editURL.setParameter("objectType", "project");
-            editURL.setParameter("action", "edit");
-            editURL.setParameter("objectId", String.valueOf(project.getId()));
-            
-        %>
-    <tr>
-      <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
-      <td><%= project.getDesc()%></td>
-      <td><%=project.getOwner()%></td>
-      <td class="memberships">
-        <%for(String membership : project.getMemberships()) {
-            PortletURL unshareURL = renderResponse.createActionURL();
-            unshareURL.setParameter("objectType", "project");
-            unshareURL.setParameter("action", "unshare");
-            unshareURL.setParameter("projectId", project.getId());
-            unshareURL.setParameter("membership", membership);
-          %>
-            <span><%=membership%></span>
-            <%--<span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
-            <br/>
-        <%}%>
-      </td>
-      <td>
-        <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
-        <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
-      </td>
-    </tr>
-        <%}
-    }%>
-  </tbody>
-</table>
+<div class="bs-docs-example">
+  <ul class="nav nav-tabs" id="myTab">
+    <li class="active"><a data-toggle="tab" href="#myprojects">My Projects</a></li>
+    <li><a data-toggle="tab" href="#sharedprojects">Shared Projects</a></li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+
+    <!-- Begin My Projects List -->
+    <div id="myprojects" class="tab-pane fade active in">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Members</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%if(projects.size() == 0) {%>
+          <tr>
+            <td colspan="5">There are no project of your account, please create one!</td>
+          </tr>
+        <%} else {
+              for(Project project : projects) {
+                  PortletURL projectURL = renderResponse.createRenderURL();
+                  projectURL.setParameter("view", "issues");
+                  projectURL.setParameter("projectId", project.getId());
+      
+                  PortletURL deleteAction = renderResponse.createActionURL();
+                  deleteAction.setParameter("objectType", "project");
+                  deleteAction.setParameter("action", "delete");
+                  deleteAction.setParameter("objectId", String.valueOf(project.getId()));
+      
+                  PortletURL editURL = renderResponse.createRenderURL();
+                  editURL.setParameter("objectType", "project");
+                  editURL.setParameter("action", "edit");
+                  editURL.setParameter("objectId", String.valueOf(project.getId()));
+                  
+              %>
+          <tr>
+            <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
+            <td><%= project.getDesc()%></td>
+            <td class="memberships">
+              <%for(String membership : project.getMemberships()) {
+                  PortletURL unshareURL = renderResponse.createActionURL();
+                  unshareURL.setParameter("objectType", "project");
+                  unshareURL.setParameter("action", "unshare");
+                  unshareURL.setParameter("projectId", project.getId());
+                  unshareURL.setParameter("membership", membership);
+                %>
+                  <span><%=membership%></span>
+                  <%--<span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
+                  <br/>
+              <%}%>
+            </td>
+            <td>
+              <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
+              <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
+            </td>
+          </tr>
+              <%}
+          }%>
+        </tbody>
+      </table>
+    </div>
+    <!-- End My Projects List -->
+
+    <!-- Begin Shared Projects List -->
+    <div id="sharedprojects" class="tab-pane fade">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Owner</th>
+            <th>Members</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <%if(projects.size() == 0) {%>
+          <tr>
+            <td colspan="5">There are no project of your account, please create one!</td>
+          </tr>
+        <%} else {
+              for(Project project : projects) {
+                  PortletURL projectURL = renderResponse.createRenderURL();
+                  projectURL.setParameter("view", "issues");
+                  projectURL.setParameter("projectId", project.getId());
+      
+                  PortletURL deleteAction = renderResponse.createActionURL();
+                  deleteAction.setParameter("objectType", "project");
+                  deleteAction.setParameter("action", "delete");
+                  deleteAction.setParameter("objectId", String.valueOf(project.getId()));
+      
+                  PortletURL editURL = renderResponse.createRenderURL();
+                  editURL.setParameter("objectType", "project");
+                  editURL.setParameter("action", "edit");
+                  editURL.setParameter("objectId", String.valueOf(project.getId()));
+                  
+              %>
+          <tr>
+            <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
+            <td><%= project.getDesc()%></td>
+            <td><%=project.getOwner()%></td>
+            <td class="memberships">
+              <%for(String membership : project.getMemberships()) {
+                  PortletURL unshareURL = renderResponse.createActionURL();
+                  unshareURL.setParameter("objectType", "project");
+                  unshareURL.setParameter("action", "unshare");
+                  unshareURL.setParameter("projectId", project.getId());
+                  unshareURL.setParameter("membership", membership);
+                %>
+                  <span><%=membership%></span>
+                  <%--<span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
+                  <br/>
+              <%}%>
+            </td>
+            <td>
+              <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
+              <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
+            </td>
+          </tr>
+              <%}
+          }%>
+        </tbody>
+      </table>
+    </div>
+    <!-- End Shared Projects List -->
+  </div>
+</div>
+<script type="text/javascript">
+  require(["SHARED/jquery", "SHARED/bts_tab"], function($) {
+    $('#myTab a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+    })
+  });
+</script>
 
 <%
 Project p = (Project)renderRequest.getAttribute("_project");

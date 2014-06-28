@@ -1,3 +1,6 @@
+Rename application to "MasterTask"
+
+
 ==== Home page (List all projects)
 
 1. Adding “Create project” button to show the form

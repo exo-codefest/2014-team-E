@@ -5,7 +5,7 @@
 
   <component>
     <key>org.exoplatform.task.TaskService</key>
-    <type>org.exoplatform.task.JCRTaskService</type>
+    <type>org.exoplatform.task.MemoryTaskService</type>
     <init-params>
       <value-param>
         <name>workspace</name>
