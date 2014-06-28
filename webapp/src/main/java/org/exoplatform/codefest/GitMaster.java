@@ -24,6 +24,8 @@ import javax.portlet.ActionResponse;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import org.exoplatform.task.TaskServiceException;
@@ -165,6 +167,7 @@ public class GitMaster extends AbstractPortlet {
             Task task = new Task(projectId, title);
             task.setStatus(Status.OPEN);
             task.setPriority(Priority.UNDEFINED);
+            task.setReporter(user);
             service.addTask(task);
 
             response.setRenderParameter("view", "issues");
@@ -180,6 +183,28 @@ public class GitMaster extends AbstractPortlet {
                 }
             }
             return;
+        }
+
+        if("update".equals(action)) {
+            String taskId = request.getParameter("objectId");
+            response.setRenderParameter("view", "detail");
+            response.setRenderParameter("taskId", taskId);
+
+            String title = request.getParameter("title");
+            String status = request.getParameter("status");
+            String assignee = request.getParameter("assignee");
+            String labels = request.getParameter("labels");
+
+            Task task = service.getTask(taskId);
+            task.setTitle(title);
+            task.setAssignee(assignee);
+            Set<String> set = new HashSet<String>();
+            for(String s : labels.split(",")) {
+                set.add(s);
+            }
+            task.setLabels(set);
+
+            service.updateTask(task);
         }
 
         if("assign".equals(action)) {
@@ -239,6 +264,7 @@ public class GitMaster extends AbstractPortlet {
                 Comment cmt = new Comment(user, comment);
                 List<Comment> comments = task.getComments();
                 if(comments == null) {
+                    comments = new LinkedList<Comment>();
                     comments = new LinkedList<Comment>();
                 }
                 comments.add(cmt);

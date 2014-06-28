@@ -18,10 +18,12 @@
  */
 package org.exoplatform.codefest;
 
+import org.exoplatform.commons.utils.ListAccess;
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
 import org.exoplatform.portal.application.PortalRequestContext;
 import org.exoplatform.services.organization.OrganizationService;
+import org.exoplatform.services.organization.User;
 import org.exoplatform.task.TaskService;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
@@ -31,9 +33,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -95,8 +100,32 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 String projectId = task.getProjectId();
                 Project project = service.getProject(projectId);
 
+                //. Load all user of this project
+                Set<String> membershipts = project.getMemberships();
+                Map<String, User> users = new HashMap<String, User>();
+                try {
+                    User u = orgService.getUserHandler().findUserByName(user);
+                    users.put(u.getUserName(), u);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                for(String group : membershipts) {
+                    try {
+                        ListAccess<User> list = orgService.getUserHandler().findUsersByGroupId(group);
+                        int size = list.getSize();
+                        for(User u : list.load(0, size)) {
+                            users.put(u.getUserName(), u);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+
                 request.setAttribute("project", project);
                 request.setAttribute("task", task);
+                request.setAttribute("usersInProject", users);
 
                 render("/detail.jsp", request, response);
                 return;

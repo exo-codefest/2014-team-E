@@ -108,4 +108,68 @@
     $label.remove();
   });
 
+  $('#form-edit-task').on('click', 'button[name="add-label"]', function(e){
+    var $control = $(e.target).closest('div.control-labels');
+    var $input = $control.find('input[name="label"]');
+    var $labels = $control.find('input[name="labels"]');
+    var $listLabels = $control.find('div.list-labels');
+    var labels = $.trim($labels.val());
+    var arrayLabels = labels == '' ? new Array() : labels.split(',');
+
+    var newLabels = $input.val();
+    if(newLabels == '') {
+      return;
+    }
+    var newArrayLabels = newLabels.split(',');
+
+    for(var i = 0 ; i < newArrayLabels.length; i++) {
+      var l = newArrayLabels[i];
+      if(-1 == $.inArray(l, arrayLabels)) {
+        arrayLabels.push(l);
+        $('<span class="task-label"><span class="badge">'+l+'</span> <a class="close" href="javascript:void(0);">&times;</a></span>').appendTo($listLabels);
+      }
+    }
+
+    $input.val('');
+    $labels.val(arrayLabels.join(','));
+  });
+  $('#form-edit-task').on('click', 'span.task-label a.close', function(e){
+    var $label = $(e.target).closest('span.task-label');
+    var $control = $label.closest('div.control-labels');
+    var $labels = $control.find('input[name="labels"]');
+    var labels = $labels.val();
+    var arrayLabels = labels.split(',');
+    var newArrayLabels = new Array();
+    var label = $.trim($label.find('span.badge').html());
+
+    for(var i = 0 ; i < arrayLabels.length; i++) {
+      if(label != arrayLabels[i]) {
+        newArrayLabels.push(newArrayLabels[i])
+      }
+    }
+
+    $labels.val(newArrayLabels.join(','));
+    $label.remove();
+  });
+  $('div.detail-view').on('click', 'a.edit', function(e) {
+    var $view = $(e.target).closest('div.detail-view');
+    var $form = $view.find('div.task-edit');
+    var $detail = $view.find('div.task-detail');
+    var $comments = $view.find('div.comments');
+
+    $form.show();
+    $detail.hide();
+    $comments.hide();
+  });
+
+  $('div.detail-view').on('click', 'button[name="cancel-edit"]', function(e) {
+    var $view = $(e.target).closest('div.detail-view');
+    var $form = $view.find('div.task-edit');
+    var $detail = $view.find('div.task-detail');
+    var $comments = $view.find('div.comments');
+
+    $form.hide();
+    $detail.show();
+    $comments.show();
+  });
 })($);

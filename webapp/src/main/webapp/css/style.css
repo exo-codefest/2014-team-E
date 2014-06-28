@@ -22,3 +22,22 @@
 	font-size: 28px;
 	line-height: 36px;
 }
+
+.comments .comment {
+    margin: 10px 0px;
+    position: relative;
+}
+.comments .media-body {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.comments .media-body:before {
+    border-right-color: #dddddd;
+    border-width: 8px;
+    position: absolute;
+    top: 11px;
+    left: -16px;
+    right: 100%;
+    display: block;
+    content: " test ";
+}
