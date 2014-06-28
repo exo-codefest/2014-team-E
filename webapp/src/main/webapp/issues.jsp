@@ -1,3 +1,4 @@
+<%@page import="org.exoplatform.task.model.Status"%>
 <%@ page import="java.util.List" %>
 <%@ page import="org.exoplatform.task.model.Task" %>
 <%@ page import="java.util.Collections" %>
@@ -39,14 +40,15 @@
     <tr>
       <th>#</th>
       <th>Task</th>
+      <th class="text-center">Priority</th>
       <th class="text-center">Status</th>
-      <th class="text-center w45">Action</th>
+      <th class="text-center w45">Assignee</th>
     </tr>
   </thead>
   <tbody>
   <% if(tasks.size() == 0) {%>
     <tr>
-      <td colspan="4">
+      <td colspan="5">
         <div class="alert alert-info" id="">
             <i class="uiIconInfo"></i> No project is available, please create one!
         </div>
@@ -57,16 +59,13 @@
           PortletURL detailURL = renderResponse.createRenderURL();
           detailURL.setParameter("view", "detail");
           detailURL.setParameter("taskId", task.getId());
-
-          //
-          deleteURL.setParameter("action", "delete");
-          deleteURL.setParameter("objectId", task.getId());
           %>
     <tr>
       <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
-      <td><a href="<%=detailURL.toString()%>"><%=task.getTitle()%></a></td>
-      <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getStatus()%> + <%=task.getCreatedDate()%></a></td>
-      <td class="text-center"><a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
+      <td><a href="<%=detailURL.toString()%>" <% if(task.getStatus().equals(Status.RESOLVED) ||  task.getStatus().equals(Status.REFUSED)) {%> class="done"<%}%>><%=task.getTitle()%></a></td>
+      <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getPriority()%></a></td>
+      <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getStatus()%></a></td>
+      <td class="text-center"><%=task.getAssignee()%></td>
     </tr>
         <%}
     }%>

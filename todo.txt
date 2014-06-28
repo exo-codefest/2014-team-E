@@ -9,7 +9,7 @@ Rename application to "MasterTask"
 
 3. Project form validation
 
-4. Change “Memberships” label to “Collaborators”
+4. Change “Memberships” label to “Collaborators” (done)
 
 5. Sort the project list by Created Date
 
@@ -33,17 +33,17 @@ Rename application to "MasterTask"
 
 3. Adding “select box” in the status to change Status of the issue directly
 
-4. Sort the task list by “Created Date”
+4. Sort the task list by “Created Date” (Done)
 
-5. Remove Action column
+5. Remove Action column (done)
 
-6. Move the “quick add” form to top
+6. Move the “quick add” form to top (done)
 
-7. “them gach di” cho Resolved/Refused tasks
+7. “them gach di” cho Resolved/Refused tasks (done)
 
 8. Adding “assignee” column and quick assign select box
 
-9. Adding Priority field
+9. Adding Priority field (done)
 
 10. Search from on top
 	Having Status / Priority select box and Title input 
