@@ -17,7 +17,7 @@
   membership.add(project.getOwner());
 
   Task task = (Task) renderRequest.getAttribute("task");
-  List<Comment> comments = renderRequest.getAttribute("comments");
+  List<Comment> comments = (List<Comment>)renderRequest.getAttribute("comments");
 
   Map<String, User> usersInProject = (Map<String, User>)renderRequest.getAttribute("usersInProject");
 
