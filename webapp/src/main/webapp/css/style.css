@@ -21,7 +21,7 @@
 .GitMasterPortlet .list-memberships span.membership {
     display: block;
 }
-.GitMasterPortlet .header .breadcrumb {
-	padding: 20px;
+.GitMasterPortlet .header li {
 	font-size: 28px;
+	line-height: 36px;
 }
