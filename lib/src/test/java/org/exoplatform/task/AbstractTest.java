@@ -11,6 +11,7 @@ import org.exoplatform.component.test.ContainerScope;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
+import org.exoplatform.services.organization.impl.mock.DummyOrganizationService;
 import org.exoplatform.task.model.Project;
 
 @ConfiguredBy({
@@ -27,6 +28,7 @@ public abstract class AbstractTest extends AbstractKernelTest {
     @Override
     protected void setUp() throws Exception {        
         super.setUp();
+//        this.service = new MemoryTaskService(new DummyOrganizationService());
         this.service = getService(TaskService.class);
     }
 

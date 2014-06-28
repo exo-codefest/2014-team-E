@@ -130,7 +130,7 @@ public class MemoryTaskService implements TaskService {
         List<Task> t = new ArrayList<Task>();
 
         for (Task task : tasks.values()) {
-           if (task.title.contains(query.getTitle())) {
+           if (task.getTitle().contains(query.getTitle())) {
                t.add(task);
            }
         }

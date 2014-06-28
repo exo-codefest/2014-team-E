@@ -22,19 +22,11 @@ public class Task implements Activity {
     
     private String status;
     
-    public String title;
+    private String title;
 
-    public Priority priority;
+    private Priority priority;
 
-    public Priority getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
-
-    public List<Comment> comments = new LinkedList<Comment>();
+    private List<Comment> comments = new LinkedList<Comment>();
 
     private Set<String> labels = new HashSet<String>();
     
@@ -43,7 +35,6 @@ public class Task implements Activity {
     private long modifedDate;
 
     public Task() {
-        this(null, null);
     }
     
     public Task(String projectId, String title) {
@@ -132,5 +123,12 @@ public class Task implements Activity {
     public void setCreatedDate(long createdDate) {
         this.createdDate = createdDate;
     }
-    
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
 }
