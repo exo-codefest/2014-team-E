@@ -2,6 +2,7 @@ package org.exoplatform.task;
 
 import java.util.List;
 
+import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;
@@ -45,4 +46,14 @@ public interface TaskService {
     public List<Task> getTasksByProject(String projectId, int offset, int limit);
     
     public List<Task> findTasks(Query query, int offset, int limit);
+    
+    public Comment getCommentById(String id);
+    
+    public List<Comment> getCommentByTask(String taskId, int offset, int limit);
+    
+    public Comment addComment(Comment comment);
+    
+    public Comment removeComment(String commentId);
+    
+    public Comment updateComment(Comment comment);
 }

@@ -96,12 +96,21 @@
         <propertyDefinition name="exo:id" requiredType="String" autoCreated="false" mandatory="true" onParentVersion="COPY" protected="false" multiple="false">
           <valueConstraints/>
         </propertyDefinition>
+        <propertyDefinition name="exo:taskId" requiredType="String" autoCreated="false" mandatory="true" onParentVersion="COPY" protected="false" multiple="false">
+          <valueConstraints/>
+        </propertyDefinition>
         <propertyDefinition name="exo:owner" requiredType="String" autoCreated="false" mandatory="true" onParentVersion="COPY" protected="false" multiple="false">
           <valueConstraints/>
         </propertyDefinition>                 
         <propertyDefinition name="exo:text" requiredType="String" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
           <valueConstraints/>
         </propertyDefinition>    
+        <propertyDefinition name="exo:createdDate" requiredType="Long" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+          <valueConstraints/>
+        </propertyDefinition>
+        <propertyDefinition name="exo:modifiedDate" requiredType="Long" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false">
+          <valueConstraints/>
+        </propertyDefinition>
       </propertyDefinitions>
     </nodeType>
 </nodeTypes>

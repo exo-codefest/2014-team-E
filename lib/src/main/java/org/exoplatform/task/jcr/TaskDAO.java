@@ -160,7 +160,7 @@ public class TaskDAO {
         if (createdDate != null) {
             taskNode.setProperty("exo:createdDate", createdDate.getTime());
         }
-        Date modifedDate = t.getCreatedDate();
+        Date modifedDate = t.getModifiedDate();
         if (modifedDate != null) {
             taskNode.setProperty("exo:modifiedDate", modifedDate.getTime());
         }
@@ -203,7 +203,7 @@ public class TaskDAO {
         return task;
     }
 
-    private Node getTaskNode(String id) throws RepositoryException {
+    public Node getTaskNode(String id) throws RepositoryException {
         Query query = new Query();
         query.setId(id);
         List<Node> nodes = getTaskNode(query, 0, -1);
@@ -215,7 +215,7 @@ public class TaskDAO {
         }
     }
 
-    private List<Node> getTaskNode(Query query, int offset, int limit) throws RepositoryException {
+    public List<Node> getTaskNode(Query query, int offset, int limit) throws RepositoryException {
         StringBuilder sql = new StringBuilder("select * from exo:task where jcr:path like '");
         sql.append(JCRTaskService.USERS_PATH).append("/%/").append(JCRTaskService.APP_PATH);
 

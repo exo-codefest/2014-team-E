@@ -2,6 +2,7 @@ package org.exoplatform.task;
 
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.UserHandler;
+import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;
@@ -139,5 +140,39 @@ public class MemoryTaskService implements TaskService {
         } else {
             return t;
         }
+    }
+
+    @Override
+    public Comment getCommentById(String id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
+
+    /**
+     * @see org.exoplatform.task.TaskService#getCommentByTask(java.lang.String, int, int)
+     */
+    @Override
+    public List<Comment> getCommentByTask(String taskId, int offset, int limit) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Comment addComment(Comment comment) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Comment removeComment(String commentId) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Comment updateComment(Comment comment) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

@@ -1,7 +1,6 @@
 package org.exoplatform.task.model;
 
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
@@ -10,17 +9,31 @@ import java.util.UUID;
 public class Comment implements Activity {
 
     private String id;
-    
-    private String text;
+    private String taskId;
     private String author;
+    private String text;
     private Date createdDate;
+    private long modifiedDate;
 
+    public Comment() {
+        this(null, null);
+    }
 
     public Comment(String author, String text) {
-        this.id = UUID.randomUUID().toString();
         this.text = text;
         this.author = author;
-        this.createdDate = new Date();
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getId() {
@@ -35,15 +48,22 @@ public class Comment implements Activity {
         return text;
     }
 
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
     @Override
     public Date getCreatedDate() {
         return this.createdDate;
     }
 
+    public void setModifiedDate(long modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
     @Override
     public Date getModifiedDate() {
-        // TODO Auto-generated method stub
-        return null;
+        return new Date(modifiedDate);
     }
 
     public String getAuthor() {

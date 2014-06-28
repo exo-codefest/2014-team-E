@@ -19,8 +19,10 @@ import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
 import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.security.MembershipEntry;
+import org.exoplatform.task.jcr.CommentDAO;
 import org.exoplatform.task.jcr.ProjectDAO;
 import org.exoplatform.task.jcr.TaskDAO;
+import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;
@@ -37,6 +39,8 @@ public class JCRTaskService implements TaskService {
     private ProjectDAO projectDAO;
 
     private TaskDAO taskDAO;
+    
+    private CommentDAO commentDAO;
 
     private SessionProviderService sessionService;
 
@@ -57,6 +61,7 @@ public class JCRTaskService implements TaskService {
         
         this.projectDAO = new ProjectDAO(this, orgService);
         this.taskDAO = new TaskDAO(this);
+        this.commentDAO = new CommentDAO(this);
         this.sessionService = sessionService;
         this.dataDistributionManager = dataDistributionManager;
         this.repositoryService = repositoryService;
@@ -68,6 +73,10 @@ public class JCRTaskService implements TaskService {
 
     public TaskDAO getTaskDAO() {
         return taskDAO;
+    }
+    
+    public CommentDAO getCommentDAO() {
+        return commentDAO;
     }
 
     @Override
@@ -152,5 +161,30 @@ public class JCRTaskService implements TaskService {
         ManageableRepository repo = repositoryService.getCurrentRepository();
         SessionProvider sessionProvider = sessionService.getSystemSessionProvider(null); 
         return sessionProvider.getSession(workspace, repo);
+    }
+
+    @Override
+    public Comment getCommentById(String id) {
+        return commentDAO.getCommentById(id);
+    }
+
+    @Override
+    public List<Comment> getCommentByTask(String taskId, int offset, int limit) {
+        return commentDAO.getCommentByTask(taskId, offset, limit);
+    }
+
+    @Override
+    public Comment addComment(Comment c) throws TaskServiceException {
+        return commentDAO.addComment(c);
+    }
+
+    @Override
+    public Comment removeComment(String commentId) {
+        return commentDAO.removeComment(commentId);
+    }
+
+    @Override
+    public Comment updateComment(Comment c) {
+        return commentDAO.updateComment(c);
     }
 }
