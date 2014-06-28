@@ -65,7 +65,7 @@
     <tr>
       <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>"><%=task.getTitle()%></a></td>
-      <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getStatus()%></a></td>
+      <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getStatus()%> + <%=task.getCreatedDate()%></a></td>
       <td class="text-center"><a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
     </tr>
         <%}

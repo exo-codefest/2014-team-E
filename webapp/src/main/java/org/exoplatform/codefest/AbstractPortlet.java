@@ -282,6 +282,12 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 List<Task> tasks = service.getTasksByProject(projectId, 0, -1);
                 request.setAttribute("project", project);
                 request.setAttribute("tasks", tasks);
+                Collections.sort(tasks, new Comparator<Task>() {
+                    @Override
+                    public int compare(Task o1, Task o2) {
+                        return o2.getCreatedDate().compareTo(o1.getCreatedDate());
+                    }
+                });
 
                 render("/issues.jsp", request, response);
                 return;
@@ -352,7 +358,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
             public int compare(Project o1, Project o2) {
                 Date d1 = new Date(o1.getDateCreated());
                 Date d2 = new Date(o2.getDateCreated());
-                return d1.compareTo(d2);
+                return d2.compareTo(d1);
             }
         });
         request.setAttribute("projects", projects);

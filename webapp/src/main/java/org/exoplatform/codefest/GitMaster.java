@@ -142,6 +142,7 @@ public class GitMaster extends AbstractPortlet {
             task.setStatus(Status.OPEN);
             task.setPriority(Priority.UNDEFINED);
             task.setReporter(user);
+            task.setCreatedDate(System.currentTimeMillis());
             service.addTask(task);
 
             response.setRenderParameter("view", "issues");
