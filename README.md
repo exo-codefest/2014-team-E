@@ -70,7 +70,8 @@ See the following diagram to understand the progess of our team for MasterTask:
 </table>
 
 
-= How to use?
+# How to use?
+
 **Creating a new project**
 
 1. Click 
