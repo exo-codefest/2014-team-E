@@ -110,6 +110,14 @@
     $label.remove();
   });
 
+  $('#form-edit-task').on('keydown', 'input[name="label"]', function(e) {
+    console.log(e);
+    if(e.which == 13 || e.keyCode == 13) {
+      e.preventDefault();
+      $(e.target || e.srcElement).closest('form').find('button[name="add-label"]').click();
+      return false;
+    }
+  });
   $('#form-edit-task').on('click', 'button[name="add-label"]', function(e){
     var $control = $(e.target).closest('div.control-labels');
     var $input = $control.find('input[name="label"]');
