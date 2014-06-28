@@ -20,12 +20,15 @@ package org.exoplatform.codefest;
 
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
+import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.task.TaskService;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.portlet.ActionRequest;
@@ -43,11 +46,13 @@ import javax.portlet.RenderResponse;
 public abstract class AbstractPortlet extends GenericPortlet {
 
     TaskService service;
+    OrganizationService orgService;
 
     @Override
     public void init() throws PortletException {
         super.init();
         ExoContainer container = ExoContainerContext.getCurrentContainer();
+        orgService = (OrganizationService)container.getComponentInstanceOfType(OrganizationService.class);
         service = (TaskService)container.getComponentInstanceOfType(TaskService.class);
     }
 
@@ -97,6 +102,24 @@ public abstract class AbstractPortlet extends GenericPortlet {
             projects = new ArrayList<Project>();
         }
         request.setAttribute("projects", projects);
+
+        //. Load all group and membership
+        Collection groups = null;
+        Collection membershipTypes = null;
+        try {
+            groups = orgService.getGroupHandler().getAllGroups();
+            membershipTypes = orgService.getMembershipTypeHandler().findMembershipTypes();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        if(groups == null) {
+            groups = Collections.emptyList();
+        }
+        if(membershipTypes == null) {
+            membershipTypes = Collections.emptyList();
+        }
+        request.setAttribute("userGroups", groups);
+        request.setAttribute("membershipTypes", membershipTypes);
 
         String action = request.getParameter("action");
         if (action != null) {

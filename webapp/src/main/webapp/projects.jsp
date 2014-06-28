@@ -2,16 +2,28 @@
 <%@ page import="java.util.List" %>
 <%@ page import="org.exoplatform.task.model.Project" %>
 <%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="org.exoplatform.services.organization.Group" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="org.exoplatform.services.organization.MembershipType" %>
 <%@include file="includes/header.jsp" %>
 <%
-    List<Project> projects = null;
-    try {
-        projects = (List<Project>)renderRequest.getAttribute("projects");
-    } catch (Throwable ex) {}
+  List<Project> projects = null;
+  try {
+      projects = (List<Project>)renderRequest.getAttribute("projects");
+  } catch (Throwable ex) {}
 
-    if(projects == null) {
-        projects = Collections.EMPTY_LIST;
-    }
+  if(projects == null) {
+      projects = Collections.EMPTY_LIST;
+  }
+  Collection groups = (Collection)renderRequest.getAttribute("userGroups");
+  Collection membershipTypes = (Collection)renderRequest.getAttribute("membershipTypes");
+  if(groups == null) {
+    groups = Collections.emptyList();
+  }
+  if(membershipTypes == null) {
+    groups = Collections.emptyList();
+  }
 %>
 <table class="table table-hover">
   <thead>
@@ -26,7 +38,7 @@
   <tbody>
   <%if(projects.size() == 0) {%>
     <tr>
-      <td colspan="3">There are no project of your account, please create one!</td>
+      <td colspan="5">There are no project of your account, please create one!</td>
     </tr>
   <%} else {
         for(Project project : projects) {
@@ -50,10 +62,20 @@
       <td><%= project.getDesc()%></td>
       <td><%=project.getOwner()%></td>
       <td class="memberships">
-        Add text here?
-        <a class="action" action="add" projectId="<%=project.getId()%>" href="#">
+        <%if(project.getMemberships() != null) {
+          for(String membership : project.getMemberships()) {
+            PortletURL unshareURL = renderResponse.createActionURL();
+            unshareURL.setParameter("objectType", "project");
+            unshareURL.setParameter("action", "unshare");
+            unshareURL.setParameter("projectId", project.getId());
+            unshareURL.setParameter("membership", membership);
+          %>
+            <span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>
+          <%}
+        }%>
+        <%--<a class="action" action="add" projectId="<%=project.getId()%>" href="#">
           <i class="icon-plus-sign"></i>
-        </a>
+        </a>--%>
       </td>
       <td>
         <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
@@ -70,7 +92,7 @@ Project p = (Project)renderRequest.getAttribute("_project");
 if (p != null) {
 %>
 <div>
-    <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
+    <form id="form-edit-project" action="<portlet:actionURL />" method="POST" class="form-horizontal">
         <fieldset>
             <legend>Edit project</legend>
             <div>
@@ -89,6 +111,50 @@ if (p != null) {
                 <div class="controls">
                     <textarea name="description" rows="3"><%=p.getDesc()%></textarea>
                 </div>
+            </div>
+            <div class="control-group">
+              <div class="control-label">
+                Memberships:
+              </div>
+              <div class="controls">
+                <div class="list-memberships">
+                  <%
+                    StringBuilder memberships = new StringBuilder();
+                  %>
+                  <%if(p.getMemberships() != null) {
+                    for(String membership : p.getMemberships()) {
+                      if(memberships.length() > 0) {
+                        memberships.append(',');
+                      }
+                      memberships.append(membership);
+                  %>
+                  <span class="label label-success"><span><%=membership%></span> <a class="close" href="javascript:void(0);">&times;</a></span>
+                  <%}
+                  }%>
+                </div>
+                <input type="hidden" name="memberships" value="<%=memberships.toString()%>"/>
+                <select class="span3" name="group">
+                  <option value="">Select group</option>
+                  <%
+                    Iterator it = groups.iterator();
+                    while(it.hasNext()) {
+                      Group g = (Group)it.next();%>
+                  <option value="<%=g.getId()%>"><%=g.getId()%></option>
+                  <%}
+                  %>
+                </select>
+                <select class="span2" name="membershipType">
+                  <option value="">Select membership type</option>
+                  <%
+                    it = membershipTypes.iterator();
+                    while(it.hasNext()) {
+                      MembershipType type = (MembershipType)it.next();%>
+                  <option value="<%=type.getName()%>"><%=type.getName()%></option>
+                  <%}
+                  %>
+                </select>
+                <button class="btn" type="button" name="add-membership">Add</button>
+              </div>
             </div>
             <div class="control-group">
                 <div class="controls">
@@ -146,10 +212,24 @@ if (p != null) {
         </div>
         <div>
           <select class="span3" name="group">
-            <option>Select group</option>
+            <option value="">Select group</option>
+            <%
+              Iterator it = groups.iterator();
+              while(it.hasNext()) {
+                Group g = (Group)it.next();%>
+                <option value="<%=g.getId()%>"><%=g.getId()%></option>
+              <%}
+            %>
           </select>
           <select class="span2" name="membershipType">
-            <option>Select membership type</option>
+            <option value="">Select membership type</option>
+            <%
+              it = membershipTypes.iterator();
+              while(it.hasNext()) {
+                MembershipType type = (MembershipType)it.next();%>
+                <option value="<%=type.getName()%>"><%=type.getName()%></option>
+              <%}
+            %>
           </select>
         </div>
         <div class="uiAction uiActionBorder">

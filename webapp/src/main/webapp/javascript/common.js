@@ -59,4 +59,56 @@
     $popup.hide();
   });
 
+  $('#form-edit-project').on('click', 'button[name="add-membership"]', function(e) {
+    var $form = $(e.target).closest('form');
+    var $memberships = $form.find('input[name="memberships"]');
+    var memberships = $memberships.val();
+    var arrayMemberships = memberships.split(',');
+
+    var $group = $form.find('select[name="group"]');
+    var $membershipType = $form.find('select[name="membershipType"]');
+    var group = $group.val();
+    var membershipType = $membershipType.val();
+
+    if(group == '' || membershipType == '') {
+      return;
+    }
+
+    var membership = group + ":" + membershipType;
+    for(var i = 0; i < arrayMemberships.length; i++) {
+      var m = arrayMemberships[i];
+      if(m == membership) return;
+    }
+
+    if(memberships.length > 0) {
+      memberships += ',';
+    }
+    memberships += membership;
+    var $label = $('<span class="label label-success"><span>'+membership+'</span><a class="close" href="javascript:void(0);">&times;</a></span>');
+    $label.appendTo($form.find('div.list-memberships'));
+    $memberships.val(memberships);
+  });
+
+  $('#form-edit-project').on('click', 'a.close', function(e) {
+    var $label = $(e.target).closest('span.label');
+    var membership = $label.find('span').html();
+
+    var $form = $label.closest('form');
+    var $memberships = $form.find('input[name="memberships"]');
+    var memberships = $memberships.val();
+    var arrayMemberships = memberships.split(',');
+
+    var newArrayMemberships = new Array();
+    for(var i = 0; i < arrayMemberships.length; i++) {
+      var m = arrayMemberships[i];
+      if(m != membership) {
+        newArrayMemberships.push(m);
+      }
+    }
+
+    memberships = newArrayMemberships.join(',');
+    $memberships.val(memberships);
+    $label.remove();
+  });
+
 })($);

@@ -23,8 +23,10 @@ import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Task;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -70,13 +72,64 @@ public class GitMaster extends AbstractPortlet {
 
         if ("edit".equals(action)) {
             String projectId = request.getParameter("projectId");
-            Project p = new Project(user, request.getParameter("name"), request.getParameter("description"));
-            p.setId(projectId);
+            Project p = service.getProject(projectId);
+            p.setName(request.getParameter("name"));
+            p.setDesc(request.getParameter("description"));
+            String memberships = request.getParameter("memberships");
+            Set<String> set = new HashSet<String>();
+            if(memberships != null && memberships.length() > 0) {
+                String[] arr = memberships.split(",");
+                for(String s : arr) {
+                    set.add(s);
+                }
+            }
+            p.setMemberships(set);
+            //Project p = new Project(user, request.getParameter("name"), request.getParameter("description"));
+            //p.setId(projectId);
             try {
                 service.updateProject(p);
             } catch (TaskServiceException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+            }
+        }
+
+        if("share".equals(action)) {
+            String projectId = request.getParameter("projectId");
+            String groupId = request.getParameter("group");
+            String membershipType = request.getParameter("membershipType");
+
+            String membership = groupId + ":" + membershipType;
+            Project project = service.getProject(projectId);
+            Set<String> memberships = project.getMemberships();
+            if(memberships == null) {
+                memberships = new HashSet<String>();
+            }
+            memberships.add(membership);
+            project.setMemberships(memberships);
+            try {
+                service.updateProject(project);
+            } catch (TaskServiceException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        if("unshare".equals(action)) {
+            String projectId = request.getParameter("projectId");
+            String membership = request.getParameter("membership");
+
+            Project project = service.getProject(projectId);
+            Set<String> memberships = project.getMemberships();
+            if(memberships == null) {
+                memberships = new HashSet<String>();
+            } else {
+                memberships.remove(membership);
+            }
+            project.setMemberships(memberships);
+            try {
+                service.updateProject(project);
+            } catch (TaskServiceException ex) {
+                ex.printStackTrace();
             }
         }
     }
