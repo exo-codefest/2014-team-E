@@ -10,9 +10,6 @@
     margin-bottom: 0px;
 }
 
-.GitMasterPortlet .table {
-	width: 90%;
-}
 .GitMasterPortlet a.close {
     float: none;
     font-size: 15px;

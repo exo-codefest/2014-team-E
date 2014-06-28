@@ -60,3 +60,18 @@ Rename application to "MasterTask"
 3. A Status button somewhere.
 
 4. Implement Comment service: save/edit/delete(projected, taskId)
+
+
+
+
+
+
+
+
+
+
+
+TODO:
+- i18n
+- Support shortcut keys
+- Integrate to eXo Calendar application

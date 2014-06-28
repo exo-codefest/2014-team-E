@@ -63,7 +63,8 @@ public class MemoryTaskService implements TaskService {
         } catch (Exception e) {
             throw new TaskServiceException(e.getMessage(), e);
         }
-        
+
+        p.setDateCreated(System.currentTimeMillis());
         list.put(p.getId(), p);
     }
     

@@ -104,13 +104,12 @@
             <th>Description</th>
             <th>Owner</th>
             <th>Members</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
         <%if(projects.size() == 0) {%>
           <tr>
-            <td colspan="5">There are no project of your account, please create one!</td>
+            <td colspan="4">There are no project of your account, please create one!</td>
           </tr>
         <%} else {
               for(Project project : projects) {
@@ -145,10 +144,6 @@
                   <%--<span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
                   <br/>
               <%}%>
-            </td>
-            <td>
-              <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
-              <a href="<%=deleteAction.toString()%>"><i class="icon-trash"></i></a>
             </td>
           </tr>
               <%}
@@ -195,7 +190,7 @@ if (p != null) {
             </div>
             <div class="control-group">
               <div class="control-label">
-                Memberships:
+                Shared Groups:
               </div>
               <div class="controls">
                 <div class="list-memberships">
@@ -263,7 +258,7 @@ if (p != null) {
             </div>
             <div class="control-group">
               <div class="control-label">
-                Memberships:
+                Shared Groups:
               </div>
               <div class="controls">
                 <div class="list-memberships">

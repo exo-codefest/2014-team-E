@@ -31,6 +31,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.portlet.ActionRequest;
@@ -108,6 +110,15 @@ public abstract class AbstractPortlet extends GenericPortlet {
         } else {
             projects = new ArrayList<Project>();
         }
+
+        Collections.sort(projects, new Comparator<Project>() {
+            @Override
+            public int compare(Project o1, Project o2) {
+                Date d1 = new Date(o1.getDateCreated());
+                Date d2 = new Date(o2.getDateCreated());
+                return d1.compareTo(d2);
+            }
+        });
         request.setAttribute("projects", projects);
 
         //. Load all group and membership

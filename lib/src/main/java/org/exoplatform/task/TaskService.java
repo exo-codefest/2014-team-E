@@ -10,6 +10,7 @@ public interface TaskService {
 
     /**
      * Return owner and shared projects
+     *
      * @param username
      */
     public List<Project> getProjectsByUser(String username);
