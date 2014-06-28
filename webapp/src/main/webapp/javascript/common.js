@@ -84,13 +84,13 @@
       memberships += ',';
     }
     memberships += membership;
-    var $label = $('<span class="label label-success"><span>'+membership+'</span><a class="close" href="javascript:void(0);">&times;</a></span>');
+    var $label = $('<span class="membership"><span>'+membership+'</span><a class="close" href="javascript:void(0);">&times;</a></span>');
     $label.appendTo($form.find('div.list-memberships'));
     $memberships.val(memberships);
   });
 
   $('#form-edit-project').on('click', 'a.close', function(e) {
-    var $label = $(e.target).closest('span.label');
+    var $label = $(e.target).closest('span.membership');
     var membership = $label.find('span').html();
 
     var $form = $label.closest('form');

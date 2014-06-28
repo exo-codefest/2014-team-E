@@ -13,7 +13,14 @@
 .GitMasterPortlet .table {
 	width: 90%;
 }
-
+.GitMasterPortlet a.close {
+    float: none;
+    font-size: 15px;
+    padding: 0 2px;
+}
+.GitMasterPortlet #form-edit-project span.membership {
+    display: block;
+}
 .GitMasterPortlet .header .breadcrumb {
 	padding: 20px;
 	font-size: 28px;

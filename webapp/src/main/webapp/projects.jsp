@@ -69,7 +69,9 @@
             unshareURL.setParameter("projectId", project.getId());
             unshareURL.setParameter("membership", membership);
           %>
-            <span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>
+            <span><%=membership%></span>
+            <%--<span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
+            <br/>
         <%}%>
       </td>
       <td>
@@ -122,7 +124,7 @@ if (p != null) {
                       }
                       memberships.append(membership);
                   %>
-                  <span class="label label-success"><span><%=membership%></span> <a class="close" href="javascript:void(0);">&times;</a></span>
+                  <span class="membership"><span><%=membership%></span> <a class="close" href="javascript:void(0);">&times;</a></span>
                   <%}%>
                 </div>
                 <input type="hidden" name="memberships" value="<%=memberships.toString()%>"/>
@@ -151,7 +153,12 @@ if (p != null) {
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <%
+                      PortletURL cancelURL = renderResponse.createRenderURL();
+                      allProjectURL.setParameter("view", "projects");
+                    %>
+                    <a class="btn" href="<%=cancelURL.toString()%>">Cancel</a>
                 </div>
             </div>
         </fieldset>
@@ -182,7 +189,7 @@ if (p != null) {
             </div>
             <div class="control-group">
                 <div class="controls">
-                    <button type="submit" class="btn">Create</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </div>
         </fieldset>
