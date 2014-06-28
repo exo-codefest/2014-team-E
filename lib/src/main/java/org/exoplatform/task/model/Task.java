@@ -24,6 +24,16 @@ public class Task implements Activity {
     
     public String title;
 
+    public Priority priority;
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
     public List<Comment> comments = new LinkedList<Comment>();
 
     private Set<String> labels = new HashSet<String>();

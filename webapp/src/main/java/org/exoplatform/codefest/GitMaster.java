@@ -28,6 +28,7 @@ import java.util.Set;
 
 import org.exoplatform.task.TaskServiceException;
 import org.exoplatform.task.model.Comment;
+import org.exoplatform.task.model.Priority;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Status;
 import org.exoplatform.task.model.Task;
@@ -163,6 +164,7 @@ public class GitMaster extends AbstractPortlet {
             String title = request.getParameter("title");
             Task task = new Task(projectId, title);
             task.setStatus(Status.OPEN.toString());
+            task.setPriority(Priority.UNDEFINED);
             service.addTask(task);
 
             response.setRenderParameter("view", "issues");

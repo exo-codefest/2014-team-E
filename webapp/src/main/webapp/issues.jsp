@@ -22,13 +22,14 @@
       <th>#</th>
       <th>Task</th>
       <th>Status</th>
-      <th>Action</th>
+      <th>Priority</th>
+      <th>Assignee</th>
     </tr>
   </thead>
   <tbody>
   <% if(tasks.size() == 0) {%>
     <tr>
-      <td colspan="4">There are no project of your account, please create one!</td>
+      <td colspan="5">There are no project of your account, please create one!</td>
     </tr>
   <%} else {
       for(Task task : tasks) {
@@ -44,7 +45,8 @@
       <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>"><%=task.getTitle()%></a></td>
       <td><a href="<%=detailURL.toString()%>"><%=task.getStatus()%></a></td>
-      <td><a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
+      <td><a href="<%=detailURL.toString()%>"><%=task.getPriority()%></a></td>
+      <td><a href="<%=deleteURL.toString()%>"><%=(task.getAssignee() == null ? "Unassigned" : task.getAssignee())%></a></td>
     </tr>
         <%}
     }%>

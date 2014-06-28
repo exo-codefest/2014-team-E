@@ -26,7 +26,6 @@
   }
 %>
 
-
 <div class="bs-docs-example">
   <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#myprojects">My Projects</a></li>
