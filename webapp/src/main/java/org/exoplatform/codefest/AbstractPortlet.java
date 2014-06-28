@@ -357,34 +357,19 @@ public abstract class AbstractPortlet extends GenericPortlet {
         } else {
             projects = new ArrayList<Project>();
         }
-
-        Collections.sort(projects, new Comparator<Project>() {
-            @Override
-            public int compare(Project o1, Project o2) {
-                Date d1 = new Date(o1.getDateCreated());
-                Date d2 = new Date(o2.getDateCreated());
-                return d2.compareTo(d1);
-            }
-        });
         request.setAttribute("projects", projects);
 
         //. Load all group and membership
         Collection groups = null;
-        Collection membershipTypes = null;
         try {
             groups = orgService.getGroupHandler().getAllGroups();
-            membershipTypes = orgService.getMembershipTypeHandler().findMembershipTypes();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         if(groups == null) {
             groups = Collections.emptyList();
         }
-        if(membershipTypes == null) {
-            membershipTypes = Collections.emptyList();
-        }
         request.setAttribute("userGroups", groups);
-        request.setAttribute("membershipTypes", membershipTypes);
 
         String action = request.getParameter("action");
         if (action != null) {

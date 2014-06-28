@@ -1,4 +1,10 @@
 (function($){
+  $('.createProject').click(function() {
+	  var formCreate = $('.formCreateProject');
+	  formCreate.fadeIn(1000);
+	  $(this).hide();
+  });
+  
   $('.comments').on('click', 'a.action', function(e) {
     var $action = $(e.target || e.srcElement).closest('a');
     var $comment = $action.closest(".comment");

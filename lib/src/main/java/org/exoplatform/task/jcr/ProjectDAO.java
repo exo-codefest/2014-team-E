@@ -12,6 +12,7 @@ import javax.jcr.query.QueryResult;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,9 +20,8 @@ import java.util.Set;
 
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
-import org.exoplatform.services.organization.Membership;
+import org.exoplatform.services.organization.Group;
 import org.exoplatform.services.organization.OrganizationService;
-import org.exoplatform.services.security.MembershipEntry;
 import org.exoplatform.task.JCRTaskService;
 import org.exoplatform.task.TaskServiceException;
 import org.exoplatform.task.Utils;
@@ -57,7 +57,7 @@ public class ProjectDAO {
             return Collections.emptyList();
         }
 
-        List<Project> projects = new LinkedList<Project>();
+        Set<Project> projects = new HashSet<Project>();
 
         // private projects
         Node userHome = taskService.getOrCreateUserHome(username);
@@ -68,18 +68,25 @@ public class ProjectDAO {
             }
 
             // shared projects
-            Collection<?> memberships = orgService.getMembershipHandler().findMembershipsByUser(username);
-            for (Object membership : memberships) {
-                Membership m = (Membership) membership;
-                Node sharedHome = taskService.getOrCreateSharedHome(new MembershipEntry(m.getGroupId(), m.getMembershipType())
-                        .toString());
+            Collection<?> groups = orgService.getGroupHandler().findGroupsOfUser(username);
+            for (Object group : groups) {
+                Group g = (Group) group;
+                Node sharedHome = taskService.getOrCreateSharedHome(g.getId());
                 PropertyIterator iter = sharedHome.getReferences();
                 while (iter.hasNext()) {
                     projects.add(buildProject(iter.nextProperty().getParent()));
                 }
             }
-
-            return projects;
+            List<Project> results = new LinkedList<Project>();
+            results.addAll(projects);            
+            Collections.sort(results, new Comparator<Project>() {
+                @Override
+                public int compare(Project o1, Project o2) {
+                    return (int)(o2.getDateCreated() - o1.getDateCreated());
+                }
+            });
+            
+            return results;
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e);
@@ -104,10 +111,17 @@ public class ProjectDAO {
             Node userHome = taskService.getOrCreateUserHome(p.getOwner());
             Node projectNode = userHome.addNode(p.getId(), "exo:project");
             setProperties(projectNode, p);
-            userHome.save();
             
+            List<Value> refs = new LinkedList<Value>();
+            for (String groupId : p.getMemberships()) {
+                Node shareHome = taskService.getOrCreateSharedHome(groupId);
+                refs.add(userHome.getSession().getValueFactory().createValue(shareHome));
+            }
+            projectNode.addMixin("exo:projectShared");
+            projectNode.setProperty("exo:sharedId", refs.toArray(new Value[refs.size()]));
+            
+            userHome.getSession().save();
             return buildProject(projectNode);
-            // TODO: share project
         } catch (RepositoryException e) {
             log.error(e.getMessage(), e);
             throw new RuntimeException(e);
@@ -122,13 +136,19 @@ public class ProjectDAO {
                 throw new TaskServiceException(TaskServiceException.NON_EXITS_PROJECT, "Can't update. Non exists: " + p.getId());
             }
             
-            Node project = userHome.getNode(p.getId());
+            Node projectNode = userHome.getNode(p.getId());
             //Don't allow to change the owner
-            if (p.getOwner().equals(project.getProperty("exo:owner").getString())) {
-                setProperties(project, p);
-                project.save();
+            if (p.getOwner().equals(projectNode.getProperty("exo:owner").getString())) {
+                setProperties(projectNode, p);
                 
-                //TODO share project
+                List<Value> refs = new LinkedList<Value>();
+                for (String groupId : p.getMemberships()) {
+                    Node shareHome = taskService.getOrCreateSharedHome(groupId);
+                    refs.add(userHome.getSession().getValueFactory().createValue(shareHome));
+                }
+                projectNode.setProperty("exo:sharedId", refs.toArray(new Value[refs.size()]));
+                
+                projectNode.save();
             }
         } catch (RepositoryException e) {
             log.error(e);

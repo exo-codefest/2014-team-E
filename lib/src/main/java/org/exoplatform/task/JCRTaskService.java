@@ -18,7 +18,6 @@ import org.exoplatform.services.jcr.ext.distribution.DataDistributionType;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
 import org.exoplatform.services.organization.OrganizationService;
-import org.exoplatform.services.security.MembershipEntry;
 import org.exoplatform.task.jcr.CommentDAO;
 import org.exoplatform.task.jcr.ProjectDAO;
 import org.exoplatform.task.jcr.TaskDAO;
@@ -138,11 +137,16 @@ public class JCRTaskService implements TaskService {
         return getOrCreateNode(path);
     }
 
-    public Node getOrCreateSharedHome(String membership) {
-        MembershipEntry mem = MembershipEntry.parse(membership);
-        String path = String.format("%s%s/%s", SHARED_PATH, mem.getGroup(), mem.getMembershipType());
+    public Node getOrCreateSharedHome(String groupId) {
+        String path = String.format("%s%s", SHARED_PATH, groupId);
 
-        return getOrCreateNode(path);
+        Node node = getOrCreateNode(path);
+        try {
+            node.addMixin("mix:referenceable");
+            return node;
+        } catch (RepositoryException e) {
+            throw new RuntimeException(e);
+        }
     }
     
     public Node getOrCreateNode(String path) {

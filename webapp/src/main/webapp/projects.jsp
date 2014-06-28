@@ -17,11 +17,7 @@
       projects = Collections.EMPTY_LIST;
   }
   Collection groups = (Collection)renderRequest.getAttribute("userGroups");
-  Collection membershipTypes = (Collection)renderRequest.getAttribute("membershipTypes");
   if(groups == null) {
-    groups = Collections.emptyList();
-  }
-  if(membershipTypes == null) {
     groups = Collections.emptyList();
   }
 %>
@@ -46,27 +42,26 @@
           </tr>
         </thead>
         <tbody>
-        <%if(projects.size() == 0) {%>
-          <tr>
-            <td colspan="5">There are no project of your account, please create one!</td>
-          </tr>
-        <%} else {
-              for(Project project : projects) {
-                  PortletURL projectURL = renderResponse.createRenderURL();
-                  projectURL.setParameter("view", "issues");
-                  projectURL.setParameter("projectId", project.getId());
-      
-                  PortletURL deleteAction = renderResponse.createActionURL();
-                  deleteAction.setParameter("objectType", "project");
-                  deleteAction.setParameter("action", "delete");
-                  deleteAction.setParameter("objectId", String.valueOf(project.getId()));
-      
-                  PortletURL editURL = renderResponse.createRenderURL();
-                  editURL.setParameter("objectType", "project");
-                  editURL.setParameter("action", "edit");
-                  editURL.setParameter("objectId", String.valueOf(project.getId()));
-                  
-              %>
+        <%
+        	  boolean hasProject = false;
+           for(Project project : projects) {
+               if (project.getOwner().equals(renderRequest.getRemoteUser())) {
+               hasProject = true;
+               PortletURL projectURL = renderResponse.createRenderURL();
+               projectURL.setParameter("view", "issues");
+               projectURL.setParameter("projectId", project.getId());
+   
+               PortletURL deleteAction = renderResponse.createActionURL();
+               deleteAction.setParameter("objectType", "project");
+               deleteAction.setParameter("action", "delete");
+               deleteAction.setParameter("objectId", String.valueOf(project.getId()));
+   
+               PortletURL editURL = renderResponse.createRenderURL();
+               editURL.setParameter("objectType", "project");
+               editURL.setParameter("action", "edit");
+               editURL.setParameter("objectId", String.valueOf(project.getId()));
+               
+           %>
           <tr>
             <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
             <td><%= project.getDesc()%></td>
@@ -89,7 +84,12 @@
             </td>
           </tr>
               <%}
-          }%>
+          }
+          if(!hasProject) {%>
+	          <tr>
+	            <td colspan="5">There are no project of your account, please create one!</td>
+	          </tr>
+	       <%}%>
         </tbody>
       </table>
     </div>
@@ -107,27 +107,26 @@
           </tr>
         </thead>
         <tbody>
-        <%if(projects.size() == 0) {%>
-          <tr>
-            <td colspan="4">There are no project of your account, please create one!</td>
-          </tr>
-        <%} else {
-              for(Project project : projects) {
-                  PortletURL projectURL = renderResponse.createRenderURL();
-                  projectURL.setParameter("view", "issues");
-                  projectURL.setParameter("projectId", project.getId());
-      
-                  PortletURL deleteAction = renderResponse.createActionURL();
-                  deleteAction.setParameter("objectType", "project");
-                  deleteAction.setParameter("action", "delete");
-                  deleteAction.setParameter("objectId", String.valueOf(project.getId()));
-      
-                  PortletURL editURL = renderResponse.createRenderURL();
-                  editURL.setParameter("objectType", "project");
-                  editURL.setParameter("action", "edit");
-                  editURL.setParameter("objectId", String.valueOf(project.getId()));
-                  
-              %>
+        <%
+            boolean hasShared = false;
+            for(Project project : projects) {
+                if (!project.getOwner().equals(renderRequest.getRemoteUser())) {
+                hasShared = true;
+                PortletURL projectURL = renderResponse.createRenderURL();
+                projectURL.setParameter("view", "issues");
+                projectURL.setParameter("projectId", project.getId());
+    
+                PortletURL deleteAction = renderResponse.createActionURL();
+                deleteAction.setParameter("objectType", "project");
+                deleteAction.setParameter("action", "delete");
+                deleteAction.setParameter("objectId", String.valueOf(project.getId()));
+    
+                PortletURL editURL = renderResponse.createRenderURL();
+                editURL.setParameter("objectType", "project");
+                editURL.setParameter("action", "edit");
+                editURL.setParameter("objectId", String.valueOf(project.getId()));
+                
+            %>
           <tr>
             <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
             <td><%= project.getDesc()%></td>
@@ -147,7 +146,12 @@
             </td>
           </tr>
               <%}
-          }%>
+          }
+          if(!hasShared) {%>
+	          <tr>
+	            <td colspan="4">There are no project shared for you!</td>
+	          </tr>
+        	 <%}%>
         </tbody>
       </table>
     </div>
@@ -236,7 +240,8 @@ if (p != null) {
 <%    
 } else {
 %>
-<div>
+<button type="button" class="btn btn-primary createProject">Create new project</button>
+<div class="formCreateProject">
     <form id="form-create-project" action="<portlet:actionURL />" method="POST" class="form-horizontal">
         <fieldset>
             <legend>Create new project</legend>

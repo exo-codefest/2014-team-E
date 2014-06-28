@@ -51,6 +51,9 @@
 .GitMasterPortlet .header li .divider > i {
     margin-top: 6px!important;
 }
+.GitMasterPortlet .formCreateProject {
+    display: none;
+}
 .table-project thead th,
 .table-task thead th{
     white-space: nowrap;
