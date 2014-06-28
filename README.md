@@ -34,3 +34,6 @@ Your task will be updated in the list of task in the "General" category.
 * In more details, tick the checkbox corresponding to the task from the list, then hover on the edit icon at the top right corner. 
 * A pop-up is displayed that allows you to edit title, add descriptions and notes, add label, add project, assign the task, and more.
 
+
+# Responsive
+The MasterTask applications are based on Twitter Bootstrap to be fully responsive support.

@@ -33,6 +33,7 @@ import javax.portlet.ActionResponse;
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
  * @version $Revision$
  */
+// TODO: Rename the portlet class to MasterTask
 public class GitMaster extends AbstractPortlet {
 
     @Override

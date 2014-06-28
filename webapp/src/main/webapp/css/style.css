@@ -9,3 +9,7 @@
 .GitMasterPortlet .nav {
     margin-bottom: 0px;
 }
+
+.GitMasterPortlet .table {
+	width: 90%;
+}

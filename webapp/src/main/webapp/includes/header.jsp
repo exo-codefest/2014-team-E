@@ -14,8 +14,15 @@
 <%
     PortletURL allProjectURL = renderResponse.createRenderURL();
     allProjectURL.setParameter("view", "projects");
+
 %>
 <div class="header">
   <a class="btn btn-primary" href="<%=allProjectURL.toString()%>">Projects</a>
-  <% if (currentProject != null) { out.print(" > " + currentProject.getName()); } %>
+  <% if (currentProject != null) {
+      PortletURL projectURL = renderResponse.createRenderURL();
+      projectURL.setParameter("view", "issues");
+      projectURL.setParameter("projectId", currentProject.getId());
+
+      out.print(" > <a href=\"" + projectURL.toString() + "\">" + currentProject.getName() + "</a>");
+  } %>
 </div>
