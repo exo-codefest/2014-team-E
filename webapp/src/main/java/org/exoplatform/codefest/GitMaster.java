@@ -22,13 +22,8 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import org.exoplatform.task.TaskServiceException;
 import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Priority;
 import org.exoplatform.task.model.Project;
@@ -71,11 +66,7 @@ public class GitMaster extends AbstractPortlet {
                 service.createProject(project);
             } catch (IllegalArgumentException ex) {
                 pushNotification("You need to enter valid information");
-            } catch (TaskServiceException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
             }
-
             return;
         }
 
@@ -99,14 +90,7 @@ public class GitMaster extends AbstractPortlet {
                 }
             }
             p.setMemberships(set);
-            //Project p = new Project(user, request.getParameter("name"), request.getParameter("description"));
-            //p.setId(projectId);
-            try {
-                service.updateProject(p);
-            } catch (TaskServiceException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            service.updateProject(p);
         }
 
         if("share".equals(action)) {
@@ -116,18 +100,12 @@ public class GitMaster extends AbstractPortlet {
 
             String membership = membershipType + ":" + groupId;
             Project project = service.getProject(projectId);
+            
             Set<String> memberships = new HashSet<String>();
             memberships.addAll(project.getMemberships());
-            if(memberships == null) {
-                memberships = new HashSet<String>();
-            }
             memberships.add(membership);
             project.setMemberships(memberships);
-            try {
-                service.updateProject(project);
-            } catch (TaskServiceException ex) {
-                ex.printStackTrace();
-            }
+            service.updateProject(project);
         }
 
         if("unshare".equals(action)) {
@@ -139,11 +117,7 @@ public class GitMaster extends AbstractPortlet {
             memberships.addAll(project.getMemberships());
             memberships.remove(membership);
             project.setMemberships(memberships);
-            try {
-                service.updateProject(project);
-            } catch (TaskServiceException ex) {
-                ex.printStackTrace();
-            }
+            service.updateProject(project);
         }
     }
 
@@ -263,53 +237,21 @@ public class GitMaster extends AbstractPortlet {
             String comment = request.getParameter("comment");
             if(comment != null && !comment.isEmpty()) {
                 Comment cmt = new Comment(user, comment);
-                List<Comment> comments = task.getComments();
-                if(comments == null) {
-                    comments = new LinkedList<Comment>();
-                    comments = new LinkedList<Comment>();
-                }
-                comments.add(cmt);
-                task.setComments(comments);
-
-                service.updateTask(task);
+                cmt.setTaskId(taskId);
+                service.addComment(cmt);
             }
         } else if("delete".equals(action)) {
-            //TODO: process delete comment by service
             String commentId = request.getParameter("commentId");
-            List<Comment> comments = task.getComments();
-            if(comments == null) {
-                comments = new LinkedList<Comment>();
-            }
-
-            Comment delete = null;
-            for(Comment comment : comments) {
-                if(comment.getId().equals(commentId)) {
-                    delete = comment;
-                    break;
-                }
-            }
-            comments.remove(delete);
-
-            task.setComments(comments);
-
-            service.updateTask(task);
+            service.removeComment(commentId);
         } else if("update".equals(action)) {
-            //TODO: process update comment by service
             String commentId = request.getParameter("commentId");
             String text = request.getParameter("comment");
-            List<Comment> comments = task.getComments();
-            if(comments == null) {
-                comments = new LinkedList<Comment>();
+            
+            Comment comment = service.getCommentById(commentId);
+            if (comment != null) {
+                comment.setText(text);
+                service.updateComment(comment);
             }
-
-            for(Comment comment : comments) {
-                if(comment.getId().equals(commentId)) {
-                    comment.setText(text);
-                    break;
-                }
-            }
-            task.setComments(comments);
-            service.updateTask(task);
         }        
     }
 }

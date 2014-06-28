@@ -126,6 +126,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 request.setAttribute("project", project);
                 request.setAttribute("task", task);
                 request.setAttribute("usersInProject", users);
+                request.setAttribute("comments", service.getCommentByTask(taskId, 0, -1));
 
                 render("/detail.jsp", request, response);
                 return;
