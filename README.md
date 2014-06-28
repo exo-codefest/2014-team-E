@@ -76,11 +76,10 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 1. Open the MasterTask app. You will see the main screen of MasterTask:
 
-<img src="https://github.com/exo-codefest/2014-team-E/screenshots/mastertask_main_screen.png" width="800">
+	<img src="https://github.com/exo-codefest/2014-team-E/screenshots/mastertask_main_screen.png" width="400">
 
-A list of projects will be displayed. If you have no project, there will be a message: *No project is available, please create one!*. 
+	A list of projects will be displayed. If you have no project, there will be a message: *No project is available, please create one!*. 
 
+1. Click **Create new project** to open the form.
 
-1. Click *Create new project* to open the form.
-
-1. Enter 
+1. Enter title into 
