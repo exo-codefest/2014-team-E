@@ -159,8 +159,12 @@ public class GitMaster extends AbstractPortlet {
         }
 
         if("delete".equals(action)) {
-            String taskId =  request.getParameter("objectId");
-            service.removeTask(taskId);
+            String[] arr =  request.getParameterValues("objectId");
+            if (arr != null) {
+                for (String taskId : arr) {
+                    service.removeTask(taskId);
+                }
+            }
             return;
         }
 

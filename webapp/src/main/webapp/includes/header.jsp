@@ -17,12 +17,14 @@
 
 %>
 <div class="header">
-  <a class="btn btn-primary" href="<%=allProjectURL.toString()%>">Projects</a>
-  <% if (currentProject != null) {
-      PortletURL projectURL = renderResponse.createRenderURL();
-      projectURL.setParameter("view", "issues");
-      projectURL.setParameter("projectId", currentProject.getId());
-
-      out.print(" > <a href=\"" + projectURL.toString() + "\">" + currentProject.getName() + "</a>");
-  } %>
+  <ul class="breadcrumb">
+    <li><a href="<%=allProjectURL.toString()%>">Projects</a> <span class="divider">/</span></li>
+    <% if (currentProject != null) {
+        PortletURL projectURL = renderResponse.createRenderURL();
+        projectURL.setParameter("view", "issues");
+        projectURL.setParameter("projectId", currentProject.getId());
+    %>
+    <li><a class="active" href="<%=projectURL.toString()%>"><%=currentProject.getName()%></a>
+    <% } %>
+  </ul>
 </div>

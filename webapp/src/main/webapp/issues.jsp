@@ -10,7 +10,13 @@
     if(tasks == null) {
         tasks = Collections.emptyList();
     }
+
+    PortletURL deleteURL = renderResponse.createActionURL();
+    deleteURL.setParameter("objectType", "task");
+    deleteURL.setParameter("action", "delete");
+    deleteURL.setParameter("projectId", project.getId());
 %>
+<form action="<%=deleteURL.toString() %>" method="post">
 <table class="table table-hover">
   <thead>
     <tr>
@@ -30,14 +36,10 @@
           detailURL.setParameter("view", "detail");
           detailURL.setParameter("taskId", task.getId());
 
-          PortletURL deleteURL = renderResponse.createActionURL();
-          deleteURL.setParameter("objectType", "task");
-          deleteURL.setParameter("action", "delete");
-          deleteURL.setParameter("projectId", project.getId());
           deleteURL.setParameter("objectId", task.getId());
           %>
     <tr>
-      <td><input type="checkbox" name="taskId" value="<%=task.getId()%>"/></td>
+      <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>"><%=task.getTitle()%></a></td>
       <td><a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
     </tr>
@@ -45,6 +47,8 @@
     }%>
   </tbody>
 </table>
+<button class="btn btn-primary" type="submit" name="act" value="delete">Delete</button>
+</form>
 
 <div>
     <form action="<portlet:actionURL />" method="POST" class="form-horizontal">

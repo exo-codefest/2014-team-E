@@ -13,3 +13,8 @@
 .GitMasterPortlet .table {
 	width: 90%;
 }
+
+.GitMasterPortlet .header .breadcrumb {
+	padding: 20px;
+	font-size: 28px;
+}
