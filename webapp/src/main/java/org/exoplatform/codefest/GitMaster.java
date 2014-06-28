@@ -46,7 +46,7 @@ public class GitMaster extends AbstractPortlet {
 
         String user = request.getRemoteUser();
         if(user == null) {
-            //TODO: process if user not logged in
+            pushNotification("You need to log-in before performing any action");
             return;
         }
 

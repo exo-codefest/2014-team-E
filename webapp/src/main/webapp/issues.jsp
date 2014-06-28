@@ -28,7 +28,7 @@
   <tbody>
   <% if(tasks.size() == 0) {%>
     <tr>
-      <td colspan="3">There are no project of your account, please create one!</td>
+      <td colspan="4">There are no project of your account, please create one!</td>
     </tr>
   <%} else {
       for(Task task : tasks) {

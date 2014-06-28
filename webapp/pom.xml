@@ -59,4 +59,7 @@
          <scope>provided</scope>
       </dependency>
    </dependencies>
+   <build>
+      <finalName>team-e-addon-webapp</finalName>
+   </build>
 </project>
