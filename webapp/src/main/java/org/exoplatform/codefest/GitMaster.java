@@ -53,8 +53,17 @@ public class GitMaster extends AbstractPortlet {
         if("create".equals(action)) {
             String name = request.getParameter("name");
             String description = request.getParameter("description");
+            String memberships = request.getParameter("memberships");
 
             Project project = new Project(user, name, description);
+            Set<String> set = new HashSet<String>();
+            if(memberships != null && memberships.length() > 0) {
+                String[] arr = memberships.split(",");
+                for(String s : arr) {
+                    set.add(s);
+                }
+            }
+            project.setMemberships(set);
             try {
                 service.createProject(project);
             } catch (TaskServiceException ex) {

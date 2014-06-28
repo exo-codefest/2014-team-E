@@ -59,7 +59,7 @@
     $popup.hide();
   });
 
-  $('#form-edit-project').on('click', 'button[name="add-membership"]', function(e) {
+  $('#form-edit-project, #form-create-project').on('click', 'button[name="add-membership"]', function(e) {
     var $form = $(e.target).closest('form');
     var $memberships = $form.find('input[name="memberships"]');
     var memberships = $memberships.val();
@@ -89,7 +89,7 @@
     $memberships.val(memberships);
   });
 
-  $('#form-edit-project').on('click', 'a.close', function(e) {
+  $('#form-edit-project, #form-create-project').on('click', 'a.close', function(e) {
     var $label = $(e.target).closest('span.membership');
     var membership = $label.find('span').html();
 

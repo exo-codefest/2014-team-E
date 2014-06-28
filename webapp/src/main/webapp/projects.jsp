@@ -168,7 +168,7 @@ if (p != null) {
 } else {
 %>
 <div>
-    <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
+    <form id="form-create-project" action="<portlet:actionURL />" method="POST" class="form-horizontal">
         <fieldset>
             <legend>Create new project</legend>
             <div>
@@ -186,6 +186,38 @@ if (p != null) {
                 <div class="controls">
                     <textarea name="description" rows="3"></textarea>
                 </div>
+            </div>
+            <div class="control-group">
+              <div class="control-label">
+                Memberships:
+              </div>
+              <div class="controls">
+                <div class="list-memberships">
+
+                </div>
+                <input type="hidden" name="memberships" value=""/>
+                <select class="span3" name="group">
+                  <option value="">Select group</option>
+                  <%
+                    Iterator itg = groups.iterator();
+                    while(itg.hasNext()) {
+                      Group g = (Group)itg.next();%>
+                  <option value="<%=g.getId()%>"><%=g.getId()%></option>
+                  <%}
+                  %>
+                </select>
+                <select class="span2" name="membershipType">
+                  <option value="">Select membership type</option>
+                  <%
+                    Iterator itm = membershipTypes.iterator();
+                    while(itm.hasNext()) {
+                      MembershipType type = (MembershipType)itm.next();%>
+                  <option value="<%=type.getName()%>"><%=type.getName()%></option>
+                  <%}
+                  %>
+                </select>
+                <button class="btn" type="button" name="add-membership">Add</button>
+              </div>
             </div>
             <div class="control-group">
                 <div class="controls">

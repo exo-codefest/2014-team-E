@@ -18,7 +18,7 @@
     font-size: 15px;
     padding: 0 2px;
 }
-.GitMasterPortlet #form-edit-project span.membership {
+.GitMasterPortlet .list-memberships span.membership {
     display: block;
 }
 .GitMasterPortlet .header .breadcrumb {
