@@ -70,10 +70,7 @@
             unshareURL.setParameter("membership", membership);
           %>
             <span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>
-        <%}
-        <%--<a class="action" action="add" projectId="<%=project.getId()%>" href="#">
-          <i class="icon-plus-sign"></i>
-        </a>--%>
+        <%}%>
       </td>
       <td>
         <a href="<%=editURL.toString()%>"><i class="icon-pencil"></i></a>
