@@ -71,7 +71,9 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 
 = How to use?
-*Creating a new project*
-1. Click
+**Creating a new project**
+
+1. Click 
+
 2. Apply 
 
