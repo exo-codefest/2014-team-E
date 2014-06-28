@@ -122,7 +122,7 @@ public class ProjectDAO {
             
             Node project = userHome.getNode(p.getId());
             //Don't allow to change the owner
-            if (p.getOwner().equals(project.getProperty("exo:owner"))) {
+            if (p.getOwner().equals(project.getProperty("exo:owner").getString())) {
                 setProperties(project, p);
                 project.save();
                 

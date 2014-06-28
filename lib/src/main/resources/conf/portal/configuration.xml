@@ -9,7 +9,7 @@
     <init-params>
       <value-param>
         <name>workspace</name>
-        <value>collaboration</value>
+        <value>${org.exoplatform.addons.codefest.team_e.workspace:team_e}</value>
       </value-param>
     </init-params>
   </component>

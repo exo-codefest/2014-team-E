@@ -22,11 +22,7 @@
         comments = Collections.emptyList();
     }
 
-    List<String> assignees = task.getAssignee();
-    if(assignees == null) {
-        assignees = Collections.emptyList();
-    }
-
+    String assignee = task.getAssignee();
     DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 %>
 <div>
@@ -44,19 +40,17 @@
     <div>
         <div class="assignee">
             <span>Assignee: </span>
-            <%if(assignees.size() == 0){ %>
-            <%--<span class="label">none</span>--%>
+            <%if(assignee == null){ %>
+            	<span class="label">none</span>
             <%} else {
-                for(String assignee : assignees) {
-                    PortletURL unassignURL = renderResponse.createActionURL();
-                    unassignURL.setParameter("objectType", "task");
-                    unassignURL.setParameter("action", "unassign");
-                    unassignURL.setParameter("objectId", task.getId());
-                    unassignURL.setParameter("assignee", assignee);
+                PortletURL unassignURL = renderResponse.createActionURL();
+                unassignURL.setParameter("objectType", "task");
+                unassignURL.setParameter("action", "unassign");
+                unassignURL.setParameter("objectId", task.getId());
+                unassignURL.setParameter("assignee", assignee);
                 %>
                     <span class="label"><%=assignee%><a class="close" href="<%=unassignURL.toString()%>">&times;</a></span>
-                <%}
-            }%>
+            <%}%>
             <div class="btn-group">
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="icon-plus-sign"></i>
