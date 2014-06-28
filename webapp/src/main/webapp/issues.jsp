@@ -15,21 +15,42 @@
     deleteURL.setParameter("objectType", "task");
     deleteURL.setParameter("projectId", project.getId());
 %>
+<div class="uiGrayLightBox clearfix toolbar-table">
+    <h5 class="pull-left">Manage Tasks</h5>
+    <form class="form-inline pull-right" action="<portlet:actionURL />" method="POST" >
+        <fieldset>
+            <div>
+                <input type="hidden" name="objectType" value="task"/>
+                <input type="hidden" name="action" value="create"/>
+                <input type="hidden" name="projectId" value="<%=project.getId()%>"/>
+            </div>
+            <div class="control-group mgB0">
+                <div class="controls">
+                    <input type="text" id="inputName" name="title" placeholder="Title of task">
+                    <button type="submit" class="btn hide">Create</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
 <form action="<%=deleteURL.toString() %>" method="post">
-<table class="table table-hover">
+<table class="table table-hover table-task">
   <thead>
     <tr>
       <th>#</th>
       <th>Task</th>
-      <th>Status</th>
-      <th>Priority</th>
-      <th>Assignee</th>
+      <th class="text-center">Status</th>
+      <th class="text-center w45">Action</th>
     </tr>
   </thead>
   <tbody>
   <% if(tasks.size() == 0) {%>
     <tr>
-      <td colspan="5">There are no project of your account, please create one!</td>
+      <td colspan="4">
+        <div class="alert alert-info" id="">
+            <i class="uiIconInfo"></i> No project is available, please create one!
+        </div>
+      </td>
     </tr>
   <%} else {
       for(Task task : tasks) {
@@ -44,9 +65,8 @@
     <tr>
       <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>"><%=task.getTitle()%></a></td>
-      <td><a href="<%=detailURL.toString()%>"><%=task.getStatus()%></a></td>
-      <td><a href="<%=detailURL.toString()%>"><%=task.getPriority()%></a></td>
-      <td><a href="<%=deleteURL.toString()%>"><%=(task.getAssignee() == null ? "Unassigned" : task.getAssignee())%></a></td>
+      <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getStatus()%></a></td>
+      <td class="text-center"><a href="<%=deleteURL.toString()%>"><i class="icon-trash"></i></a></td>
     </tr>
         <%}
     }%>
@@ -54,7 +74,7 @@
 </table>
 <button class="btn btn-primary" type="submit" name="action" value="delete">Delete</button>
 </form>
-
+<!-- 
 <div>
     <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
         <fieldset>
@@ -72,4 +92,4 @@
             </div>
         </fieldset>
     </form>
-</div>
+</div> -->

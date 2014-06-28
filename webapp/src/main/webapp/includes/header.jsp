@@ -17,8 +17,9 @@
 
 %>
 <div class="header">
+    <h4 class="header-app">MasterTask</h4>
   <ul class="breadcrumb">
-    <li><a href="<%=allProjectURL.toString()%>">Projects</a> <span class="divider">/</span></li>
+    <li><a href="<%=allProjectURL.toString()%>">Projects</a> <span class="divider"><i class="uiIconMiniArrowRight"></i></span></li>
     <% if (currentProject != null) {
         PortletURL projectURL = renderResponse.createRenderURL();
         projectURL.setParameter("view", "issues");

@@ -1,6 +1,26 @@
 .GitMasterPortlet {
-    background: #ffffff;
-    margin: 5px 10px;
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    margin: 0 0 20px;
+    padding: 10px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.GitMasterPortlet .label {
+    font-weight: normal;
+}
+.GitMasterPortlet .header-app {
+    background-color: #5373a9;
+    border-radius: 3px 3px 0 0;
+    color: #fff;
+    margin: -11px -11px 10px;
+    padding: 10px;
+    text-align: center;
+    text-shadow: none;
+}
+.GitMasterPortlet .header {
+    margin-bottom: 20px;
 }
 .GitMasterPortlet .uiGrayLightBox {
     border-bottom-left-radius: 0;
@@ -9,7 +29,6 @@
 .GitMasterPortlet .nav {
     margin-bottom: 0px;
 }
-
 .GitMasterPortlet a.close {
     float: none;
     font-size: 15px;
@@ -19,25 +38,37 @@
     display: block;
 }
 .GitMasterPortlet .header li {
-	font-size: 28px;
-	line-height: 36px;
+    font-size: 16px;
+    line-height: 22px;
+}
+.GitMasterPortlet .header li .divider {
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 5px;
+    vertical-align: top;
+    display: inline-block;
+}
+.GitMasterPortlet .header li .divider > i {
+    margin-top: 6px!important;
+}
+.table-project thead th,
+.table-task thead th{
+    white-space: nowrap;
 }
 
-.comments .comment {
-    margin: 10px 0px;
-    position: relative;
+
+.toolbar-table h5.pull-left {
+    margin : 4px 0 0;
 }
-.comments .media-body {
-    border: 1px solid #ddd;
-    border-radius: 3px;
+/* Utilities */
+.italic {
+    font-style: italic;
+
 }
-.comments .media-body:before {
-    border-right-color: #dddddd;
-    border-width: 8px;
-    position: absolute;
-    top: 11px;
-    left: -16px;
-    right: 100%;
-    display: block;
-    content: " test ";
+.w45 {
+    width: 45px;
+}
+.table .text-center,
+.text-center {
+    text-align: center;
 }

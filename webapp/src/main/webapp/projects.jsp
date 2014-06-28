@@ -26,7 +26,8 @@
   }
 %>
 
-<div class="bs-docs-example">
+
+<div class="uiTabPane uiTabNormal">
   <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#myprojects">My Projects</a></li>
     <li><a data-toggle="tab" href="#sharedprojects">Shared Projects</a></li>
@@ -35,7 +36,7 @@
 
     <!-- Begin My Projects List -->
     <div id="myprojects" class="tab-pane fade active in">
-      <table class="table table-hover">
+      <table class="table table-hover table-project">
         <thead>
           <tr>
             <th>Project Name</th>
@@ -77,8 +78,8 @@
                   unshareURL.setParameter("projectId", project.getId());
                   unshareURL.setParameter("membership", membership);
                 %>
-                  <span><%=membership%></span>
-                  <%--<span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
+                  <span class="italic"><%=membership%></span>
+                  <%--<span class="label label-success "><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
                   <br/>
               <%}%>
             </td>
@@ -96,7 +97,7 @@
 
     <!-- Begin Shared Projects List -->
     <div id="sharedprojects" class="tab-pane fade">
-      <table class="table table-hover">
+      <table class="table table-hover table-project">
         <thead>
           <tr>
             <th>Project Name</th>
@@ -139,7 +140,7 @@
                   unshareURL.setParameter("projectId", project.getId());
                   unshareURL.setParameter("membership", membership);
                 %>
-                  <span><%=membership%></span>
+                  <span class="italic"><%=membership%></span>
                   <%--<span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>--%>
                   <br/>
               <%}%>
