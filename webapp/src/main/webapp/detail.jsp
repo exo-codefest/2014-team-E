@@ -9,10 +9,8 @@
 <%@include file="includes/header.jsp" %>
 <%
     Project project = (Project)renderRequest.getAttribute("project");
-    Set<String> membership = project.getMemberships();
-    if(membership == null) {
-        membership = new HashSet<String>();
-    }
+    Set<String> membership = new HashSet<String>();
+    membership.addAll(project.getMemberships());
     membership.add(project.getOwner());
 
     Task task = (Task)renderRequest.getAttribute("task");

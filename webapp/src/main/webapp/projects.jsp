@@ -62,8 +62,7 @@
       <td><%= project.getDesc()%></td>
       <td><%=project.getOwner()%></td>
       <td class="memberships">
-        <%if(project.getMemberships() != null) {
-          for(String membership : project.getMemberships()) {
+        <%for(String membership : project.getMemberships()) {
             PortletURL unshareURL = renderResponse.createActionURL();
             unshareURL.setParameter("objectType", "project");
             unshareURL.setParameter("action", "unshare");
@@ -71,8 +70,7 @@
             unshareURL.setParameter("membership", membership);
           %>
             <span class="label label-success"><%=membership%> <a class="close" href="<%=unshareURL.toString()%>">&times;</a></span>
-          <%}
-        }%>
+        <%}
         <%--<a class="action" action="add" projectId="<%=project.getId()%>" href="#">
           <i class="icon-plus-sign"></i>
         </a>--%>
@@ -121,16 +119,14 @@ if (p != null) {
                   <%
                     StringBuilder memberships = new StringBuilder();
                   %>
-                  <%if(p.getMemberships() != null) {
-                    for(String membership : p.getMemberships()) {
+                  <%for(String membership : p.getMemberships()) {
                       if(memberships.length() > 0) {
                         memberships.append(',');
                       }
                       memberships.append(membership);
                   %>
                   <span class="label label-success"><span><%=membership%></span> <a class="close" href="javascript:void(0);">&times;</a></span>
-                  <%}
-                  }%>
+                  <%}%>
                 </div>
                 <input type="hidden" name="memberships" value="<%=memberships.toString()%>"/>
                 <select class="span3" name="group">

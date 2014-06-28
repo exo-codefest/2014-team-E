@@ -101,7 +101,8 @@ public class GitMaster extends AbstractPortlet {
 
             String membership = groupId + ":" + membershipType;
             Project project = service.getProject(projectId);
-            Set<String> memberships = project.getMemberships();
+            Set<String> memberships = new HashSet<String>();
+            memberships.addAll(project.getMemberships());
             if(memberships == null) {
                 memberships = new HashSet<String>();
             }
@@ -119,12 +120,9 @@ public class GitMaster extends AbstractPortlet {
             String membership = request.getParameter("membership");
 
             Project project = service.getProject(projectId);
-            Set<String> memberships = project.getMemberships();
-            if(memberships == null) {
-                memberships = new HashSet<String>();
-            } else {
-                memberships.remove(membership);
-            }
+            Set<String> memberships = new HashSet<String>();
+            memberships.addAll(project.getMemberships());
+            memberships.remove(membership);
             project.setMemberships(memberships);
             try {
                 service.updateProject(project);
