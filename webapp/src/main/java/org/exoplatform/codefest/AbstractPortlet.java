@@ -67,7 +67,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 String projectId = request.getParameter("projectId");
 
                 Project project = service.getProject(projectId);
-                List<Task> tasks = service.getTasksByProject(projectId);
+                List<Task> tasks = service.getTasksByProject(projectId, 0, -1);
                 request.setAttribute("project", project);
                 request.setAttribute("tasks", tasks);
 

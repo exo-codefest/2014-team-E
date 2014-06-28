@@ -1,10 +1,10 @@
 package org.exoplatform.task;
 
+import java.util.List;
+
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Task;
-
-import java.util.List;
 
 public interface TaskService {
 
@@ -41,6 +41,7 @@ public interface TaskService {
 
     public Task getTask(String id);
 
-    public List<Task> getTasksByProject(String projectId);
-    public List<Task> findTasks(Query query);
+    public List<Task> getTasksByProject(String projectId, int offset, int limit);
+    
+    public List<Task> findTasks(Query query, int offset, int limit);
 }

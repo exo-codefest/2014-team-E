@@ -27,12 +27,17 @@
   <component>
     <type>org.exoplatform.services.jcr.ext.app.ThreadLocalSessionProviderService</type>
   </component>
-  
+   
   <component>
     <key>org.exoplatform.task.TaskService</key>
     <type>org.exoplatform.task.MemoryTaskService</type>
   </component>
-
+  <!--  
+  <component>
+    <key>org.exoplatform.task.TaskService</key>
+    <type>org.exoplatform.task.JCRTaskService</type>
+  </component>
+-->
   <component>
     <key>org.exoplatform.services.organization.OrganizationService</key>
     <type>org.exoplatform.services.organization.impl.mock.DummyOrganizationService</type>

@@ -23,7 +23,15 @@ package org.exoplatform.task.model;
  * @version $Revision$
  */
 public class Query {
+    private String reporter;
+    
+    private String assignee;
+    
+    private String projectId;
+    
     private String title;
+    
+    private long dateCreated;
 
     public Query(String title) {
         this.title = title;
@@ -32,4 +40,40 @@ public class Query {
     public String getTitle() {
         return title;
     }
+
+    public String getReporter() {
+        return reporter;
+    }
+
+    public void setReporter(String reporter) {
+        this.reporter = reporter;
+    }
+
+    public String getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public long getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(long dateCreated) {
+        this.dateCreated = dateCreated;
+    }    
 }

@@ -1,5 +1,6 @@
 package org.exoplatform.task.model;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -24,6 +25,10 @@ public class Project {
     //We should use UTC time for this
     private long dateCreated;
 
+    public Project() {
+        this(null, null, null);
+    }
+    
     public Project(String owner, String name, String desc) {
         this.name = name;
         this.owner = owner;
@@ -63,8 +68,8 @@ public class Project {
         this.desc = desc;
     }
 
-    public Set<String> getMemberships() {
-        return memberships;
+    public Set<String> getMemberships() {        
+        return Collections.unmodifiableSet(memberships);
     }
 
     public void setMemberships(Set<String> memberships) {

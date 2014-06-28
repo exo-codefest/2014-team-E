@@ -106,7 +106,7 @@ public class MemoryTaskService implements TaskService {
     }
 
     @Override
-    public List<Task> getTasksByProject(String projectId) {
+    public List<Task> getTasksByProject(String projectId,int offset, int limit) {
         if(projectId == null) {
             return Collections.<Task>emptyList();
         }
@@ -116,12 +116,16 @@ public class MemoryTaskService implements TaskService {
             if(task.getProjectId().equals(projectId)) {
                 tasks.add(task);
             }
+        }        
+        if (limit >= 0) {
+            return Utils.subList(tasks, offset, limit); 
+        } else {
+            return tasks;
         }
-        return tasks;
     }
 
     @Override
-    public List<Task> findTasks(Query query) {
+    public List<Task> findTasks(Query query, int offset, int limit) {
         List<Task> t = new ArrayList<Task>();
 
         for (Task task : tasks.values()) {
@@ -129,6 +133,10 @@ public class MemoryTaskService implements TaskService {
                t.add(task);
            }
         }
-        return t;
+        if (limit >=0) {
+            return Utils.subList(t, offset, limit);
+        } else {
+            return t;
+        }
     }
 }
