@@ -90,8 +90,8 @@ public class JCRTaskService implements TaskService {
     }
 
     @Override
-    public void createProject(Project p) throws TaskServiceException {
-        projectDAO.createProject(p);
+    public Project createProject(Project p) throws TaskServiceException {
+        return projectDAO.createProject(p);
     }
 
     @Override
@@ -104,8 +104,8 @@ public class JCRTaskService implements TaskService {
         projectDAO.removeProject(id);
     }
 
-    public void addTask(Task t) throws TaskServiceException {
-        taskDAO.addTask(t);
+    public Task addTask(Task t) throws TaskServiceException {
+        return taskDAO.addTask(t);
     }
 
     @Override
@@ -114,8 +114,8 @@ public class JCRTaskService implements TaskService {
     }
 
     @Override
-    public void updateTask(Task t) throws TaskServiceException {
-        taskDAO.updateTask(t);
+    public Task updateTask(Task t) throws TaskServiceException {
+        return taskDAO.updateTask(t);
     }
 
     @Override

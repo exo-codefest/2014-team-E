@@ -8,7 +8,7 @@ import org.exoplatform.task.model.Task;
 
 public class TestComment extends AbstractTest {
 
-    public void testCreateTask() throws TaskServiceException {
+    public void testCreateComment() throws TaskServiceException {
         Project p = new Project(username, "gatein", "my own gatein");
         service.createProject(p);
 

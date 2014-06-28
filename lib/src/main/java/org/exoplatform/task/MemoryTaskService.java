@@ -48,7 +48,7 @@ public class MemoryTaskService implements TaskService {
     }
 
     @Override
-    public void createProject(Project p) throws TaskServiceException {
+    public Project createProject(Project p) throws TaskServiceException {
         if (p.getName() == null || p.getName().trim().isEmpty()) {
             throw new IllegalArgumentException("Project name can NOT be empty");
         }
@@ -67,6 +67,7 @@ public class MemoryTaskService implements TaskService {
 
         p.setDateCreated(System.currentTimeMillis());
         list.put(p.getId(), p);
+        return p;
     }
     
     @Override
@@ -86,10 +87,11 @@ public class MemoryTaskService implements TaskService {
         list.remove(id);
     }
 
-    public void addTask(Task t) {
+    public Task addTask(Task t) {
         //Generate ID
         t.setId(UUID.randomUUID().toString());
         tasks.put(t.getId(), t);
+        return t;
     }
 
     @Override
@@ -98,8 +100,9 @@ public class MemoryTaskService implements TaskService {
     }
 
     @Override
-    public void updateTask(Task t) {
+    public Task updateTask(Task t) {
         tasks.put(t.getId(), t);
+        return t;
     }
 
     @Override

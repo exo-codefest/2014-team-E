@@ -35,7 +35,7 @@ public class TaskDAO {
         this.taskService = taskService;
     }
 
-    public void addTask(Task t) throws TaskServiceException {
+    public Task addTask(Task t) throws TaskServiceException {
         try {
             Node projectNode = taskService.getProjectDAO().getProjectNode(t.getProjectId());
 
@@ -48,8 +48,9 @@ public class TaskDAO {
             t.setId(UUID.randomUUID().toString());
             Node taskNode = projectNode.addNode(t.getId(), "exo:task");
             setTaskProperties(taskNode, t);
-
             projectNode.save();
+
+            return buildTask(taskNode);
         } catch (RepositoryException e) {
             log.error(e);
             throw new RuntimeException(e);
@@ -74,7 +75,7 @@ public class TaskDAO {
         }
     }
 
-    public void updateTask(Task t) throws TaskServiceException {
+    public Task updateTask(Task t) throws TaskServiceException {
         try {
             Node taskNode = getTaskNode(t.getId());
             if (taskNode == null) {
@@ -89,6 +90,8 @@ public class TaskDAO {
             t.setModifedDate(System.currentTimeMillis());
             setTaskProperties(taskNode, t);
             taskNode.getSession().save();
+            
+            return buildTask(taskNode);
         } catch (RepositoryException e) {
             log.error(e);
             throw new RuntimeException(e);
@@ -152,7 +155,11 @@ public class TaskDAO {
         taskNode.setProperty("exo:reporter", t.getReporter());
         taskNode.setProperty("exo:assignee", t.getAssignee());
         taskNode.setProperty("exo:title", t.getTitle());
-        taskNode.setProperty("exo:status", t.getStatus().status());
+        if (t.getStatus() != null) {
+            taskNode.setProperty("exo:status", t.getStatus().status());            
+        } else {
+            taskNode.getProperty("exo:status").remove();
+        }
         taskNode.setProperty("exo:priority", t.getPriority().priority());
         Set<String> labels = t.getLabels();
         taskNode.setProperty("exo:labels", labels.toArray(new String[labels.size()]));

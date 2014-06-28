@@ -86,7 +86,7 @@ public class ProjectDAO {
         }
     }
 
-    public void createProject(Project p) throws TaskServiceException {
+    public Project createProject(Project p) throws TaskServiceException {
         if (p.getName() == null || p.getName().trim().isEmpty()) {
             throw new IllegalArgumentException("Project name can NOT be empty");
         }
@@ -99,12 +99,14 @@ public class ProjectDAO {
             throw new TaskServiceException(e.getMessage(), e);
         }
 
+        p.setDateCreated(System.currentTimeMillis());
         try {
             Node userHome = taskService.getOrCreateUserHome(p.getOwner());
             Node projectNode = userHome.addNode(p.getId(), "exo:project");
             setProperties(projectNode, p);
             userHome.save();
-
+            
+            return buildProject(projectNode);
             // TODO: share project
         } catch (RepositoryException e) {
             log.error(e.getMessage(), e);

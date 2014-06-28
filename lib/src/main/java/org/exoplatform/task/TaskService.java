@@ -21,7 +21,7 @@ public interface TaskService {
      * throw exception if duplicated, owner doesn't exits, fail validation
      * @param p
      */
-    public void createProject(Project p) throws TaskServiceException;
+    public Project createProject(Project p) throws TaskServiceException;
 
     public void updateProject(Project p) throws TaskServiceException;
 
@@ -29,7 +29,7 @@ public interface TaskService {
 
     public void removeProject(String id);
 
-    public void addTask(Task t) throws TaskServiceException;
+    public Task addTask(Task t) throws TaskServiceException;
 
     /**
      * Remove the task for the given id if exist.
@@ -39,7 +39,7 @@ public interface TaskService {
      */
     public Task removeTask(String id);
 
-    public void updateTask(Task t) throws TaskServiceException;
+    public Task updateTask(Task t) throws TaskServiceException;
 
     public Task getTask(String id);
 

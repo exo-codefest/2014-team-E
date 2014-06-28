@@ -11,8 +11,9 @@ import org.exoplatform.component.test.ContainerScope;
 import org.exoplatform.services.jcr.RepositoryService;
 import org.exoplatform.services.jcr.core.ManageableRepository;
 import org.exoplatform.services.jcr.ext.app.SessionProviderService;
-import org.exoplatform.services.organization.impl.mock.DummyOrganizationService;
+import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
+import org.exoplatform.task.model.Task;
 
 @ConfiguredBy({
     @ConfigurationUnit(scope = ContainerScope.PORTAL, path = "conf/portal/team_e/task_configuration.xml"),
@@ -24,12 +25,24 @@ public abstract class AbstractTest extends AbstractKernelTest {
     protected final String username = "root";
 
     protected TaskService service;
+    
+    protected Project testProject;
+    protected Task testTask;
+    protected Comment testComment;
 
     @Override
     protected void setUp() throws Exception {        
         super.setUp();
 //        this.service = new MemoryTaskService(new DummyOrganizationService());
         this.service = getService(TaskService.class);
+        
+        Project p = new Project(username, "gatein", "my own gatein");
+        testProject = service.createProject(p);
+
+        Task task = new Task(p.getId(), "test task");
+        testTask = service.addTask(task);
+        
+        testComment = service.addComment(new Comment("root", "comment for issue"));
     }
 
     protected Session getSession() throws Exception {
