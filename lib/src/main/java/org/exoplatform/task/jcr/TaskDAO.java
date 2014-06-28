@@ -155,11 +155,7 @@ public class TaskDAO {
         taskNode.setProperty("exo:reporter", t.getReporter());
         taskNode.setProperty("exo:assignee", t.getAssignee());
         taskNode.setProperty("exo:title", t.getTitle());
-        if (t.getStatus() != null) {
-            taskNode.setProperty("exo:status", t.getStatus().status());            
-        } else {
-            taskNode.getProperty("exo:status").remove();
-        }
+        taskNode.setProperty("exo:status", t.getStatus().status());
         taskNode.setProperty("exo:priority", t.getPriority().priority());
         Set<String> labels = t.getLabels();
         taskNode.setProperty("exo:labels", labels.toArray(new String[labels.size()]));

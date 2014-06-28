@@ -79,7 +79,7 @@ public class CommentDAO {
             Node commentNode = taskNode.addNode(c.getId(), "exo:comment");
             setCommentProperties(commentNode, c);
 
-            commentNode.save();
+            taskNode.save();
             return buildComment(commentNode);
         } catch (RepositoryException e) {
             log.error(e);

@@ -18,11 +18,11 @@ public class Task implements Activity {
     
     private String assignee;
     
-    private Status status;
+    private Status status = Status.OPEN;
     
     private String title;
 
-    private Priority priority;
+    private Priority priority = Priority.UNDEFINED;
 
     private Set<String> labels = new HashSet<String>();
     

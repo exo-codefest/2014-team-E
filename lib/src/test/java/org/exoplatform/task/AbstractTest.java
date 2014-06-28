@@ -42,7 +42,9 @@ public abstract class AbstractTest extends AbstractKernelTest {
         Task task = new Task(p.getId(), "test task");
         testTask = service.addTask(task);
         
-        testComment = service.addComment(new Comment("root", "comment for issue"));
+        Comment c = new Comment("root", "comment for issue");
+        c.setTaskId(task.getId());
+        testComment = service.addComment(c);
     }
 
     protected Session getSession() throws Exception {

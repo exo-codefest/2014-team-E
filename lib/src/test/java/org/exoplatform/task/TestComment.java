@@ -2,20 +2,34 @@ package org.exoplatform.task;
 
 import java.util.List;
 
-import org.exoplatform.task.model.Project;
-import org.exoplatform.task.model.Query;
-import org.exoplatform.task.model.Task;
+import org.exoplatform.task.model.Comment;
 
 public class TestComment extends AbstractTest {
 
     public void testCreateComment() throws TaskServiceException {
-        Project p = new Project(username, "gatein", "my own gatein");
-        service.createProject(p);
-
-        Task task = new Task(p.getId(), "hi john");
-        service.addTask(task);
-
-        List<Task> findTasks = service.findTasks(new Query("john"), 0, 10);
-        assertEquals(1, findTasks.size());
+        Comment c = new Comment("test author", "test create comment");
+        c.setTaskId(testTask.getId());
+        
+        Comment newComment = service.addComment(c);
+        assertNotNull(service.getCommentById(newComment.getId()));
+    
+        List<Comment> comments = service.getCommentByTask(testTask.getId(), 0, -1);
+        assertEquals(2, comments.size());
+    }
+    
+    public void testRemoveComment() throws TaskServiceException {
+        assertNotNull(service.getCommentById(testComment.getId()));
+        service.removeComment(testComment.getId());
+        assertNull(service.getCommentById(testComment.getId()));
+    }
+    
+    public void testUpdateComment() {
+        Comment c = service.getCommentById(testComment.getId());
+        assertEquals("comment for issue", c.getText());
+        c.setText("updated");
+        service.updateComment(c);
+        
+        Comment updated = service.getCommentById(testComment.getId());
+        assertEquals("updated", updated.getText());
     }
 }
