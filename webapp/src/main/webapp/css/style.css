@@ -276,3 +276,17 @@
     color: #ffffff;
     background-color: #bd362f;
 }
+
+.GitMasterPortlet .filter-projects {
+    position: relative;
+}
+.GitMasterPortlet .filter-projects input.filterProject {
+    position: absolute;
+    right: 0;
+    top: 0px;
+}
+.GitMasterPortlet .filter-projects a.search-icon {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}

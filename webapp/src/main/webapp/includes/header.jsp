@@ -38,7 +38,7 @@
   <%
    if (currentView == null || "projects".equals(currentView)) {
   %>
-  	<input type="text" class="filterProject" placeholder="Filter by Project Name"></input>
+  	<%--<input type="text" class="filterProject" placeholder="Filter by Project Name"></input>--%>
   <%
   	} else if (currentView.equals("issues")) {
   	 Project project = (Project)renderRequest.getAttribute("project");
