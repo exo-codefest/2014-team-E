@@ -201,6 +201,10 @@ public class TaskDAO {
                     label.add(a.getString());
                 }
                 task.setLabels(label);
+            } else if (name.equals("exo:createdDate")) {
+                task.setCreatedDate(p.getLong());
+            } else if (name.equals("exo:modifiedDate")) {
+                task.setModifedDate(p.getLong());
             }
         }
         return task;

@@ -5,6 +5,16 @@
 	  $(this).hide();
   });
   
+  $('.filterProject').keypress(function(e) {
+	 var search = null;
+	 var jFilterInput = $(this);
+	 if (e.keyCode() >= 32 && e.keyCode() <= 127) {
+		 search = window.setTimeout(700, function() {
+			 jFilterInput.
+		 });
+	 } 
+  });
+  
   $('.comments').on('click', 'a.action', function(e) {
     var $action = $(e.target || e.srcElement).closest('a');
     var $comment = $action.closest(".comment");
