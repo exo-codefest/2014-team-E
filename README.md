@@ -84,7 +84,7 @@ To make easy for approach to **MasterTask**, use this link to access:
 1. Enter **Project name** (mandatory) and **Description** for your project.
 
 1. Share your project with a group by clicking the down-arrow icon of **Shared Groups**, then click **Add**. 
-	This means only members of the shared groups can see that project in their **Shared Projects** tab.
+	This means only members of the shared groups can work on that project listed in the **Shared Projects** tab.
 	
 	```
 	* Repeat this step if you want to shared with many groups.
