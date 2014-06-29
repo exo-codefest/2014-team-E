@@ -21,7 +21,7 @@
     groups = Collections.emptyList();
   }
 %>
-<input type="text" class="filterProject"></input>
+<input type="text" class="filterProject" placeholder="Filter by Project Name"></input>
 <div class="uiTabPane uiTabNormal">
   <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#myprojects">My Projects</a></li>
