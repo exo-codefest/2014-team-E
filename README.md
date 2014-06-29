@@ -113,7 +113,7 @@ In the list of projects, simply click <img src="screenshots/delete_icon.png" wid
 
 A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simly. 
 By clicking a specific project, you will be redirected to its details as follows:
-	
+
 <img src="screenshots/project_details.png" width="300">
 	
 Here is a list of tasks of the project. If this project does not have any task, one message will be shown: "No task is avaible, please create one!".
