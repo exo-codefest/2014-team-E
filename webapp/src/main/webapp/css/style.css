@@ -167,3 +167,28 @@
 .task-label + .task-label {
     margin-left: 5px;
 }
+
+/* Dashboard */
+.dashboard {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.dashboard .column {
+	background-color: #e9e9e9;
+	display: table-cell;
+	border: 10px solid #FFFFFF;
+}
+
+.dashboard .state {
+	background-color: #FFFFFF;
+	text-align: center;
+} 
+
+.dashboard .task {
+	border: 1px solid #cccccc;
+	margin: 10px 0px;
+	background-color: #FFFFFF;
+	cursor: move;
+}

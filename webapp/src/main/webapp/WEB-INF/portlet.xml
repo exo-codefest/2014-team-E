@@ -5,9 +5,9 @@
                             http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
 
   <portlet>
-    <description>Github Integration</description>
+    <description>Master Task Application</description>
     <portlet-name>GitMaster</portlet-name>
-    <display-name>Git Master</display-name>
+    <display-name>Master Task</display-name>
     <portlet-class>org.exoplatform.codefest.GitMaster</portlet-class>
 
     <supports>
@@ -15,8 +15,8 @@
       <portlet-mode>VIEW</portlet-mode>
     </supports>
     <portlet-info>
-      <title>Github Integration</title>
-      <short-title>gitmaster</short-title>
+      <title>Master Task</title>
+      <short-title>Master Task</short-title>
     </portlet-info>
   </portlet>
 

@@ -371,6 +371,11 @@ public abstract class AbstractPortlet extends GenericPortlet {
 
         String view = request.getParameter("view");
         if (view != null) {
+            if (view.equals("dashboard")) {
+                render("/dashboard.jsp", request, response);
+                return;
+            }
+
             if (view.equals("issues")) {
 
                 String projectId = request.getParameter("projectId");
