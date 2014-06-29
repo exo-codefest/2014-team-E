@@ -37,7 +37,7 @@ See the table to know which you can play now, and next features of **MasterTask*
 
 <table>
 <tr><td>1</td><td>Creating new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>2</td><td>[editing_project]:Editing project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>2</td><td>![Editing project][editing_project] <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>3</td><td>Deleting project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>5</td><td>Adding collaborators for projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>6</td><td>Sorting projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
@@ -95,7 +95,7 @@ Currently, your projects are classified into types:
 
 To find your needed projects quickly, click either of tabs: **My Projects** or **Shared Projects**.
 
-## ![Editing a project] [editing_project]
+## Editing a project #editing_project
 
 1. In the list of projects, click <img src="screenshots/edit_icon.png" width="15">. 
    The **Edit project** form is displayed at the bottom of the projects list.
