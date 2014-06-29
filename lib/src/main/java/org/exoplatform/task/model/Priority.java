@@ -28,4 +28,18 @@ public enum Priority {
 
         return UNDEFINED;
     }
+
+    public String getLabel() {
+        switch (this.priority) {
+            case 2:
+                return "Minor";
+            case 1:
+                return "Major";
+            case 0:
+                return "Blocker";
+            case -1:
+            default:
+                return "Undefined";
+        }
+    }
 }

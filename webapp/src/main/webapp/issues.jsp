@@ -75,11 +75,11 @@
           changePriorityURL.setParameter(AbstractPortlet.PARAM_ACTION, "updatePriority");
         %>
         <div class="btn-group btn-priority" url="<%=changePriorityURL%>">
-          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getPriority()%></span> <span class="caret"></span></button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getPriority().getLabel()%></span> <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <%for(Priority priority : Priority.values()){
             %>
-            <li><a class="change-priority" priority="<%=priority.priority()%>" href="javascript:void(0);"><%=priority.name()%></a></li>
+            <li><a class="change-priority" priority="<%=priority.priority()%>" href="javascript:void(0);"><%=priority.getLabel()%></a></li>
             <%}%>
           </ul>
         </div>
@@ -92,11 +92,11 @@
           changeStatusURL.setParameter(AbstractPortlet.PARAM_ACTION, "updateStatus");
         %>
         <div class="btn-group btn-status" url-changeStatus="<%=changeStatusURL%>">
-          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getStatus()%></span> <span class="caret"></span></button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getStatus().getLabel()%></span> <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <%for(Status status : Status.values()){
             %>
-            <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.name()%></a></li>
+            <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.getLabel()%></a></li>
             <%}%>
           </ul>
         </div>

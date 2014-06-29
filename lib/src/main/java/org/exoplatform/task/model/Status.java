@@ -19,6 +19,21 @@ public enum Status {
         return this.status;
     }
 
+    public String getLabel() {
+        switch (this.status) {
+            case 4:
+                return "Refused";
+            case 3:
+                return "Resolved";
+            case 2:
+                return "In Progress";
+            case 1:
+                return "Open";
+            default:
+                return "No name";
+        }
+    }
+
     public static Status getStatus(int status) {
         for (Status type : Status.values()) {
             if (type.status() == status) {

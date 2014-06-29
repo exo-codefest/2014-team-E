@@ -49,7 +49,7 @@
         <div class="controls">
           <select name="priority" id="inputPriority">
             <% for(Priority p : Priority.values()) {%>
-            <option value="<%=p.priority()%>" <%=(p.priority() == task.getPriority().priority() ? "selected = \"selected\"" : "")%>><%=p.name()%></option>
+            <option value="<%=p.priority()%>" <%=(p.priority() == task.getPriority().priority() ? "selected = \"selected\"" : "")%>><%=p.getLabel()%></option>
             <%}%>
           </select>
         </div>
@@ -60,7 +60,7 @@
         <div class="controls">
           <select name="status" id="inputStatus">
             <% for(Status status : Status.values()) {%>
-              <option value="<%=status.status()%>" <%=(status.status() == task.getStatus().status() ? "selected = \"selected\"" : "")%>><%=status.name()%></option>
+              <option value="<%=status.status()%>" <%=(status.status() == task.getStatus().status() ? "selected = \"selected\"" : "")%>><%=status.getLabel()%></option>
             <%}%>
           </select>
         </div>
@@ -142,11 +142,11 @@
             %>
             <span>Status: </span>
             <div class="btn-group btn-status" url-changeStatus="<%=changeStatusURL%>">
-              <button class="btn dropdown-toggle btn-mini btn-primary" data-toggle="dropdown"><span class="value"><%=task.getStatus()%></span> <span class="caret"></span></button>
+              <button class="btn dropdown-toggle btn-mini btn-primary" data-toggle="dropdown"><span class="value"><%=task.getStatus().getLabel()%></span> <span class="caret"></span></button>
               <ul class="dropdown-menu">
                 <%for(Status status : Status.values()){
                 %>
-                  <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.name()%></a></li>
+                  <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.getLabel()%></a></li>
                 <%}%>
               </ul>
             </div>
@@ -163,7 +163,7 @@
           </div>
           <div class="span6 text-right">
             <span>Priority: </span>
-            <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority()%></span>
+            <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority().getLabel()%></span>
           </div>
         </div><!-- .row-fluid -->
         <div class="row-fluid">

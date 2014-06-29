@@ -141,9 +141,9 @@ public abstract class AbstractPortlet extends GenericPortlet {
             json.put("labels", array);
             json.put("modified", task.getModifiedDate());
             json.put("priority", task.getPriority().priority());
-            json.put("priorityName", task.getPriority().name());
+            json.put("priorityName", task.getPriority().getLabel());
             json.put("status", task.getStatus().status());
-            json.put("statusName", task.getStatus().name());
+            json.put("statusName", task.getStatus().getLabel());
             json.put("reporter", task.getReporter());
 
             result.put("code", 200);
@@ -171,9 +171,9 @@ public abstract class AbstractPortlet extends GenericPortlet {
             json.put("labels", array);
             json.put("modified", task.getModifiedDate());
             json.put("priority", task.getPriority().priority());
-            json.put("priorityName", task.getPriority().name());
+            json.put("priorityName", task.getPriority().getLabel());
             json.put("status", task.getStatus().status());
-            json.put("statusName", task.getStatus().name());
+            json.put("statusName", task.getStatus().getLabel());
             json.put("reporter", task.getReporter());
 
             result.put("code", 200);
@@ -217,9 +217,9 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 json.put("labels", array);
                 json.put("modified", task.getModifiedDate());
                 json.put("priority", task.getPriority().priority());
-                json.put("priorityName", task.getPriority().name());
+                json.put("priorityName", task.getPriority().getLabel());
                 json.put("status", task.getStatus().status());
-                json.put("statusName", task.getStatus().name());
+                json.put("statusName", task.getStatus().getLabel());
                 json.put("reporter", task.getReporter());
 
                 result.put("code", 200);
