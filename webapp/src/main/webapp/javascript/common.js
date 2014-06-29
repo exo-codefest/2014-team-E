@@ -521,6 +521,16 @@
 	
 	var searchTaskTimeout = null;
 	$('.filterTaskTitle').on('keydown', function(e) {
+            var TIME_TO_WAIT = 700;
+            var $input = $(e.target || e.srcElement).closest('.filterTaskTitle');
+            var keyCode = e.which || e.keyCode;
+
+            if(keyCode == 13) {
+              TIME_TO_WAIT = 0;
+            } else if(keyCode == 27) {
+              $input.val('');
+            }
+
 		    if (searchTaskTimeout != null) {
 		    	window.clearTimeout(searchTaskTimeout);
 		    }
@@ -531,7 +541,7 @@
 	
 			    var filterURL = $filterTask.attr('filterURL');
 			    searchTask(filterURL, query, $target.closest('.GitMasterPortlet'));
-		    }, 700);	    
+		    }, TIME_TO_WAIT);
 	});
 	
 	function searchTask(filterURL, query, $portlet) {

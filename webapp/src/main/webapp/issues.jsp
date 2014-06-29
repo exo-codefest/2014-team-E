@@ -23,6 +23,41 @@
 
   Map<String, User> usersInProject = (Map<String, User>)renderRequest.getAttribute("usersInProject");
 %>
+<div>
+  <%
+    ResourceURL filterTaskURL = renderResponse.createResourceURL();
+    filterTaskURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK_LIST);
+    filterTaskURL.setParameter("projectId", project.getId());
+  %>
+  <div class="filterTask contain-btn text-right" filterURL="<%=filterTaskURL%>">
+    <div class="inline-block">
+      <div class="btn-group btn-priority filterTaskPriority">
+        <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value">All Priority</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu text-left">
+          <li><a class="filterPriority" href="javascript:void(0);">All Priority</a></li>
+          <%for(Priority priority : Priority.values()){
+          %>
+          <li><a class="filterPriority" eXoValue="<%=priority.priority()%>" href="javascript:void(0);"><%=priority.getLabel()%></a></li>
+          <%}%>
+        </ul>
+      </div>
+      <div class="btn-group btn-status filterTaskStatus">
+        <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value">All Status</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu text-left">
+          <li><a class="filterStatus" href="javascript:void(0);">All Status</a></li>
+          <%for(Status status : Status.values()){
+          %>
+          <li><a class="filterStatus" eXoValue="<%=status.status()%>" href="javascript:void(0);"><%=status.getLabel()%></a></li>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+    <div class="inline-block relative-block">
+      <input type="text" class="filterTaskTitle span4" placeholder="Task title"/>
+      <a class="search-icon" href="javascript:void(0);"><i class="icon-search"></i></a>
+    </div>
+  </div>
+</div>
 <div class="uiGrayLightBox clearfix toolbar-table">
     <h5 class="pull-left">Manage Tasks</h5>
     <form class="form-inline pull-right" action="<portlet:actionURL />" method="POST" >
@@ -76,7 +111,7 @@
         %>
         <div class="btn-group btn-priority text-left" url="<%=changePriorityURL%>">
           <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getPriority().getLabel()%></span> <span class="caret"></span></button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu text-left">
             <%for(Priority priority : Priority.values()){
             %>
             <li><a class="change-priority" priority="<%=priority.priority()%>" href="javascript:void(0);"><%=priority.getLabel()%></a></li>
@@ -93,7 +128,7 @@
         %>
         <div class="btn-group btn-status text-left" url-changeStatus="<%=changeStatusURL%>">
           <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getStatus().getLabel()%></span> <span class="caret"></span></button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu text-left">
             <%for(Status status : Status.values()){
             %>
             <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.getLabel()%></a></li>
@@ -119,7 +154,7 @@
         %>
         <div class="btn-group btn-assign text-left" url="<%=assignURL%>">
           <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=assignee%></span> <span class="caret"></span></button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu text-left">
             <%for(String username : usersInProject.keySet()){
               User u = usersInProject.get(username);
             %>
