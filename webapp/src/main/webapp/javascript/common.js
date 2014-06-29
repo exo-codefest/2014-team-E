@@ -506,11 +506,22 @@
         connectWith : ".sortable",
         tolerance : "pointer",
         revert : true,
-        update : function() {
+        update : function(e, obj) {
+        	var $target = $(obj.item);
+        	var $column = $target.closest('.column');
+        	var status = $column.attr('eXoStatus');        	
+        	
+        	$.ajax({
+        		url: $target.attr('statusURL'),
+        		method: 'GET',
+        		data: {
+        			status: status
+        		}
+        	});
         }
       });
     $( "#sortable" ).disableSelection();
-  });
+  });  
 
   $('.GitMasterPortlet').on('click', '.filterPriority, .filterStatus', function(e) {
 	    var $target = $(e.target);
