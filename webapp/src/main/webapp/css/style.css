@@ -59,6 +59,11 @@
     display: block;
     text-align: center;
 }
+
+.GitMasterPortlet .sortable {
+    min-height: 269px;
+}
+
 .table-project thead th,
 .table-task thead th{
     white-space: nowrap;

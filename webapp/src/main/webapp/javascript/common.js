@@ -501,9 +501,15 @@
   });
   
   // Dashboard
-  $(function() {
-    $(".draggable").draggable();
-    $(".droppable").droppable();
+  $(function() {    
+    $( ".sortable" ).sortable({
+        connectWith : ".sortable",
+        tolerance : "pointer",
+        revert : true,
+        update : function() {
+        }
+      });
+    $( "#sortable" ).disableSelection();
   });
 
   $('.GitMasterPortlet').on('click', '.filterPriority, .filterStatus', function(e) {
