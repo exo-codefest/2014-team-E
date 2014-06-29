@@ -489,4 +489,10 @@
         checkboxes.removeAttr('checked');
     }
 });
+  
+  // Dashboard
+  $(function() {
+    $(".draggable").draggable();
+    $(".droppable").droppable();
+  });
 })($);

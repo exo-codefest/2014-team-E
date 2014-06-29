@@ -32,15 +32,30 @@
     <css-path>/css/style.css</css-path>
   </portlet-skin>
 
+  <module>
+    <name>jqueryui</name>
+    <script>
+      <path>/javascript/jquery-ui.js</path>
+    </script>
+    <depends>
+      <module>jquery</module>
+      <as>jQuery</as>
+    </depends>
+  </module>
+
   <portlet>
     <name>GitMaster</name>
     <module>
       <script>
         <path>/javascript/common.js</path>
       </script>
-      <depends>
-        <module>jquery</module>
-      </depends>
+    <depends>
+      <module>jquery</module>
+      <as>$</as>
+    </depends>
+    <depends>
+      <module>jqueryui</module>
+    </depends>
     </module>
   </portlet>
 
