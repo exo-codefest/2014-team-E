@@ -32,11 +32,14 @@ public class Query {
     private String projectId;
     
     private String title;
+
+    private Priority priority;
+
+    private Status status;
     
     private long dateCreated;
 
     public Query() {
-        this(null);
     }
     
     public Query(String title) {
@@ -89,5 +92,21 @@ public class Query {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

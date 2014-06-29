@@ -248,6 +248,15 @@ public class TaskDAO {
             sql.append(" and contains(exo:title, '").append(Utils.queryEscape(query.getTitle()));
             sql.append("') ");
         }
+
+        if (query.getPriority() != null) {
+            sql.append(" and exo:priority = ").append(query.getPriority().priority());
+        }
+
+        if (query.getStatus() != null) {
+            sql.append(" and exo:status = ").append(query.getStatus().status());
+        }
+        
         if (query.getAssignee() != null) {
             sql.append(" and contains(exo:assignee, '").append(Utils.queryEscape(query.getAssignee()));
             sql.append("') ");

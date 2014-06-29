@@ -28,6 +28,7 @@ import org.exoplatform.task.TaskService;
 import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Priority;
 import org.exoplatform.task.model.Project;
+import org.exoplatform.task.model.Query;
 import org.exoplatform.task.model.Status;
 import org.exoplatform.task.model.Task;
 import org.exoplatform.web.application.ApplicationMessage;
@@ -407,6 +408,24 @@ public abstract class AbstractPortlet extends GenericPortlet {
         String view = request.getParameter("view");
         if (view != null) {
             if (view.equals("dashboard")) {
+                Query q = new Query();
+                q.setAssignee(user);
+                q.setStatus(Status.OPEN);
+                List<Task> open = service.findTasks(q, 0, -1);
+                request.setAttribute("open", open);
+
+                q.setStatus(Status.INPROGRESS);
+                List<Task> inprogress = service.findTasks(q, 0, -1);
+                request.setAttribute("inprogress", inprogress);
+
+                q.setStatus(Status.RESOLVED);
+                List<Task> resolved = service.findTasks(q, 0, -1);
+                request.setAttribute("resolved", resolved);
+
+                q.setStatus(Status.REFUSED);
+                List<Task> refused = service.findTasks(q, 0, -1);
+                request.setAttribute("refused", refused);
+
                 render("/dashboard.jsp", request, response);
                 return;
             }

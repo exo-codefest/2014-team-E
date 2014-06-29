@@ -39,6 +39,13 @@ public class Task implements Activity {
         this.createdDate = System.currentTimeMillis();
     }
 
+    public Task(String projectId, String title, Priority priority, String assignee) {
+        this.projectId = projectId;
+        this.title = title;
+        this.priority = priority;
+        this.assignee = assignee;
+    }
+
     public String getId() {
         return id;
     }

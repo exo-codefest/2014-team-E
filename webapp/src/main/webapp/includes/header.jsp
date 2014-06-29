@@ -19,7 +19,7 @@
     dashboard.setParameter("view", "dashboard");
 %>
 <div class="header">
-  <h4 class="header-app"><a class="pull-right" href="<%=dashboard.toString()%>"><i class="icon-th icon-white"></i></a>MasterTask</h4>
+  <h4 class="header-app"><a class="pull-right" href="<%=dashboard.toString()%>" title="My Dashboard"><i class="icon-th icon-white"></i></a>MasterTask</h4>
   <ul class="breadcrumb">
     <li><a href="<%=allProjectURL.toString()%>">Projects</a> <span class="divider"><i class="uiIconMiniArrowRight"></i></span></li>
     <% if (currentProject != null) {

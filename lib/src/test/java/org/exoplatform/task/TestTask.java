@@ -24,5 +24,48 @@ public class TestTask extends AbstractTest {
         assertEquals(Status.OPEN, t.getStatus());
     }
 
-    
+    public void testFindingTask() {
+        addTask(testProject.getId(), "foo task", "root", Priority.BLOCKER, Status.OPEN);
+        addTask(testProject.getId(), "bar task", "john", Priority.MAJOR, Status.INPROGRESS);
+        addTask(testProject.getId(), "zoo task", "root", Priority.MINOR, Status.RESOLVED);
+        addTask(testProject.getId(), "zzee task", "root", Priority.BLOCKER, Status.RESOLVED);
+        addTask(testProject.getId(), "dido task", "john", Priority.BLOCKER, Status.REFUSED);
+        Query q = new Query();
+        q.setAssignee("root");
+        List<Task> list = service.findTasks(q, 0, -1);
+        assertEquals(3, list.size());
+
+        q.setTitle("foo");
+        list = service.findTasks(q, 0, -1);
+        assertEquals(1, list.size());
+
+        q.setTitle("bar");
+        list = service.findTasks(q, 0, -1);
+        assertEquals(0, list.size());
+
+        q = new Query();
+        q.setPriority(Priority.BLOCKER);
+        list = service.findTasks(q, 0, -1);
+        assertEquals(3, list.size());
+
+        q = new Query();
+        q.setAssignee("root");
+        q.setStatus(Status.OPEN);
+        list = service.findTasks(q, 0, -1);
+        assertEquals(1, list.size());
+
+        q.setStatus(Status.RESOLVED);
+        list = service.findTasks(q, 0, -1);
+        assertEquals(2, list.size());
+
+        q.setStatus(Status.INPROGRESS);
+        list = service.findTasks(q, 0, -1);
+        assertEquals(0, list.size());
+    }
+
+    protected void addTask(String projectId, String title, String assignee, Priority priority, Status status) {
+        Task task = new Task(projectId, title, priority, assignee);
+        task.setStatus(status);
+        service.addTask(task);
+    }
 }
