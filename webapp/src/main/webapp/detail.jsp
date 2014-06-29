@@ -155,7 +155,7 @@
       <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority()%></span>
     </div>
     <div class="span12">
-      <div class="span4">Assignee: <%=(task.getAssignee() == null ? "none" : task.getAssignee())%></div>
+      <div class="span4">Assignee: <%=(task.getAssignee() == null || task.getAssignee().isEmpty() ? "unasign" : task.getAssignee())%></div>
       <div class="span8">
         <%if(task.getLabels() != null && task.getLabels().size() > 0){%>
           <span>Label: </span>

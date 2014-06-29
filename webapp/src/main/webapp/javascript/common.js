@@ -366,7 +366,7 @@
     return false;
   });
 
-  $('div.detail-view').on('click', 'a.change-status', function(e){
+  $('div.GitMasterPortlet').on('click', 'a.change-status', function(e){
     var $a = $(e.target).closest('a');
     var $btn = $a.closest('.btn-status');
 
@@ -387,6 +387,33 @@
 
         var task = response.data;
         $btn.find('button[data-toggle="dropdown"] > span.value').html(task.statusName);
+      }
+    });
+
+    return true;
+  });
+
+  $('div.GitMasterPortlet').on('click', 'a.change-assignee', function(e){
+    var $a = $(e.target).closest('a');
+    var $btn = $a.closest('.btn-assign');
+
+    var url = $btn.attr('url');
+    var assignee = $a.attr('assignee');
+
+    $.ajax({
+      url: url,
+      method: 'GET',
+      data: {
+        assignee: assignee
+      },
+      dataType: 'json',
+      success: function(response) {
+        if(response.code != 200) {
+          return;
+        }
+
+        var task = response.data;
+        $btn.find('button[data-toggle="dropdown"] > span.value').html(task.assigneeName);
       }
     });
 

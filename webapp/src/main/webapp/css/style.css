@@ -88,3 +88,18 @@
 .comments ul li:first-child {
     border: none;
 }
+
+td button.btn {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+}
+td button.btn .caret {
+    visibility: hidden;
+}
+td button.btn:hover {
+    border-color: #ccc;
+}
+td button.btn:hover .caret {
+    visibility: visible;
+}

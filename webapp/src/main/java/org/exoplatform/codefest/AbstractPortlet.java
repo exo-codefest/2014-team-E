@@ -148,6 +148,53 @@ public abstract class AbstractPortlet extends GenericPortlet {
             result.put("data", json);
         }
 
+        if("assign".equals(action)) {
+            String taskId = request.getParameter(PARAM_OBJECT_ID);
+            String assingee = request.getParameter("assignee");
+
+            User u = null;
+            try {
+                u = orgService.getUserHandler().findUserByName(assingee);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+                if (u == null) {
+                    result.put("code", 406);
+                    result.put("message", "User is not exists");
+                    result.put("data", "");
+                }
+            }
+
+            if(u != null) {
+                Task task = service.getTask(taskId);
+                task.setAssignee(u.getUserName());
+
+                task = service.updateTask(task);
+
+                JSONObject json = new JSONObject();
+                json.put("id", task.getId());
+                json.put("title", task.getTitle());
+                json.put("created", task.getCreatedDate());
+                json.put("assignee", task.getAssignee());
+                json.put("assigneeName", u.getFullName());
+                JSONArray array = new JSONArray();
+                for(String l : task.getLabels()) {
+                    array.put(l);
+                }
+                json.put("labels", array);
+                json.put("modified", task.getModifiedDate());
+                json.put("priority", task.getPriority().priority());
+                json.put("priorityName", task.getPriority().name());
+                json.put("status", task.getStatus().status());
+                json.put("statusName", task.getStatus().name());
+                json.put("reporter", task.getReporter());
+
+                result.put("code", 200);
+                result.put("message", "successfully");
+                result.put("data", json);
+            }
+        }
+
         out.print(result.toString());
     }
     protected void serveComment(String action, ResourceRequest request, ResourceResponse response) throws PortletException, IOException, JSONException {
@@ -338,6 +385,30 @@ public abstract class AbstractPortlet extends GenericPortlet {
                         return o2.getCreatedDate().compareTo(o1.getCreatedDate());
                     }
                 });
+
+                //. Load all user of this project
+                Set<String> membershipts = project.getMemberships();
+                Map<String, User> users = new HashMap<String, User>();
+                try {
+                    User u = orgService.getUserHandler().findUserByName(user);
+                    users.put(u.getUserName(), u);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+                for(String group : membershipts) {
+                    try {
+                        ListAccess<User> list = orgService.getUserHandler().findUsersByGroupId(group);
+                        int size = list.getSize();
+                        for(User u : list.load(0, size)) {
+                            users.put(u.getUserName(), u);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+                request.setAttribute("usersInProject", users);
 
                 render("/issues.jsp", request, response);
                 return;
