@@ -33,6 +33,8 @@
         projectURL.setParameter("projectId", currentProject.getId());
     %>
     <li><a class="active" href="<%=projectURL.toString()%>"><%=currentProject.getName()%></a>
+    <% } else if("dashboard".equals(currentView)) {%>
+    <li><a class="active" href="#">My Dashboard</a>
     <% } %>
   </ul>
 </div>

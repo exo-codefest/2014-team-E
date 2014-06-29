@@ -36,10 +36,10 @@
       <table class="table table-hover table-project">
         <thead>
           <tr>
-            <th>Project Name</th>
-            <th>Description</th>
-            <th>Members</th>
-            <th>Action</th>
+            <th class="span2">Project Name</th>
+            <th class="span5">Description</th>
+            <th class="span4">Members</th>
+            <th class="span1">Action</th>
           </tr>
         </thead>
         <tbody>

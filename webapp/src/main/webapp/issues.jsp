@@ -86,10 +86,10 @@
   <thead>
     <tr>
       <th><input type="checkbox" id="select_all_tasks"></th>
-      <th>Task</th>
-      <th class="text-center">Priority</th>
-      <th class="text-center">Status</th>
-      <th class="text-center w45">Assignee</th>
+      <th class="span7">Task</th>
+      <th class="text-center span1">Priority</th>
+      <th class="text-center span1">Status</th>
+      <th class="text-center span3">Assignee</th>
     </tr>
   </thead>
   <tbody>
