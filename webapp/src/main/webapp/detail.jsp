@@ -27,7 +27,7 @@
   String moreCommentURL = (String)renderRequest.getAttribute("moreCommentURL");
 
   Map<String, User> usersInProject = (Map<String, User>)renderRequest.getAttribute("usersInProject");
-  DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+  DateFormat df = new SimpleDateFormat("dd/MMM/yyyy h:mm a");
 %>
 <div class="detail-view">
   <div class="row-fluid task-edit" style="display: none">
@@ -99,7 +99,7 @@
                 %>
                   <span class="task-label">
                     <span class="badge">
-                      <%=label%>
+                      <span class="value"><%=label%></span>
                       <a class="close" href="javascript:void(0);">&times;</a>
                     </span>
                   </span>
@@ -159,7 +159,7 @@
         <div class="row-fluid">
           <div class="span6">
             <span>Created time: </span>
-            <span><%=task.getCreatedDate()%></span>
+            <span><%=df.format(task.getCreatedDate())%></span>
           </div>
           <div class="span6 text-right">
             <span>Priority: </span>
@@ -168,31 +168,21 @@
         </div><!-- .row-fluid -->
         <div class="row-fluid">
           <div class="span6">
-            <div class="span4">Assignee: <%=(task.getAssignee() == null ? "none" : task.getAssignee())%></div>
-            <div class="span8">
-              <%if(task.getLabels() != null && task.getLabels().size() > 0){%>
-                <span>Label: </span>
-                <%for(String label : task.getLabels()) {%>
-                  <span class="badge"><%=label%></span>
-                <%}%>
-              <%}%>
-            </div>
+            <div class="">Assignee: <%=(task.getAssignee() == null ? "none" : task.getAssignee())%></div>
           </div>
         </div>
         <div class="row-fluid">
           <div class="span6">
-            <div class="">Label:
-              <span class="task-label">
-                <span class="badge">label 
-                <a href="javascript:void(0);" class="close">&times;</a>
+            <%if(task.getLabels() != null && task.getLabels().size() > 0){%>
+              <div class="">Label:
+              <%for(String label : task.getLabels()) {%>
+                <span class="task-label">
+                  <span class="badge"><%=label%>
+                    <a href="javascript:void(0);" class="close">&times;</a>
+                  </span>
                 </span>
-              </span>
-              <span class="task-label">
-                <span class="badge">label 
-                <a href="javascript:void(0);" class="close">&times;</a>
-                </span>
-              </span>
-            </div>
+              <%}%>
+            <%}%>
           </div>
         </div>
       </div><!-- .task-detail-info -->
@@ -207,6 +197,40 @@
                 <!-- Template of display a comment -->
                 <div id="comment_template" style="display: none">
                   <div class="comment">
+                    <div class="head-comment">
+                      <a href="#" class="user">
+                        <b>%AUTHOR% comment</b>
+                      </a>
+                      <div class="pull-right">
+                        <i class="time">at %COMMENT_TIME%</i>
+                        <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
+                        <a class="delete-comment" action="delete" url="%DELETE_URL%" href="javascript:void(0);"><i class="icon-trash"></i></a>
+                      </div>
+                    </div>
+                    <div class="body">%COMMENT_TEXT%</div>
+                    <div class="edit" style="display: none">
+                      <form action="%UPDATE_URL%" method="POST" class="form-update-comment">
+                        <div>
+                          <input type="hidden" name="objectType" value="comment"/>
+                          <input type="hidden" name="action" value="update"/>
+                          <input type="hidden" name="taskId" value="%TASKID%"/>
+                          <input type="hidden" name="commentId" value="%COMMENT_ID%"/>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <textarea class="span12" name="comment" rows="2">%COMMENT_TEXT%</textarea>
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="reset" class="btn">Cancel</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <%--<div class="comment">
                     <div class="header">
                       %AUTHOR% comment at %COMMENT_TIME%
                       <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
@@ -234,7 +258,7 @@
                         </div>
                       </form>
                     </div>
-                  </div>
+                  </div>--%>
                 </div>
               </li>
               <%for (Comment comment : comments) {%>

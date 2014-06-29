@@ -36,6 +36,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -201,6 +203,8 @@ public abstract class AbstractPortlet extends GenericPortlet {
         String user = request.getRemoteUser();
         PrintWriter out = response.getWriter();
 
+        DateFormat df = new SimpleDateFormat("dd/MMM/yyyy h:mm a");
+
         JSONObject result = new JSONObject();
         result.put("code", 400);
         result.put("message", "Bad Request");
@@ -248,7 +252,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 c.put("id", cmt.getId());
                 c.put("taskId", cmt.getTaskId());
                 c.put("author", cmt.getAuthor());
-                c.put("created", cmt.getCreatedDate());
+                c.put("created", df.format(cmt.getCreatedDate()));
                 c.put("text", cmt.getText());
 
                 ResourceURL delete = response.createResourceURL();
@@ -292,7 +296,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
             json.put("id", comment.getId());
             json.put("taskId", comment.getTaskId());
             json.put("author", comment.getAuthor());
-            json.put("created", comment.getCreatedDate());
+            json.put("created", df.format(comment.getCreatedDate()));
             json.put("text", comment.getText());
 
             ResourceURL delete = response.createResourceURL();
@@ -330,7 +334,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 json.put("id", c.getId());
                 json.put("taskId", c.getTaskId());
                 json.put("author", c.getAuthor());
-                json.put("created", c.getCreatedDate());
+                json.put("created", df.format(c.getCreatedDate()));
                 json.put("text", c.getText());
 
                 ResourceURL delete = response.createResourceURL();

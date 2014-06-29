@@ -174,7 +174,7 @@
       var l = newArrayLabels[i];
       if(-1 == $.inArray(l, arrayLabels)) {
         arrayLabels.push(l);
-        $('<span class="task-label"><span class="badge">'+l+'</span> <a class="close" href="javascript:void(0);">&times;</a></span>').appendTo($listLabels);
+        $('<span class="task-label"><span class="badge"><span class="value">'+l+'</span><a class="close" href="javascript:void(0);">&times;</a></span></span>').appendTo($listLabels);
       }
     }
 
@@ -188,7 +188,7 @@
     var labels = $labels.val();
     var arrayLabels = labels.split(',');
     var newArrayLabels = new Array();
-    var label = $.trim($label.find('span.badge').html());
+    var label = $.trim($label.find('span.value').html());
 
     for(var i = 0 ; i < arrayLabels.length; i++) {
       if(label != arrayLabels[i]) {
@@ -257,7 +257,7 @@
           html = html.replace('%COMMENT_ID%', comment.id);
           html = html.replace('%COMMENT_TEXT%', comment.text);
           html = html.replace('%UPDATE_URL%', comment.updateURL);
-          html = "<li>" + html + "</li>";
+          html = "<li class='item-comment'>" + html + "</li>";
 
           $(html).insertAfter($li);
         })
@@ -329,7 +329,7 @@
         html = html.replace('%COMMENT_ID%', comment.id);
         html = html.replace('%COMMENT_TEXT%', comment.text);
         html = html.replace('%UPDATE_URL%', comment.updateURL);
-        html = "<li>" + html + "</li>";
+        html = "<li class='item-comment'>" + html + "</li>";
 
         $(html).insertBefore($li);
         $textarea.val('');
