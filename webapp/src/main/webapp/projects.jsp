@@ -286,11 +286,7 @@ if (p != null) {
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn btn-primary">Create</button>
-                    <%
-                      PortletURL cancelURL = renderResponse.createRenderURL();
-                      allProjectURL.setParameter("view", "projects");
-                    %>
-                    <button type="button" class="btn" onclick="window.location=<%=cancelURL.toString()%>">Cancel</button>
+                    <button type="button" class="btn" onclick="window.location.reload()">Cancel</button>
                 </div>
             </div>
         </fieldset>
