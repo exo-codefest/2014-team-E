@@ -152,8 +152,18 @@
             </div>
           </div>
           <div class="span6 text-right">
+            <%
+              String reporter = task.getReporter();
+              if(reporter == null || reporter.isEmpty()) {
+                reporter = "Guest";
+              }
+              if(usersInProject.containsKey(reporter)) {
+                User u = usersInProject.get(reporter);
+                reporter = u.getFullName();
+              }
+            %>
             <span>Reporter: </span>
-            <span><strong><%=(task.getReporter() == null ? "guest" : task.getReporter())%></strong></span>
+            <span><strong><%=reporter%></strong></span>
           </div>
         </div><!-- .row-fluid -->
         <div class="row-fluid">
