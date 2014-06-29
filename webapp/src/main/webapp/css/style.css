@@ -196,8 +196,11 @@
 }
 
 .dashboard .state {
-	background-color: #FFFFFF;
+	background-color: #5373a9;
+	color: #FFFFFF;
+	padding: 10px 0px;
 	text-align: center;
+	border-radius: 4px 4px 0 0
 } 
 
 .dashboard .task {
@@ -205,8 +208,12 @@
 	margin: 10px 0px;
 	background-color: #FFFFFF;
 	cursor: move;
+	padding: 10px;
 }
 
+.dashboard .task.done {
+	text-decoration: line-through;
+}
 .GitMasterPortlet .task-label .badge {
     padding: 3px 6px;
 }

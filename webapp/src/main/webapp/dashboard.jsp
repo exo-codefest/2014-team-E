@@ -34,7 +34,7 @@ List<Task> tasks = (List<Task>)renderRequest.getAttribute("open");
     <div class="droppable">
       <% tasks = (List<Task>)renderRequest.getAttribute("refused"); %>
       <% for(Task t : tasks) {%>
-      <div class="task draggable"><%=t.getTitle() %></div>
+      <div class="task draggable done"><%=t.getTitle() %></div>
       <%} %>
     </div>
   </div>
@@ -43,7 +43,7 @@ List<Task> tasks = (List<Task>)renderRequest.getAttribute("open");
     <div class="droppable">
       <% tasks = (List<Task>)renderRequest.getAttribute("resolved"); %>
       <% for(Task t : tasks) {%>
-      <div class="task draggable"><%=t.getTitle() %></div>
+      <div class="task draggable done"><%=t.getTitle() %></div>
       <%} %>
     </div>
   </div>
