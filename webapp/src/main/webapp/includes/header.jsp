@@ -36,7 +36,7 @@
     <% } %>
   </ul>
   <%
-  	if (currentView == null) {
+   if (currentView == null || "projects".equals(currentView)) {
   %>
   	<input type="text" class="filterProject" placeholder="Filter by Project Name"></input>
   <%
@@ -46,7 +46,7 @@
   	 filterTaskURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK_LIST);
   	 filterTaskURL.setParameter("projectId", project.getId());
   %>
-  <div class="filterTask" filterURL="<%=filterTaskURL%>">
+  <div class="filterTask contain-btn" filterURL="<%=filterTaskURL%>">
    <div class="btn-group btn-priority filterTaskPriority">
      <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value">All Priority</span> <span class="caret"></span></button>
      <ul class="dropdown-menu">
