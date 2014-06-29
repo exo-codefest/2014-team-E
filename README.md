@@ -37,7 +37,7 @@ See the table to know which you can play now, and next features of **MasterTask*
 
 <table>
 <tr><td>1</td><td>Creating new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>2</td><td>[Editing project](#editing_project) <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>2</td><td>Editing project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>3</td><td>Deleting project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>5</td><td>Adding collaborators for projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>6</td><td>Sorting projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
@@ -61,7 +61,7 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 # How to use?
 
-## Creating a new project
+## Creating new project
 
 1. Open the **MasterTask** app. The **MasterTask** screen is displayed as follow. 
 
@@ -70,32 +70,59 @@ See the following diagram to understand the progess of our team for MasterTask:
 	A list of projects will be displayed. 
 	If you have no project, there will be a message: *No project is available, please create one!*. 
 
-1. Click **Create new project** to open the form.
+1. Click **Create new project** button to open the form.
 
 	<img src="screenshots/new_project_form.png" width="600">
 
-1. Enter title and description for your project.
+1. Enter **Project name** (mandatory) and **Description** for your project.
 
-	```
-	The asterisk (*) mean the field is mandatory.
-	```
-
-1. Select a group to whom you want to share by clicking down-arrow icon to select and click **Add**. 
-	This means only users who belong to the shared groups can see that project in the **Shared Projects** tab.
+1. Select a group by clicking the down-arrow icon of **Shared Groups**, then click **Add**. 
+	This means only members of the shared groups can see that project in their **Shared Projects** tab.
 	
-1. Click **Create** to finish.
+	```
+	* Repeat this step if you want to shared with many groups.
+	* Click **x** next to each group that you don't want to share anymore.
+	```
+	
+1. Click **Create** button to finish.
 
 ## Sorting your projects
 
-Currently, your projects are classified into types:
+To find your needed projects quickly, click either of tabs:
 
 * **My Projects**: Lists projects that are created by yourself.
 
-* **Shared Projects**: Lists projects that another shared with groups to whom you belong.
+	<img src="screenshots/my_projects.png" width="650">
+	
+	** Here, you can make any changes to your desires or delete your own projects.
+	
+* **Shared Projects**: Lists projects that another shared with groups where you are member.
 
-To find your needed projects quickly, click either of tabs: **My Projects** or **Shared Projects**.
+	<img src="screenshots/shared_projects.png" width="650">
+	
+	Here, you can:
+	
+	** See information of shared projects, including: **Project Name**, **Description**, **Owners** and **Members**.
+	
+	** View details of shared projects, and do actions regarding to their tasks (for example, creating new, editing, or deleting, commenting).
+	
+	** However, you have no right to make changes or delete these shared projects.
+	
+## Filtering projects
 
-## Editing a project {#editing_project}
+After sorting your projects by either of above tabs (**My Projects**, **Shared Projects**), 
+you still find difficult to find exactly your projects because of so many. 
+In this case, you can continue filter your project from the list of selected tab as follows:
+
+1. Type name into the mini filter form.
+
+	<img src="screenshots/filter_project_name.png" width="300">
+
+2. Hit **Enter** key to perform your selected filter.
+
+The projects that match with your input will be listed in the selected tab.
+
+## Editing project
 
 1. In the list of projects, click <img src="screenshots/edit_icon.png" width="15">. 
    The **Edit project** form is displayed at the bottom of the projects list.
