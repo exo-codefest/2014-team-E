@@ -29,7 +29,7 @@
   Map<String, User> usersInProject = (Map<String, User>)renderRequest.getAttribute("usersInProject");
   DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 %>
-<div class="container-fluid detail-view">
+<div class="detail-view">
   <div class="row-fluid task-edit" style="display: none">
     <form id="form-edit-task" action="<portlet:actionURL />" method="POST" class="form-horizontal">
       <div>
@@ -97,7 +97,12 @@
                   }
                   labelVals.append(label);
                 %>
-                  <span class="task-label"><span class="badge"><%=label%></span> <a class="close" href="javascript:void(0);">&times;</a></span>
+                  <span class="task-label">
+                    <span class="badge">
+                      <%=label%>
+                      <a class="close" href="javascript:void(0);">&times;</a>
+                    </span>
+                  </span>
                 <%}
               }
             %>
@@ -116,162 +121,194 @@
     </form>
   </div>
   <div class="row-fluid task-detail">
-    <div class="span10">
-      <h2><%=task.getTitle()%></h2>
-    </div>
-    <div class="span2">
-      <a class="uiActionWithLabel pull-right edit" href="javascript:void(0);"><i class="uiIconEditMini uiIconLightGray"></i>Edit</a>
-    </div>
-    <div class="span12">
-      <%--<span class="label label-info"><%=task.getStatus()%></span>--%>
-      <%
-        ResourceURL changeStatusURL = renderResponse.createResourceURL();
-        changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK);
-        changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
-        changeStatusURL.setParameter(AbstractPortlet.PARAM_ACTION, "updateStatus");
-      %>
-      <span>Status: </span>
-      <div class="btn-group btn-status" url-changeStatus="<%=changeStatusURL%>">
-        <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getStatus()%></span> <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <%for(Status status : Status.values()){
-          %>
-            <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.name()%></a></li>
-          <%}%>
-        </ul>
+    <div class="uiGrayLightBox toolbar-table clearfix">
+      <div class="pull-left">
+        <h5><%=task.getTitle()%></h5>
       </div>
-    </div>
-    <div class="span12">
-      <span>Reporter: </span>
-      <span><strong><%=(task.getReporter() == null ? "guest" : task.getReporter())%></strong></span>
-    </div>
-    <div class="span12">
-      <span>Created time: </span>
-      <span><%=task.getCreatedDate()%></span>
-    </div>
-
-    <div class="span12">
-      <span>Priority: </span>
-      <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority()%></span>
-    </div>
-    <div class="span12">
-      <div class="span4">Assignee: <%=(task.getAssignee() == null || task.getAssignee().isEmpty() ? "unasign" : task.getAssignee())%></div>
-      <div class="span8">
-        <%if(task.getLabels() != null && task.getLabels().size() > 0){%>
-          <span>Label: </span>
-          <%for(String label : task.getLabels()) {%>
-            <span class="badge"><%=label%></span>
-          <%}%>
-        <%}%>
+      <div class="pull-right">
+        <a class="uiActionWithLabel pull-right edit" href="javascript:void(0);"><i class="uiIconEditMini uiIconLightGray"></i>Edit</a>
       </div>
-    </div>
-  </div>
-  <div class="row-fluid comments">
-    <div class="span12">
-      <ul>
-        <li>
-          <%if(moreCommentURL != null && !moreCommentURL.isEmpty()) {%>
-          <a class="load-more-comment" href="javascript:void(0);" url="<%=moreCommentURL%>">Load more</a>
-          <%}%>
-          <!-- Template of display a comment -->
-          <div id="comment_template" style="display: none">
-            <div class="comment">
-              <div class="header">
-                %AUTHOR% comment at %COMMENT_TIME%
-                <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
-                <a class="delete-comment" action="delete" url="%DELETE_URL%" href="javascript:void(0);"><i class="icon-trash"></i></a>
-              </div>
-              <div class="body">%COMMENT_TEXT%</div>
-              <div class="edit" style="display: none">
-                <form action="%UPDATE_URL%" method="POST" class="form-update-comment ">
+    </div><!-- .uiGrayLightBox -->
+    <div class="">
+      <div class="task-detail-info">
+        <div class="row-fluid">
+          <div class="span6">
+            <%--<span class="label label-info"><%=task.getStatus()%></span>--%>
+            <%
+              ResourceURL changeStatusURL = renderResponse.createResourceURL();
+              changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK);
+              changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
+              changeStatusURL.setParameter(AbstractPortlet.PARAM_ACTION, "updateStatus");
+            %>
+            <span>Status: </span>
+            <div class="btn-group btn-status" url-changeStatus="<%=changeStatusURL%>">
+              <button class="btn dropdown-toggle btn-mini btn-primary" data-toggle="dropdown"><span class="value"><%=task.getStatus()%></span> <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <%for(Status status : Status.values()){
+                %>
+                  <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.name()%></a></li>
+                <%}%>
+              </ul>
+            </div>
+          </div>
+          <div class="span6 text-right">
+            <span>Reporter: </span>
+            <span><strong><%=(task.getReporter() == null ? "guest" : task.getReporter())%></strong></span>
+          </div>
+        </div><!-- .row-fluid -->
+        <div class="row-fluid">
+          <div class="span6">
+            <span>Created time: </span>
+            <span><%=task.getCreatedDate()%></span>
+          </div>
+          <div class="span6 text-right">
+            <span>Priority: </span>
+            <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority()%></span>
+          </div>
+        </div><!-- .row-fluid -->
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="span4">Assignee: <%=(task.getAssignee() == null ? "none" : task.getAssignee())%></div>
+            <div class="span8">
+              <%if(task.getLabels() != null && task.getLabels().size() > 0){%>
+                <span>Label: </span>
+                <%for(String label : task.getLabels()) {%>
+                  <span class="badge"><%=label%></span>
+                <%}%>
+              <%}%>
+            </div>
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="">Label:
+              <span class="task-label">
+                <span class="badge">label 
+                <a href="javascript:void(0);" class="close">&times;</a>
+                </span>
+              </span>
+              <span class="task-label">
+                <span class="badge">label 
+                <a href="javascript:void(0);" class="close">&times;</a>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div><!-- .task-detail-info -->
+      <h4 class="titleWithBorder">15 Comments</h4>
+        <div class="row-fluid comments">
+          <div class="span12">
+            <ul>
+              <li class="load-more-item">
+                <%if(moreCommentURL != null && !moreCommentURL.isEmpty()) {%>
+                <a class="load-more-comment" href="javascript:void(0);" url="<%=moreCommentURL%>"><span>Load more</span></a>
+                <%}%>
+                <!-- Template of display a comment -->
+                <div id="comment_template" style="display: none">
+                  <div class="comment">
+                    <div class="header">
+                      %AUTHOR% comment at %COMMENT_TIME%
+                      <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
+                      <a class="delete-comment" action="delete" url="%DELETE_URL%" href="javascript:void(0);"><i class="icon-trash"></i></a>
+                    </div>
+                    <div class="body">%COMMENT_TEXT%</div>
+                    <div class="edit" style="display: none">
+                      <form action="%UPDATE_URL%" method="POST" class="form-update-comment ">
+                        <div>
+                          <input type="hidden" name="objectType" value="comment"/>
+                          <input type="hidden" name="action" value="update"/>
+                          <input type="hidden" name="taskId" value="%TASKID%"/>
+                          <input type="hidden" name="commentId" value="%COMMENT_ID%"/>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <textarea name="comment" rows="2">%COMMENT_TEXT%</textarea>
+                          </div>
+                        </div>
+                        <div class="control-group">
+                          <div class="controls">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="reset" class="btn">Cancel</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <%for (Comment comment : comments) {%>
+              <li class="item-comment">
+                <%
+                  ResourceURL deleteCommentURL = renderResponse.createResourceURL();
+                  deleteCommentURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_COMMENT);
+                  deleteCommentURL.setParameter(AbstractPortlet.PARAM_ACTION, "delete");
+                  deleteCommentURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, comment.getId());
+                %>
+                <div class="comment">
+                  <div class="head-comment">
+                    <a href="#" class="user">
+                      <b><%=(comment.getAuthor() == null ? "anonymous" : comment.getAuthor())%> comment</b>
+                    </a>
+                    <div class="pull-right">
+                      <i class="time">at <%=(df.format(comment.getCreatedDate() == null ? new Date() : comment.getCreatedDate()))%></i>
+                      <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
+                      <a class="delete-comment" action="delete" url="<%=deleteCommentURL.toString()%>" href="javascript:void(0);"><i class="icon-trash"></i></a>
+                    </div>
+                  </div>
+                  <div class="body"><%=comment.getText()%></div>
+                  <div class="edit" style="display: none">
+                    <%
+                      ResourceURL updateURL = renderResponse.createResourceURL();
+                    %>
+                    <form action="<%=updateURL%>" method="POST" class="form-update-comment">
+                      <div>
+                        <input type="hidden" name="objectType" value="comment"/>
+                        <input type="hidden" name="action" value="update"/>
+                        <input type="hidden" name="taskId" value="<%=task.getId()%>"/>
+                        <input type="hidden" name="commentId" value="<%=comment.getId()%>"/>
+                      </div>
+                      <div class="control-group">
+                        <div class="controls">
+                          <textarea class="span12" name="comment" rows="2"><%=comment.getText()%></textarea>
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <div class="controls">
+                          <button type="submit" class="btn btn-primary">Update</button>
+                          <button type="reset" class="btn">Cancel</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </li>
+              <%}%>
+              <li class="comment-box">
+                <%
+                  ResourceURL createURL = renderResponse.createResourceURL();
+                %>
+                <form id="form-add-comment" action="<%=createURL%>" method="POST" class="">
                   <div>
                     <input type="hidden" name="objectType" value="comment"/>
-                    <input type="hidden" name="action" value="update"/>
-                    <input type="hidden" name="taskId" value="%TASKID%"/>
-                    <input type="hidden" name="commentId" value="%COMMENT_ID%"/>
+                    <input type="hidden" name="action" value="create"/>
+                    <input type="hidden" name="taskId" value="<%=task.getId()%>"/>
                   </div>
                   <div class="control-group">
                     <div class="controls">
-                      <textarea name="comment" rows="2">%COMMENT_TEXT%</textarea>
+                      <textarea class="textarea span12" name="comment" rows="3"></textarea>
                     </div>
                   </div>
                   <div class="control-group">
                     <div class="controls">
-                      <button type="submit" class="btn btn-primary">Update</button>
-                      <button type="reset" class="btn">Cancel</button>
+                      <button type="submit" class="btn btn-primary">Comment</button>
                     </div>
                   </div>
                 </form>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
-        </li>
-        <%for (Comment comment : comments) {%>
-        <li>
-          <%
-            ResourceURL deleteCommentURL = renderResponse.createResourceURL();
-            deleteCommentURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_COMMENT);
-            deleteCommentURL.setParameter(AbstractPortlet.PARAM_ACTION, "delete");
-            deleteCommentURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, comment.getId());
-          %>
-          <div class="comment">
-            <div class="header">
-              <%=(comment.getAuthor() == null ? "anonymous" : comment.getAuthor())%> comment
-              at <%=(df.format(comment.getCreatedDate() == null ? new Date() : comment.getCreatedDate()))%>
-              <a class="action" action="edit" href="javascript:void(0);"><i class="icon-pencil"></i></a>
-              <a class="delete-comment" action="delete" url="<%=deleteCommentURL.toString()%>" href="javascript:void(0);"><i class="icon-trash"></i></a>
-            </div>
-            <div class="body"><%=comment.getText()%></div>
-            <div class="edit" style="display: none">
-              <%
-                ResourceURL updateURL = renderResponse.createResourceURL();
-              %>
-              <form action="<%=updateURL%>" method="POST" class="form-update-comment">
-                <div>
-                  <input type="hidden" name="objectType" value="comment"/>
-                  <input type="hidden" name="action" value="update"/>
-                  <input type="hidden" name="taskId" value="<%=task.getId()%>"/>
-                  <input type="hidden" name="commentId" value="<%=comment.getId()%>"/>
-                </div>
-                <div class="control-group">
-                  <div class="controls">
-                    <textarea name="comment" rows="2"><%=comment.getText()%></textarea>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <div class="controls">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                    <button type="reset" class="btn">Cancel</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </li>
-        <%}%>
-        <li>
-          <%
-            ResourceURL createURL = renderResponse.createResourceURL();
-          %>
-          <form id="form-add-comment" action="<%=createURL%>" method="POST" class="">
-            <div>
-              <input type="hidden" name="objectType" value="comment"/>
-              <input type="hidden" name="action" value="create"/>
-              <input type="hidden" name="taskId" value="<%=task.getId()%>"/>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <textarea class = "textarea" name="comment" rows="3" class="span12"></textarea>
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <button type="submit" class="btn btn-primary">Comment</button>
-              </div>
-            </div>
-          </form>
-        </li>
-      </ul>
-    </div>
-  </div>
+        </div><!-- .comment -->
+      </div><!-- . -->
+    </div><!-- .task-detail -->
 </div>
