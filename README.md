@@ -141,4 +141,32 @@ In the list of projects, simply click <img src="screenshots/delete_icon.png" wid
 
 1. Open the details panel of a task.
 
-1. Click  <img src="screenshots/edit_task_icon.png" width="15">
+1. Click <img src="screenshots/edit_task_icon.png" width="30"> to open the **Edit* form. 
+	
+	<img src="screenshots/edit_task_form.png" width="300">
+	
+1. Add more details, or make changes on fields you like, including:
+
+* **Title**: Change title if you like.
+
+* **Priority**: Click the down arrow  to select a priority level for your task. Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED. 
+	If you don't set priority, the default value will be UNDEFINED.
+	
+* **Status**: Click the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
+	OPEN is auto set for Status when you create a new task quickly.
+	
+* **Assignee**: Click the down arrow to assign your task to one user. 
+	Remember that, only users who are in the **Shared Groups** of the **project** are listed in the drop-down menu. 
+	This means that you can only assign this task to one user who belongs to the group with the project has shared.
+
+* **Label**: Add labels to note your task, then click *Add* button or hit **Enter** key.
+	The newly created label will be updated right above the Add Label form. 
+	Click **x** next to a label to remove it.
+
+1. Click **Update** button to finish your changes, or **Cancel** to exit the Edit Task form without changes.
+
+### Adding comment to a task
+
+1. Click one task to open the **Task Details** view.
+
+2. At the bottom of this view, enter your comment to the text box, then click **Comment** button.
