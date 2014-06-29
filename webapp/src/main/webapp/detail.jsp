@@ -323,8 +323,18 @@
                 %>
                 <div class="comment">
                   <div class="head-comment">
+                    <%
+                      String author = comment.getAuthor();
+                      if(author == null || author.isEmpty()) {
+                        author = "Anonymous";
+                      }
+                      if(usersInProject.containsKey(author)) {
+                        User u = usersInProject.get(author);
+                        author = u.getFullName();
+                      }
+                    %>
                     <a href="#" class="user">
-                      <b><%=(comment.getAuthor() == null ? "anonymous" : comment.getAuthor())%> comment</b>
+                      <b><%=author%> comment</b>
                     </a>
                     <div class="pull-right">
                       <i class="time">at <%=(df.format(comment.getCreatedDate() == null ? new Date() : comment.getCreatedDate()))%></i>

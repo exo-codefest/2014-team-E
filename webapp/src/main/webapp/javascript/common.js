@@ -249,7 +249,7 @@
         $.each(comments, function(index, comment) {
           var $html = $template.clone();
           var html = $html.html();
-          html = html.replace('%AUTHOR%', comment.author);
+          html = html.replace('%AUTHOR%', comment.authorName);
           html = html.replace('%COMMENT_TIME%', comment.created);
           html = html.replace('%DELETE_URL%', comment.deleteURL);
           html = html.replace('%COMMENT_TEXT%', comment.text);
@@ -321,7 +321,7 @@
         var $html = $template.clone();
 
         var html = $html.html();
-        html = html.replace('%AUTHOR%', comment.author);
+        html = html.replace('%AUTHOR%', comment.authorName);
         html = html.replace('%COMMENT_TIME%', comment.created);
         html = html.replace('%DELETE_URL%', comment.deleteURL);
         html = html.replace('%COMMENT_TEXT%', comment.text);

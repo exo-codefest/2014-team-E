@@ -284,6 +284,14 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 c.put("id", cmt.getId());
                 c.put("taskId", cmt.getTaskId());
                 c.put("author", cmt.getAuthor());
+                c.put("authorName", cmt.getAuthor());
+                if(cmt.getAuthor() != null && !cmt.getAuthor().isEmpty()) {
+                    try {
+                        User u = orgService.getUserHandler().findUserByName(cmt.getAuthor());
+                        c.put("authorName", u.getFullName());
+                    } catch (Exception ex) {}
+                }
+
                 c.put("created", df.format(cmt.getCreatedDate()));
                 c.put("text", cmt.getText());
 
@@ -328,6 +336,14 @@ public abstract class AbstractPortlet extends GenericPortlet {
             json.put("id", comment.getId());
             json.put("taskId", comment.getTaskId());
             json.put("author", comment.getAuthor());
+            json.put("authorName", comment.getAuthor());
+            if(comment.getAuthor() != null && !comment.getAuthor().isEmpty()) {
+                try {
+                    User u = orgService.getUserHandler().findUserByName(comment.getAuthor());
+                    json.put("authorName", u.getFullName());
+                } catch (Exception ex) {}
+            }
+
             json.put("created", df.format(comment.getCreatedDate()));
             json.put("text", comment.getText());
 
@@ -366,6 +382,14 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 json.put("id", c.getId());
                 json.put("taskId", c.getTaskId());
                 json.put("author", c.getAuthor());
+                json.put("authorName", c.getAuthor());
+                if(c.getAuthor() != null && !c.getAuthor().isEmpty()) {
+                    try {
+                        User u = orgService.getUserHandler().findUserByName(c.getAuthor());
+                        json.put("authorName", u.getFullName());
+                    } catch (Exception ex) {}
+                }
+
                 json.put("created", df.format(c.getCreatedDate()));
                 json.put("text", c.getText());
 
