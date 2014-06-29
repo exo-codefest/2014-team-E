@@ -31,7 +31,7 @@ Use this app to control projects and their relevant tasks, then share with your 
 # Overview of MasterTask
 
 Because of limitations to time (2 days for app development) and members (maximum 4 members) as suggested by eXo Jury, 
-our team decided to finish some main points of our app, and next will be promising featutes and of course a cool delicated User Interface from BD team. 
+our team decided to finish some main points of our app, and next will be promising features and of course a cool User Interface from BD Team. 
 See the table to know which you can play now, as well more features that will be introduced soon.
 
 
@@ -49,8 +49,8 @@ See the table to know which you can play now, as well more features that will be
 <tr><td>12</td><td>Updating status for a specific task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>28</td><td>Synchronizing between Calendar and MasterTask <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
 <tr><td>13</td><td>Assigning a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>29</td><td>Creating tasks and notes remotely by email to Project_Team@MasterTask.com <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
 <tr><td>14</td><td>Setting priority to one task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>30</td><td>Quick adding a task right from Project Details view <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
-<tr><td>15</td><td>Addding labels to a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>31</td><td>Adding Task Reporters to control progress more effectively <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
-<tr><td>16</td><td>Fitering tasks by some criteria <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>32</td><td>Mention someone in title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>15</td><td>Adding labels to a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>31</td><td>Adding Task Reporters to control progress more effectively <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>16</td><td>Filtering tasks by some criteria <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>32</td><td>Mention someone in title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
 <tr><td>17</td><td>Adding/Editing/Deleting a comment <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>33</td><td>Clean and very easy-to-use interface <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
 </table>
 
@@ -58,13 +58,13 @@ See the table to know which you can play now, as well more features that will be
 
 * Track issues, bugs and improvements for **MasterTask**, and give your expectations or any feedback at https://github.com/exo-codefest/2014-team-E/issues.
 
-* See the following diagram to understand our plan for MasterTask: 
+* See the following diagram to understand our plan for **MasterTask**: 
 
 <img src="screenshots/progress_diagram.png" width="600"/>
 
 # How to use?
 
-If you are not familar with adding an app to a page, do as follows to access **MasterTask**:
+If you are not familiar with adding an app to a page, do as follows to access **MasterTask**:
 
 1. Open the eXo Platform link of **4.1-M2-codefest-team_e** on Acceptance (https://acceptance.exoplatform.org/).
 
@@ -88,34 +88,32 @@ If you are not familar with adding an app to a page, do as follows to access **M
 
 1. Drag **MasterTask** app from Page Editor and drop it into Page Layout.
 
-1. Click <img src="screenshots/finish_icon.png" width="15"/> to accept these changes.
+1. Click <img src="screenshots/finish_icon.png" width="20"/> to accept these changes.
 You will be redirected to the page that contains **MasterTask**. 
 In this case, it will be: http://codefest-4.1-m2-codefest-team_e.acceptance5.exoplatform.org/portal/intranet/home/page1.
 Now, you can enjoy **MasterTask**! 
 
 ## Creating new project
 
-1. Open the **MasterTask** app. The **MasterTask** screen is displayed as follow. 
+1. Access the **MasterTask** app.
 
-	<img src="screenshots/mastertask_main_screen.png" width="450">
+A list of projects will be displayed. 
 
-	A list of projects will be displayed. 
-	If you have no project, there will be a message: *No project is available, please create one!*. 
+If you have no project, there will be a message: *No project is available, please create one!*. 
 
-1. Click **Create new project** button to open the form.
+1. Click **Create new project** button at the bottom.
 
-	<img src="screenshots/new_project_form.png" width="600">
+	<img src="screenshots/new_project_form.png" width="450">
 
 1. Enter **Project name** (mandatory) and **Description** for your project.
 
 1. Share your project with a group by clicking the down-arrow icon of **Shared Groups**, then click **Add**. 
-	This means only members of the shared groups can work on that project listed in the **Shared Projects** tab.
+	This means members of the shared groups can work that project in the **Shared Projects** tab.
+
+* Repeat this step if you want to shared with many groups.
 	
-	```
-	* Repeat this step if you want to shared with many groups.
+* Click **x** next to each group that you don't want to share anymore.
 	
-	* Click **x** next to each group that you don't want to share anymore.
-	```
 	
 1. Click **Create** button to finish.
 
@@ -125,21 +123,21 @@ To find your needed projects quickly, click either of tabs:
 
 * **My Projects**: Lists projects that are created by yourself.
 
-	<img src="screenshots/my_projects.png" width="650">
+<img src="screenshots/my_projects.png" width="650">
 	
-	** Here, you can make any changes to your desires or delete your own projects.
+** Here, you can make any changes to your desires or delete your own projects.
 	
 * **Shared Projects**: Lists projects that another shared with groups where you are member.
 
-	<img src="screenshots/shared_projects.png" width="650">
+<img src="screenshots/shared_projects.png" width="650">
 	
-	Here, you can:
+Here, you can:
 	
-	** See information of shared projects, including: **Project Name**, **Description**, **Owners** and **Members**.
+** See information of shared projects, including: **Project Name**, **Description**, **Owners** and **Members**.
 	
-	** View details of shared projects, and do actions regarding to their tasks (for example, creating new, editing, or deleting, commenting).
+** View details of shared projects, and do actions regarding to their tasks (for example, creating new, editing, or deleting, commenting).
 	
-	** However, you have no right to make changes or delete these shared projects.
+** However, you have no right to make changes or delete these shared projects.
 	
 ## Filtering projects
 
@@ -170,7 +168,7 @@ In the list of projects, simply click <img src="screenshots/delete_icon.png" wid
 
 ## Managing a project
 
-A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simly. 
+A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simply. 
 By clicking a specific project, you will be redirected to its details as follows:
 
 <img src="screenshots/project_details.png" width="650">
@@ -209,19 +207,22 @@ Here you will see all information of the task, including: Title of task, Status,
 	<img src="screenshots/edit_task_form.png" width="600">
 	
 1. Add more details, or make changes on fields you like, including:
-	<table>
-	<tr><td>**Title**</td><td>Changes title if you like.</td></tr>
-	<tr><td>**Priority**</td><td>Clicks the down arrow  to select a priority level for your task. 
-	Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED.If you don't set priority, the default value will be UNDEFINED.</td></tr>
-	<tr><td>**Status**</td><td>Clicks the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
-	OPEN is auto set for Status when you create a new task quickly.</td></tr>
-	<tr><td>**Assignee**</td><td>Clicks the down arrow to assign your task to one user. 
+
+* **Title**: Changes title if you like.
+
+* **Priority**: Clicks the down arrow  to select a priority level for your task. 
+	Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED.If you don't set priority, the default value will be UNDEFINED.
+
+* **Status**: Clicks the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
+	OPEN is auto set for Status when you create a new task quickly.
+	
+* **Assignee**: Clicks the down arrow to assign your task to one user. 
 	Remember that, only users who are in the **Shared Groups** of the **project** are listed in the drop-down menu. 
-	This means that you can only assign this task to one user who belongs to the group with the project has shared.</td></tr>
-	<tr><td>**Label**</td><td>Adds labels to note your task, then click *Add* button or hit **Enter** key.
+	This means that you can only assign this task to one user who belongs to the group with the project has shared.
+	
+* **Label**: Adds labels to note your task, then click *Add* button or hit **Enter** key.
 	The newly created label will be updated right above the Add Label form. 
-	Click **x** next to a label to remove it.</td></tr>
-	</table>
+	Click **x** next to a label to remove it.
 
 1. Click **Update** button to finish your changes, or **Cancel** to exit the Edit Task form without changes.
 
@@ -229,6 +230,7 @@ Here you will see all information of the task, including: Title of task, Status,
 
 1. Click one task to open the **Task Details** view.
 
-2. At the bottom of this view, enter your comment to the text box, then click **Comment** button.
+1. At the bottom of this view, enter your comment to the text box, then click **Comment** button.
 
-3. Click <img src="screenshots/edit_icon.png" width="20"> to edit your comment, or <img src="screenshots/delete_icon.png" width="15"> to remove it.
+1. Click <img src="screenshots/edit_icon.png" width="20"> to edit your comment, or <img src="screenshots/delete_icon.png" width="15"> to remove it.
+
