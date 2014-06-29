@@ -19,7 +19,7 @@ Nguyen The Tuyen | PT
 
 # Responsive
 
-	The **MasterTask** app is based on Twitter Bootstrap to be fully responsive support.
+The **MasterTask** app is based on Twitter Bootstrap to be fully responsive support.
 
 
 # What's MasterTask?
@@ -30,7 +30,7 @@ Use this app to control projects and their relevant tasks, then share with your 
 
 # Overview of MasterTask
 
-Because of limitations to time (2 days for app development) and members (maximum 4 members) as suggested by eXo Jury, 
+Because of limitation to time (2 days for app development) and members (maximum 4 members/team) as suggested by eXo Jury, 
 our team decided to finish some main points of our app, and next will be promising features and of course a cool User Interface from BD Team. 
 See the table to know which you can play now, as well more features that will be introduced soon.
 
@@ -68,7 +68,7 @@ If you are not familiar with adding an app to a page, do as follows to access **
 
 1. Open the eXo Platform link of **4.1-M2-codefest-team_e** on Acceptance (https://acceptance.exoplatform.org/).
 
-1. Log in Intranet with the default account (username: gatein and password: gtn).
+1. Log in Intranet as admin account (for example default - username: gatein & password: gtn).
 
 1. At the top administration bar, select **Administration --> Applications**.
 
@@ -84,22 +84,24 @@ If you are not familiar with adding an app to a page, do as follows to access **
 
 1. In **Page Editor --> Applications tab**, scroll to find the name of **MasterTask** - **team-e-addon-webapp**. 
 
-1. Click **team-e-addon-webapp** to see the name of our app: **MasterTask*.
+1. Click **team-e-addon-webapp** to see the name of our app: **MasterTask**.
 
 1. Drag **MasterTask** app from Page Editor and drop it into Page Layout.
+
+	<img src="screenshots/access_mastertask.png" width="700"/>
 
 1. Click <img src="screenshots/finish_icon.png" width="20"/> to accept these changes.
 You will be redirected to the page that contains **MasterTask**. 
 In this case, it will be: http://codefest-4.1-m2-codefest-team_e.acceptance5.exoplatform.org/portal/intranet/home/page1.
 Now, you can enjoy **MasterTask**! 
 
-## Creating new project
+## Creating a new project
 
 1. Access the **MasterTask** app.
-
-A list of projects will be displayed. 
-
-If you have no project, there will be a message: *No project is available, please create one!*. 
+	<img src="screenshots/mastertask_main_screen.png" width="700"/>
+	
+	A list of projects will be displayed. 
+	If you have no project, there will be a message: *No project is available, please create one!*. 
 
 1. Click **Create new project** button at the bottom.
 
@@ -108,12 +110,11 @@ If you have no project, there will be a message: *No project is available, pleas
 1. Enter **Project name** (mandatory) and **Description** for your project.
 
 1. Share your project with a group by clicking the down-arrow icon of **Shared Groups**, then click **Add**. 
-	This means members of the shared groups can work that project in the **Shared Projects** tab.
+	This means members of the shared groups can work on that project in the **Shared Projects** tab.
 
-* Repeat this step if you want to shared with many groups.
+	* Repeat this step if you want to shared with many groups.
 	
-* Click **x** next to each group that you don't want to share anymore.
-	
+	* Click <img src="screenshots/remove_icon.png" width="15"> next to each selected group if you don't want to share with that group anymore.
 	
 1. Click **Create** button to finish.
 
@@ -123,40 +124,40 @@ To find your needed projects quickly, click either of tabs:
 
 * **My Projects**: Lists projects that are created by yourself.
 
-<img src="screenshots/my_projects.png" width="650">
+	<img src="screenshots/my_projects.png" width="650">
 	
-** Here, you can make any changes to your desires or delete your own projects.
+	* Here, you can make any changes to your desires or delete your own projects.
 	
 * **Shared Projects**: Lists projects that another shared with groups where you are member.
 
-<img src="screenshots/shared_projects.png" width="650">
+	<img src="screenshots/shared_projects.png" width="650">
 	
-Here, you can:
+	Here, you can:
 	
-** See information of shared projects, including: **Project Name**, **Description**, **Owners** and **Members**.
+	* See information of shared projects, including: **Project Name**, **Description**, **Owners** and **Members**.
 	
-** View details of shared projects, and do actions regarding to their tasks (for example, creating new, editing, or deleting, commenting).
+	* View details of shared projects, and can do actions regarding to tasks of that project (for example, creating new, editing, or deleting, commenting).
 	
-** However, you have no right to make changes or delete these shared projects.
+	* However, you have no right to make changes on information of the shared projects themselves or delete them.
 	
 ## Filtering projects
 
-After sorting your projects by either of above tabs (**My Projects**, **Shared Projects**), 
-you still find difficult to find exactly your projects because of so many. 
-In this case, you can continue filter your project from the list of selected tab as follows:
+After sorting your projects by either of above tabs (**My Projects** & **Shared Projects**), 
+you may still find difficult to find exactly your projects because of so many. 
+In this case, you can continue filter your project by name or description from the list of selected tab as follows:
 
-1. Type name into the mini filter form.
+1. Type key words into the mini filter form.
 
 	<img src="screenshots/filter_project_name.png" width="300">
 
-2. Hit **Enter** key to perform your selected filter.
+2. Hit **Enter** key or click <img src="screenshots/search_icon.png" width="15"> to perform filtering.
 
 The projects that match with your input will be listed in the selected tab.
 
-## Editing project
+## Editing a project
 
-1. In the list of projects, click <img src="screenshots/edit_icon.png" width="15">. 
-   The **Edit project** form is displayed at the bottom of the projects list.
+1. In the list of projects, click <img src="screenshots/edit_icon.png" width="15"> corresponding to the project you want to edit. 
+   The **Edit project** form with the project information is displayed at the bottom of the projects list.
    
    <img src="screenshots/edit_project.png" width="450">
 
@@ -173,54 +174,70 @@ By clicking a specific project, you will be redirected to its details as follows
 
 <img src="screenshots/project_details.png" width="650">
 	
-Here is a list of tasks of the project. 
+Here you can: 
 
-* If this project does not have any task, one message will be shown: "No task is available, please create one!".
+* See all tasks of this project. If this project does not have any task, one message will be shown: "No task is available, please create one!".
 
 * The tasks that have been resolved or unresolved or refused are displayed with a strike-through.
+
+* Perform quick actions on each specific task (setting priority, updating status, assigning to one member under the shared groups of a project) by selecting from the drop-down menu.
+	For example, to set a new priority, hover your cursor over the current level in **Priority** column, then select another from the drop-down menu.
+	
+	<img src="screenshots/quick_set_priority.png" width="650">
 
 ### Creating a new task
 
 1. Click the project to which you want to add a new task. You will be redirected to details panel of the project as above.
 
-1. Put your cursor into the Quick Add form, then type the task title and hit **Enter** key.
+1. Put your cursor into the **Quick Add** form, then type the task title and hit **Enter** key.
 
-	<img src="screenshots/quick_add_task_form.png" width="400">
+	<img src="screenshots/quick_add_task_form.png" width="300">
 
 	Your newly created task will be updated into the list of tasks at the bottom.
 
 ### Deleting a task
 	
-Simply tick the checkbox corresponding to task you want to delete, then click **Delete** button at the left bottom. You can delete multiple tasks at one time by ticking relevant checkboxes, then click **Delete** button.
+* Simply tick the checkbox corresponding to task you want to delete, then click **Delete** button at the left bottom. 
+
+* Delete multiple tasks at one time by ticking relevant checkboxes, then click **Delete** button.
+
+* Delete all tasks of the project at one time by ticking the first checkbox next to **Task**.
 	
 ### Viewing task details
 
 In the list of tasks, simply click one task you want to view. 
-Here you will see all information of the task, including: Title of task, Status, Reporter, Created time, Priority, Assignee, and Label, and a list of comments.
+Here you will see all information of the task, including: **Title of task**, **Status**, **Reporter**, **Created time**, **Priority**, **Assignee**, **Label*, and **Comments**.
+
+<img src="screenshots/task_details.png" width="650">
 
 ### Editing a task
 
-1. Open the details panel of a task.
+As stated above, some information of a task can be directly changed into the Tasks View panel, including: setting priority, updating status, and assigning.
+Besides, to make more changes, you can edit in the Details view of each task as follows:
+
+1. Click one task to open the Task Details view.
+
+	<img src="screenshots/task_details.png" width="650">
 
 1. Click <img src="screenshots/edit_task_icon.png" width="50"> to open the **Edit** form. 
 	
-	<img src="screenshots/edit_task_form.png" width="600">
+	<img src="screenshots/edit_task_form.png" width="500">
 	
 1. Add more details, or make changes on fields you like, including:
 
-* **Title**: Changes title if you like.
+	* **Title**: Changes title if you like.
 
-* **Priority**: Clicks the down arrow  to select a priority level for your task. 
-	Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED.If you don't set priority, the default value will be UNDEFINED.
+	* **Priority**: Clicks the down-arrow icon to select a priority level for your task. 
+	Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED. If you don't set priority, the default value will be UNDEFINED.
 
-* **Status**: Clicks the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
-	OPEN is auto set for Status when you create a new task quickly.
+	* **Status**: Clicks the down-arrow icon to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED, 
+	in which OPEN is set for Status by default.
 	
-* **Assignee**: Clicks the down arrow to assign your task to one user. 
+	* **Assignee**: Clicks the down-arrow icon to assign your task to one user. 
 	Remember that, only users who are in the **Shared Groups** of the **project** are listed in the drop-down menu. 
 	This means that you can only assign this task to one user who belongs to the group with the project has shared.
 	
-* **Label**: Adds labels to note your task, then click *Add* button or hit **Enter** key.
+	* **Label**: Adds labels to note your task, then click **Add** button or hit **Enter** key.
 	The newly created label will be updated right above the Add Label form. 
 	Click **x** next to a label to remove it.
 
@@ -233,4 +250,3 @@ Here you will see all information of the task, including: Title of task, Status,
 1. At the bottom of this view, enter your comment to the text box, then click **Comment** button.
 
 1. Click <img src="screenshots/edit_icon.png" width="20"> to edit your comment, or <img src="screenshots/delete_icon.png" width="15"> to remove it.
-
