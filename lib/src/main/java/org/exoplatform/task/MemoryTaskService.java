@@ -88,7 +88,10 @@ public class MemoryTaskService implements TaskService {
         list.remove(id);
     }
 
-    public Task addTask(Task t) {
+    public Task addTask(Task t) throws TaskServiceException {
+        if (t.getTitle() == null || t.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("Task title can NOT be empty");
+        }
         //Generate ID
         t.setId(UUID.randomUUID().toString());
         tasks.put(t.getId(), t);
@@ -102,6 +105,9 @@ public class MemoryTaskService implements TaskService {
 
     @Override
     public Task updateTask(Task t) {
+        if (t.getTitle() == null || t.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("Task title can NOT be empty");
+        }
         tasks.put(t.getId(), t);
         return t;
     }

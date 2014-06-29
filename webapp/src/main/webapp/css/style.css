@@ -96,7 +96,7 @@ td.assignee button.btn {
     box-shadow: none;
 }
 td.status button.btn .caret,
-td.assingee button.btn .caret{
+td.assignee button.btn .caret{
     visibility: hidden;
 }
 td.status button.btn:hover,

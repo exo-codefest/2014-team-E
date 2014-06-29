@@ -138,7 +138,7 @@ public class GitMaster extends AbstractPortlet {
 
         if("create".equals(action)) {
             String title = request.getParameter("title");
-            if(title == null || title.isEmpty()) {
+            if(title == null || title.trim().isEmpty()) {
                 return;
             }
             Task task = new Task(projectId, title);
@@ -169,6 +169,11 @@ public class GitMaster extends AbstractPortlet {
             response.setRenderParameter("taskId", taskId);
 
             String title = request.getParameter("title");
+            if(title == null || title.trim().isEmpty()) {
+                this.pushNotification("Task title can NOT be empty");
+                return;
+            }
+
             String priority = request.getParameter("priority");
             String status = request.getParameter("status");
             String assignee = request.getParameter("assignee");
@@ -215,6 +220,10 @@ public class GitMaster extends AbstractPortlet {
         if("update-title".equals(action)) {
             String taskId = request.getParameter("objectId");
             String title = request.getParameter("title");
+            if(title == null || title.trim().isEmpty()) {
+                this.pushNotification("Task title can NOT be empty");
+                return;
+            }
 
             response.setRenderParameter("view", "detail");
             response.setRenderParameter("taskId", taskId);
@@ -223,7 +232,7 @@ public class GitMaster extends AbstractPortlet {
             task.setTitle(title);
             service.updateTask(task);
         }
-}
+    }
 
     @Override
     protected void processComment(ActionRequest request, ActionResponse response) {

@@ -36,6 +36,9 @@ public class TaskDAO {
     }
 
     public Task addTask(Task t) throws TaskServiceException {
+        if (t.getTitle() == null || t.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("Task title can NOT be empty");
+        }
         try {
             Node projectNode = taskService.getProjectDAO().getProjectNode(t.getProjectId());
 
@@ -76,6 +79,9 @@ public class TaskDAO {
     }
 
     public Task updateTask(Task t) throws TaskServiceException {
+        if (t.getTitle() == null || t.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("Task title can NOT be empty");
+        }
         try {
             Node taskNode = getTaskNode(t.getId());
             if (taskNode == null) {
