@@ -355,4 +355,31 @@
 
     return false;
   });
+
+  $('div.detail-view').on('click', 'a.change-status', function(e){
+    var $a = $(e.target).closest('a');
+    var $btn = $a.closest('.btn-status');
+
+    var url = $btn.attr('url-changeStatus');
+    var status = $a.attr('status');
+
+    $.ajax({
+      url: url,
+      method: 'GET',
+      data: {
+        status: status
+      },
+      dataType: 'json',
+      success: function(response) {
+        if(response.code != 200) {
+          return;
+        }
+
+        var task = response.data;
+        $btn.find('button[data-toggle="dropdown"] > span.value').html(task.statusName);
+      }
+    });
+
+    return true;
+  });
 })($);

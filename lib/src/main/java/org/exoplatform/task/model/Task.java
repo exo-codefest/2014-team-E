@@ -36,6 +36,7 @@ public class Task implements Activity {
     public Task(String projectId, String title) {
         this.projectId = projectId;
         this.title = title;
+        this.createdDate = System.currentTimeMillis();
     }
 
     public String getId() {

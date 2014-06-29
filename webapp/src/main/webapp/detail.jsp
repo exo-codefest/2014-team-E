@@ -122,9 +122,33 @@
       <a class="uiActionWithLabel pull-right edit" href="javascript:void(0);"><i class="uiIconEditMini uiIconLightGray"></i>Edit</a>
     </div>
     <div class="span12">
-      <span class="label label-info"><%=task.getStatus()%></span>
-      <span><strong><%=(task.getReporter() == null ? "guest" : task.getReporter())%></strong> created this project at <%=task.getCreatedDate()%></span>
+      <%--<span class="label label-info"><%=task.getStatus()%></span>--%>
+      <%
+        ResourceURL changeStatusURL = renderResponse.createResourceURL();
+        changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK);
+        changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
+        changeStatusURL.setParameter(AbstractPortlet.PARAM_ACTION, "updateStatus");
+      %>
+      <span>Status: </span>
+      <div class="btn-group btn-status" url-changeStatus="<%=changeStatusURL%>">
+        <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getStatus()%></span> <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <%for(Status status : Status.values()){
+          %>
+            <li><a class="change-status" status="<%=status.status()%>" href="javascript:void(0);"><%=status.name()%></a></li>
+          <%}%>
+        </ul>
+      </div>
     </div>
+    <div class="span12">
+      <span>Reporter: </span>
+      <span><strong><%=(task.getReporter() == null ? "guest" : task.getReporter())%></strong></span>
+    </div>
+    <div class="span12">
+      <span>Created time: </span>
+      <span><%=task.getCreatedDate()%></span>
+    </div>
+
     <div class="span12">
       <span>Priority: </span>
       <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority()%></span>

@@ -53,11 +53,11 @@ Rename application to "MasterTask"
 
 ============ Details task =================
 
-1. Show all fields of a task in vertical list
+1. Show all fields of a task in vertical list (done)
 
-2. Full Form for edit a task
+2. Full Form for edit a task (done)
 
-3. A Status button somewhere.
+3. A Status button somewhere. (done)
 
 4. Implement Comment service: save/edit/delete(projected, taskId)
 

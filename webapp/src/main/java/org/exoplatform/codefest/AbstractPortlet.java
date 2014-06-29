@@ -27,6 +27,7 @@ import org.exoplatform.services.organization.User;
 import org.exoplatform.task.TaskService;
 import org.exoplatform.task.model.Comment;
 import org.exoplatform.task.model.Project;
+import org.exoplatform.task.model.Status;
 import org.exoplatform.task.model.Task;
 import org.exoplatform.web.application.ApplicationMessage;
 import org.json.JSONArray;
@@ -67,6 +68,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
     public static final String PARAM_OBJECT_ID = "objectId";
 
     public static final String OBJECT_TYPE_COMMENT = "comment";
+    public static final String OBJECT_TYPE_TASK = "task";
 
     TaskService service;
     OrganizationService orgService;
@@ -91,8 +93,14 @@ public abstract class AbstractPortlet extends GenericPortlet {
 
         if(OBJECT_TYPE_COMMENT.equals(objectType)) {
             try {
-            serveComment(action, request, response);
-            } catch (Exception ex) {
+                serveComment(action, request, response);
+            } catch (JSONException ex) {
+                ex.printStackTrace();
+            }
+        } else if(OBJECT_TYPE_TASK.equals(objectType)) {
+            try {
+                serveTask(action, request, response);
+            } catch (JSONException ex) {
                 ex.printStackTrace();
             }
         } else {
@@ -100,6 +108,48 @@ public abstract class AbstractPortlet extends GenericPortlet {
         }
     }
 
+    protected void serveTask(String action, ResourceRequest request, ResourceResponse response) throws PortletException, IOException, JSONException {
+        String user = request.getRemoteUser();
+        PrintWriter out = response.getWriter();
+
+        JSONObject result = new JSONObject();
+        result.put("code", 400);
+        result.put("message", "Bad Request");
+        result.put("data", "");
+
+        if("updateStatus".equals(action)) {
+            String taskId = request.getParameter(PARAM_OBJECT_ID);
+            String status = request.getParameter("status");
+
+            Task task = service.getTask(taskId);
+            task.setStatus(Status.getStatus(Integer.parseInt(status)));
+
+            task = service.updateTask(task);
+
+            JSONObject json = new JSONObject();
+            json.put("id", task.getId());
+            json.put("title", task.getTitle());
+            json.put("created", task.getCreatedDate());
+            json.put("assignee", task.getAssignee());
+            JSONArray array = new JSONArray();
+            for(String l : task.getLabels()) {
+                array.put(l);
+            }
+            json.put("labels", array);
+            json.put("modified", task.getModifiedDate());
+            json.put("priority", task.getPriority().priority());
+            json.put("priorityName", task.getPriority().name());
+            json.put("status", task.getStatus().status());
+            json.put("statusName", task.getStatus().name());
+            json.put("reporter", task.getReporter());
+
+            result.put("code", 200);
+            result.put("message", "successfully");
+            result.put("data", json);
+        }
+
+        out.print(result.toString());
+    }
     protected void serveComment(String action, ResourceRequest request, ResourceResponse response) throws PortletException, IOException, JSONException {
         String user = request.getRemoteUser();
         PrintWriter out = response.getWriter();
