@@ -36,37 +36,62 @@ See the table to know which you can play now, as well more features that will be
 
 
 <table>
-<tr><td>1</td><td>Creating a new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>18</td><td>Updating into Activity Stream<img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>2</td><td>Editing a project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>19</td><td>Setting due date for a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>3</td><td>Deleting a project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>20</td><td>Add Repeat options for a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>5</td><td>Sharing a projects with groups <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>21</td><td>Making your tasks management more productive by sending timely reminders via notification and email <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>6</td><td>Sorting projects by 2 tabs <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>22</td><td>Adding description for a task<img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>7</td><td>Filtering projects by Project Name and Description <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>23</td><td>Adding subtasks to a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>8</td><td>Managing tasks of projects by Dashboard <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>24</td><td>Uploading a file into a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>9</td><td>Adding a task to project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>25</td><td>Inviting specific users via email <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>10</td><td>Editing a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>26</td><td>Adding/Editing description with CKEditor <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>11</td><td>Removing a task or all tasks at one time <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>27</td><td>Inline editing title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>12</td><td>Updating status for a specific task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>28</td><td>Synchronizing between Calendar and MasterTask <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>13</td><td>Assigning a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>29</td><td>Creating tasks and notes remotely by email to Project_Team@MasterTask.com <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>14</td><td>Setting priority to one task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>30</td><td>Quick adding a task right from Project Details view <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>15</td><td>Addding labels to a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>31</td><td>Adding Task Reporters to control progress more effectively <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>16</td><td>Fitering tasks by some criteria <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>32</td><td>Mention someone in title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>17</td><td>Adding/Editing/Deleting a comment <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>33</td><td>Clean and very easy-to-use interface <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>1</td><td>Creating a new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>18</td><td>Updating into Activity Stream<img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>2</td><td>Editing a project <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>19</td><td>Setting due date for a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>3</td><td>Deleting a project <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>20</td><td>Add Repeat options for a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>5</td><td>Sharing a projects with groups <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>21</td><td>Making your tasks management more productive by sending timely reminders via notification and email <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>6</td><td>Sorting projects by 2 tabs <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>22</td><td>Adding description for a task<img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>7</td><td>Filtering projects by Project Name and Description <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>23</td><td>Adding subtasks to a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>8</td><td>Managing tasks of projects by Dashboard <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>24</td><td>Uploading a file into a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>9</td><td>Adding a task to project <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>25</td><td>Inviting specific users via email <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>10</td><td>Editing a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>26</td><td>Adding/Editing description with CKEditor <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>11</td><td>Removing a task or all tasks at one time <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>27</td><td>Inline editing title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>12</td><td>Updating status for a specific task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>28</td><td>Synchronizing between Calendar and MasterTask <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>13</td><td>Assigning a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>29</td><td>Creating tasks and notes remotely by email to Project_Team@MasterTask.com <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>14</td><td>Setting priority to one task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>30</td><td>Quick adding a task right from Project Details view <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>15</td><td>Addding labels to a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>31</td><td>Adding Task Reporters to control progress more effectively <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>16</td><td>Fitering tasks by some criteria <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>32</td><td>Mention someone in title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
+<tr><td>17</td><td>Adding/Editing/Deleting a comment <img src="screenshots/try_now_icon.png" alt="Implemented" width="35"/></td><td>33</td><td>Clean and very easy-to-use interface <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="35"/></td></tr>
 </table>
-
-To make continuous improvements, we are always open to listen to your feedback and expectations. 
-See the following diagram to understand the progess of our team for MasterTask: 
-
-<img src="screenshots/progress_diagram.png" width="600"/>
 
 **References:**
 
 * Track issues, bugs and improvements for **MasterTask**, and give your expectations or any feedback at https://github.com/exo-codefest/2014-team-E/issues.
 
+* See the following diagram to understand our plan for MasterTask: 
+
+<img src="screenshots/progress_diagram.png" width="600"/>
 
 # How to use?
 
-To make easy for approach to **MasterTask**, use this link to access: 
+If you are not familar with adding an app to a page, do as follows to access **MasterTask**:
+
+1. Open the eXo Platform link of **4.1-M2-codefest-team_e** on Acceptance (https://acceptance.exoplatform.org/).
+
+1. Log in Intranet with the default account (username: gatein and password: gtn).
+
+1. At the top administration bar, select **Administration --> Applications**.
+
+1. Click **Import Applications** button, then click **OK** in the confirmation message to import all gadgets and portlets.
+
+1. Click eXo brand icon at the top left corner to come back to the Intranet homepage.
+
+1. At the top administration bar, click **Edit --> Page --> Add Page** to create a page where **MasterTask** will be stored.
+
+1. Enter **Node Name**, for example **page1**, then click **Next**.
+
+1. Select **Empty Layout**, and click **Next**.
+
+1. In **Page Editor --> Applications tab**, scroll to find the name of **MasterTask** - **team-e-addon-webapp**. 
+
+1. Click **team-e-addon-webapp** to see the name of our app: **MasterTask*.
+
+1. Drag **MasterTask** app from Page Editor and drop it into Page Layout.
+
+1. Click <img src="screenshots/finish_icon.png" width="15"/> to accept these changes.
+You will be redirected to the page that contains **MasterTask**. 
+In this case, it will be: http://codefest-4.1-m2-codefest-team_e.acceptance5.exoplatform.org/portal/intranet/home/page1.
+Now, you can enjoy **MasterTask**! 
 
 ## Creating new project
 
