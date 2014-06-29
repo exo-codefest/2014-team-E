@@ -36,7 +36,7 @@ See the table to know which you can play now, and next features of **MasterTask*
 
 
 <table>
-<tr><td>1</td><td>Creating new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>1</td><td>[Creating new project](https://github.com/exo-codefest/2014-team-E/blob/master/README.md#creating-new-project) <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>2</td><td>Editing project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>3</td><td>Deleting project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>5</td><td>Adding collaborators for projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
