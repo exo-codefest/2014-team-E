@@ -178,13 +178,18 @@ public class GitMaster extends AbstractPortlet {
             String status = request.getParameter("status");
             String assignee = request.getParameter("assignee");
             String labels = request.getParameter("labels");
+            if(labels != null) {
+                labels = labels.trim();
+            }
 
             Task task = service.getTask(taskId);
             task.setTitle(title);
             task.setAssignee(assignee);
             Set<String> set = new HashSet<String>();
-            for(String s : labels.split(",")) {
-                set.add(s);
+            if(!labels.isEmpty()) {
+                for(String s : labels.split(",")) {
+                    set.add(s);
+                }
             }
             task.setLabels(set);
             task.setPriority(Priority.getPriority(Integer.parseInt(priority)));

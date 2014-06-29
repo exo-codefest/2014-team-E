@@ -451,6 +451,10 @@
   $('div.GitMasterPortlet').on('click', 'a.change-priority', function(e){
     var $a = $(e.target).closest('a');
     var $btn = $a.closest('.btn-priority');
+    var $b = $btn.find('button[data-toggle="dropdown"]');
+    var $value = $btn.find('button[data-toggle="dropdown"] > span.value');
+
+    var oldPriority = $value.attr('priority');
 
     var url = $btn.attr('url');
     var priority = $a.attr('priority');
@@ -468,7 +472,9 @@
         }
 
         var task = response.data;
-        $btn.find('button[data-toggle="dropdown"] > span.value').html(task.priorityName);
+        $value.html(task.priorityName);
+        $value.attr('priority', task.priority);
+        $b.removeClass('btn-priority-' + oldPriority).addClass('btn-priority-' + task.priority);
       }
     });
 

@@ -163,13 +163,55 @@
           </div>
           <div class="span6 text-right">
             <span>Priority: </span>
-            <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority().getLabel()%></span>
+            <%--<span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority().getLabel()%></span>--%>
+            <%
+              ResourceURL changePriorityURL = renderResponse.createResourceURL();
+              changePriorityURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK);
+              changePriorityURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
+              changePriorityURL.setParameter(AbstractPortlet.PARAM_ACTION, "updatePriority");
+            %>
+            <div class="btn-group text-left btn-priority priority-in-detail" url="<%=changePriorityURL%>">
+              <button class="btn dropdown-toggle btn-priority-<%=task.getPriority().priority()%>" data-toggle="dropdown"><span class="value" priority=<%=task.getPriority().priority()%>><%=task.getPriority().getLabel()%></span> <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <%for(Priority priority : Priority.values()){
+                %>
+                <li><a class="change-priority" priority="<%=priority.priority()%>" href="javascript:void(0);"><%=priority.getLabel()%></a></li>
+                <%}%>
+              </ul>
+            </div>
           </div>
         </div><!-- .row-fluid -->
         <div class="row-fluid">
-          <div class="span6">
-            <div class="">Assignee: <%=(task.getAssignee() == null ? "none" : task.getAssignee())%></div>
+          <div class="span6 contain-btn">
+            <span>Assignee: </span>
+            <%
+              ResourceURL assignURL = renderResponse.createResourceURL();
+              assignURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK);
+              assignURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
+              assignURL.setParameter(AbstractPortlet.PARAM_ACTION, "assign");
+
+              String assignee = task.getAssignee();
+              if(assignee == null || assignee.isEmpty()) {
+                assignee = "Unassigned";
+              } else if(usersInProject.containsKey(assignee)) {
+                User u = usersInProject.get(assignee);
+                assignee = u.getFullName();
+              }
+            %>
+            <div class="btn-group btn-assign" url="<%=assignURL%>">
+              <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value" style="font-weight: bold;"><%=assignee%></span> <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <%for(String username : usersInProject.keySet()){
+                  User u = usersInProject.get(username);
+                %>
+                <li><a class="change-assignee" assignee="<%=username%>" href="javascript:void(0);"><%=u.getFullName()%></a></li>
+                <%}%>
+              </ul>
+            </div>
           </div>
+          <%--<div class="span2">
+            <div class="">Assignee: <%=(task.getAssignee() == null ? "none" : task.getAssignee())%></div>
+          </div>--%>
         </div>
         <div class="row-fluid">
           <div class="span6">
@@ -178,7 +220,7 @@
               <%for(String label : task.getLabels()) {%>
                 <span class="task-label">
                   <span class="badge"><%=label%>
-                    <a href="javascript:void(0);" class="close">&times;</a>
+                    <%--<a href="javascript:void(0);" class="close">&times;</a>--%>
                   </span>
                 </span>
               <%}%>
@@ -186,7 +228,7 @@
           </div>
         </div>
       </div><!-- .task-detail-info -->
-      <h4 class="titleWithBorder">15 Comments</h4>
+      <h4 class="titleWithBorder">Comments</h4>
         <div class="row-fluid comments">
           <div class="span12">
             <ul>

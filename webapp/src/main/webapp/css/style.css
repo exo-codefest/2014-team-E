@@ -98,7 +98,7 @@
 }
 .comments li:nth-child(even),
 .comments li.even {
-    //background-color: #f9f9f9;
+    /*//background-color: #f9f9f9;*/
 }
 .comments li.load-more-item .load-more-comment {
     text-align: center;
@@ -168,18 +168,18 @@
     margin-left: 5px;
 }
 
-td.contain-btn button.btn {
+.GitMasterPortlet .contain-btn button.btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
 }
-td.contain-btn button.btn .caret{
+.GitMasterPortlet .contain-btn button.btn .caret{
     visibility: hidden;
 }
-td.contain-btn button.btn:hover{
+.GitMasterPortlet .contain-btn button.btn:hover{
     border-color: #ccc;
 }
-td.contain-btn button.btn:hover .caret{
+.GitMasterPortlet .contain-btn button.btn:hover .caret{
     visibility: visible;
 }
 /* Dashboard */
@@ -205,4 +205,67 @@ td.contain-btn button.btn:hover .caret{
 	margin: 10px 0px;
 	background-color: #FFFFFF;
 	cursor: move;
+}
+
+.GitMasterPortlet .task-label .badge {
+    padding: 3px 6px;
+}
+
+.GitMasterPortlet .priority-in-detail .btn-priority-2
+{
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #5bb75b;
+    background-image: -moz-linear-gradient(top, #62c462, #51a351);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+    background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+    background-image: -o-linear-gradient(top, #62c462, #51a351);
+    background-image: linear-gradient(to bottom, #62c462, #51a351);
+    background-repeat: repeat-x;
+    border-color: #51a351 #51a351 #387038;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.GitMasterPortlet .priority-in-detail .btn-priority-2:hover {
+    color: #ffffff;
+    background-color: #51a351;
+}
+.GitMasterPortlet  .priority-in-detail .btn-priority-1 {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+    background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+    background-image: -o-linear-gradient(top, #fbb450, #f89406);
+    background-image: linear-gradient(to bottom, #fbb450, #f89406);
+    background-repeat: repeat-x;
+    border-color: #f89406 #f89406 #ad6704;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.GitMasterPortlet .priority-in-detail .btn-priority-1:hover {
+    color: #ffffff;
+    background-color: #f89406;
+}
+.GitMasterPortlet .priority-in-detail .btn-priority-0 {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #da4f49;
+    background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+    background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+    background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+    background-repeat: repeat-x;
+    border-color: #bd362f #bd362f #802420;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.GitMasterPortlet .priority-in-detail .btn-priority-0:hover {
+    color: #ffffff;
+    background-color: #bd362f;
 }

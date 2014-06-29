@@ -74,7 +74,7 @@
           changePriorityURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
           changePriorityURL.setParameter(AbstractPortlet.PARAM_ACTION, "updatePriority");
         %>
-        <div class="btn-group btn-priority" url="<%=changePriorityURL%>">
+        <div class="btn-group btn-priority text-left" url="<%=changePriorityURL%>">
           <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getPriority().getLabel()%></span> <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <%for(Priority priority : Priority.values()){
@@ -91,7 +91,7 @@
           changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
           changeStatusURL.setParameter(AbstractPortlet.PARAM_ACTION, "updateStatus");
         %>
-        <div class="btn-group btn-status" url-changeStatus="<%=changeStatusURL%>">
+        <div class="btn-group btn-status text-left" url-changeStatus="<%=changeStatusURL%>">
           <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getStatus().getLabel()%></span> <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <%for(Status status : Status.values()){
@@ -117,7 +117,7 @@
             assignee = u.getFullName();
           }
         %>
-        <div class="btn-group btn-assign" url="<%=assignURL%>">
+        <div class="btn-group btn-assign text-left" url="<%=assignURL%>">
           <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=assignee%></span> <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <%for(String username : usersInProject.keySet()){
