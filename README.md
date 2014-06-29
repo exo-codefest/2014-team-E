@@ -95,8 +95,7 @@ Currently, your projects are classified into types:
 
 To find your needed projects quickly, click either of tabs: **My Projects** or **Shared Projects**.
 
-<a name="editing_project"></a>
-## Editing a project
+## Editing a project {#editing_project}
 
 1. In the list of projects, click <img src="screenshots/edit_icon.png" width="15">. 
    The **Edit project** form is displayed at the bottom of the projects list.
