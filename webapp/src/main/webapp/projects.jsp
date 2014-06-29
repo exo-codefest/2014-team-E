@@ -21,17 +21,15 @@
     groups = Collections.emptyList();
   }
 %>
-
 <input type="text" class="filterProject"></input>
 <div class="uiTabPane uiTabNormal">
   <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#myprojects">My Projects</a></li>
     <li><a data-toggle="tab" href="#sharedprojects">Shared Projects</a></li>
   </ul>
-  <div class="tab-content" id="myTabContent">
-
+  <div class="tab-content" id="myTabContent">	 
     <!-- Begin My Projects List -->
-    <div id="myprojects" class="tab-pane fade active in">
+    <div id="myprojects" class="tab-pane fade active in">      
       <table class="table table-hover table-project">
         <thead>
           <tr>
@@ -62,7 +60,7 @@
                editURL.setParameter("objectId", String.valueOf(project.getId()));
                
            %>
-          <tr>
+          <tr class='project'>
             <td><a href="<%=projectURL.toString()%>" class='projectName'><%=project.getName()%></a></td>
             <td class='projectDesc'><%= project.getDesc()%></td>
             <td class="memberships">
@@ -127,9 +125,9 @@
                 editURL.setParameter("objectId", String.valueOf(project.getId()));
                 
             %>
-          <tr>
-            <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
-            <td><%= project.getDesc()%></td>
+          <tr class='project'>
+            <td><a href="<%=projectURL.toString()%>" class='projectName'><%=project.getName()%></a></td>
+            <td class='projectDesc'><%= project.getDesc()%></td>
             <td><%=project.getOwner()%></td>
             <td class="memberships">
               <%for(String membership : project.getMemberships()) {

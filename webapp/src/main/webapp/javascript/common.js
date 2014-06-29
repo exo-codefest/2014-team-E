@@ -11,18 +11,29 @@
 		 window.clearTimeout(searchTimeout);
 	 }
 	 var jFilterInput = $(this);
+	 var jPortlet = jFilterInput.closest('.GitMasterPortlet');
 
 	 searchTimeout = window.setTimeout(function() {
-		 var val = jFilterInput.val();
+		 var val = $.trim(jFilterInput.val());
 		 var patt = new RegExp(".*" + val + ".*", 'gi');
-		$('.projectName, .projectDesc').each(function(idx, elem) {
+		 
+		 
+		var showList = [];
+		jPortlet.find('.projectName, .projectDesc').each(function(idx, elem) {
 			var jElem = $(elem);
 			if (patt.test(jElem.html())) {
-				jElem.closest('tr').show();
-			} else {
-				jElem.closest('tr').hide();
+				showList.push(jElem.closest('.project'));
 			}
 		});
+		jPortlet.find('.project').each(function(idx, elem) {
+			$(elem).hide();
+			$.each(showList, function(index, showElem) {
+				if (elem == showElem.get(0)) {
+					$(elem).show();
+				}
+			});
+		});
+		
 	 }, 700); 
   });
 
