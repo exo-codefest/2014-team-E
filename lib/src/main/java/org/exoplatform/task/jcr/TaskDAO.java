@@ -122,19 +122,9 @@ public class TaskDAO {
         List<Task> tasks = new LinkedList<Task>();
 
         if (projectId != null) {
-            try {
-                Node project = taskService.getProjectDAO().getProjectNode(projectId);
-                if (project != null) {
-                    NodeIterator nodeIter = project.getNodes();
-
-                    while (nodeIter.hasNext()) {
-                        tasks.add(buildTask(nodeIter.nextNode()));
-                    }
-                }
-            } catch (RepositoryException e) {
-                log.error(e);
-                throw new RuntimeException(e);
-            }
+            Query query = new Query();
+            query.setProjectId(projectId);
+            return findTasks(query, offset, limit);
         }
 
         return tasks;

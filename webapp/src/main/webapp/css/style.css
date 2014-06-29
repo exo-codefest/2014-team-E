@@ -55,6 +55,10 @@
 .GitMasterPortlet .formCreateProject {
     display: none;
 }
+.GitMasterPortlet .load-more-task {
+    display: block;
+    text-align: center;
+}
 .table-project thead th,
 .table-task thead th{
     white-space: nowrap;

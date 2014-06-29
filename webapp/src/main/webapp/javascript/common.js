@@ -565,4 +565,34 @@
 	   query.filterTitle = $filterTask.find('.filterTaskTitle').val();	  
 	   return query;
 	} 
+	
+	$('.load-more-task').click(function() {
+		var $loadMore = $(this);
+		var $portlet = $(this).closest('.GitMasterPortlet');
+		var $filterTask = $portlet.find('.filterTask');
+		var nextURL = $(this).attr('nextURL');
+		
+		var query = getTaskQuery($filterTask);
+		$.ajax({
+		      url: nextURL,
+		      method: 'GET',
+		      data: query,
+		      dataType: 'text',
+		      success: function(response) {
+		        var $table = $portlet.find('.table-task');
+		        var currData = $table.find('tbody').html();
+		        
+		        var idx = response.indexOf("<nextURL>");
+		        var content = response.substring(0, idx);
+		        $table.find('tbody').html(currData + content);
+		        
+		        var nextURL = response.substring(idx + 9);
+		        if (nextURL != 'null') {
+		        	$loadMore.attr('nextURL', nextURL);		        	
+		        } else {
+		        	$loadMore.remove();
+		        }
+		      }
+		    });
+	});
 })($);

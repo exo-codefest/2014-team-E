@@ -118,10 +118,9 @@ public abstract class AbstractPortlet extends GenericPortlet {
     }
 
     private void serveTaskList(ResourceRequest request, ResourceResponse response) throws JSONException, IOException, PortletException {
-        int offset = 0, limit = 15;
+        int offset = 0;
         try {
             offset = Integer.parseInt(request.getParameter("offset"));
-            limit = Integer.parseInt(request.getParameter("limit"));
         } catch (NumberFormatException e) {}
         
         Priority priority = null;
@@ -139,7 +138,15 @@ public abstract class AbstractPortlet extends GenericPortlet {
         query.setPriority(priority);
         query.setStatus(status);
         
-        List<Task> tasks = service.findTasks(query, offset, limit);
+        List<Task> tasks = service.findTasks(query, offset, 16);
+        if (tasks.size() == 16) {
+            ResourceURL nextURL = response.createResourceURL();
+            nextURL.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_TASK_LIST);
+            nextURL.setParameter("offset", String.valueOf(offset + 15));
+            nextURL.setParameter("projectId", tasks.get(0).getProjectId());
+            request.setAttribute("nextURL", nextURL);
+            tasks.remove(15);
+        }        
         request.setAttribute("tasks", tasks);
         
       //. Load all user of this project
@@ -516,7 +523,15 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 String projectId = request.getParameter("projectId");
 
                 Project project = service.getProject(projectId);
-                List<Task> tasks = service.getTasksByProject(projectId, 0, -1);
+                List<Task> tasks = service.getTasksByProject(projectId, 0, 16);
+                if (tasks.size() == 16) {
+                    ResourceURL nextURL = response.createResourceURL();
+                    nextURL.setParameter(PARAM_OBJECT_TYPE, OBJECT_TYPE_TASK_LIST);
+                    nextURL.setParameter("offset", "15");
+                    nextURL.setParameter("projectId", project.getId());
+                    request.setAttribute("nextURL", nextURL);
+                    tasks.remove(15);
+                }
                 request.setAttribute("project", project);
                 request.setAttribute("tasks", tasks);
                 Collections.sort(tasks, new Comparator<Task>() {

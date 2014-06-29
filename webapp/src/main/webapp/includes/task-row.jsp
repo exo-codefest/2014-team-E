@@ -10,7 +10,7 @@
 <%@ page import="java.util.Collections" %>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet"%>
 <portlet:defineObjects/>
-<% 
+<%
 	Map<String, User> usersInProject = (Map<String, User>)resourceRequest.getAttribute("usersInProject");
 	List<Task> tasks = (List<Task>)resourceRequest.getAttribute("tasks");
 	for(Task task : tasks) {
@@ -85,3 +85,4 @@
   </td>
 </tr>
 <%}%>
+<nextURL><%=resourceRequest.getAttribute("nextURL")%>
