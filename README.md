@@ -44,29 +44,29 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 <table>
 <tr><td>No</td><td>Features</td><td>Current Status</td></tr>
-<tr><td>1</td><td>Create project</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>2</td><td>Edit project</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>3</td><td>Delete project</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>4</td><td>Add label</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>5</td><td>Add collaborators for projects</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>6</td><td>Sort projects</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>7</td><td>Filter projects by Project Name and Description</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>8</td><td>Add task to project</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>9</td><td>Edit task</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>10</td><td>Remove all tasks by selecing all</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>11</td><td>Update status for specific tasks</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>12</td><td>Sort tasks by *Created Date*</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>13</td><td>Assign one task to one</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>14</td><td>Add priority to one task</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>15</td><td>Search task</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>16</td><td>Add comment for a task</td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
-<tr><td>17</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
-<tr><td>18</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
-<tr><td>19</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
-<tr><td>20</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
-<tr><td>21</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
-<tr><td>22</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
-<tr><td>23</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
+<tr><td>1</td><td>Create project</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>2</td><td>Edit project</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>3</td><td>Delete project</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>4</td><td>Add label</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>5</td><td>Add collaborators for projects</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>6</td><td>Sort projects</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>7</td><td>Filter projects by Project Name and Description</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>8</td><td>Add task to project</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>9</td><td>Edit task</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>10</td><td>Remove all tasks by selecing all</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>11</td><td>Update status for specific tasks</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>12</td><td>Sort tasks by *Created Date*</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>13</td><td>Assign one task to one</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>14</td><td>Add priority to one task</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>15</td><td>Search task</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>16</td><td>Add comment for a task</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
+<tr><td>17</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
+<tr><td>18</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
+<tr><td>19</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
+<tr><td>20</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
+<tr><td>21</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
+<tr><td>22</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
+<tr><td>23</td><td></td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/coming_soon_icon.png" alt="NextVersion"/> </td></tr>
 </table>
 
 
