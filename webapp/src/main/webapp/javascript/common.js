@@ -4,17 +4,28 @@
 	  formCreate.fadeIn(1000);
 	  $(this).hide();
   });
-  
+ 
+  var searchTimeout = null;
   $('.filterProject').keypress(function(e) {
-	 var search = null;
+	 if (searchTimeout != null) {
+		 window.clearTimeout(searchTimeout);
+	 }
 	 var jFilterInput = $(this);
-	 if (e.keyCode() >= 32 && e.keyCode() <= 127) {
-		 search = window.setTimeout(700, function() {
-			 jFilterInput.
-		 });
-	 } 
+
+	 searchTimeout = window.setTimeout(function() {
+		 var val = jFilterInput.val();
+		 var patt = new RegExp(".*" + val + ".*", 'gi');
+		$('.projectName, .projectDesc').each(function(idx, elem) {
+			var jElem = $(elem);
+			if (patt.test(jElem.html())) {
+				jElem.closest('tr').show();
+			} else {
+				jElem.closest('tr').hide();
+			}
+		});
+	 }, 700); 
   });
-  
+
   $('.comments').on('click', 'a.action', function(e) {
     var $action = $(e.target || e.srcElement).closest('a');
     var $comment = $action.closest(".comment");

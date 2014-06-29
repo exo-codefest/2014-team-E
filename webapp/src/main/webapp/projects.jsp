@@ -22,7 +22,7 @@
   }
 %>
 
-<input type="text" class=".filterProject"></input>
+<input type="text" class="filterProject"></input>
 <div class="uiTabPane uiTabNormal">
   <ul class="nav nav-tabs" id="myTab">
     <li class="active"><a data-toggle="tab" href="#myprojects">My Projects</a></li>
@@ -63,8 +63,8 @@
                
            %>
           <tr>
-            <td><a href="<%=projectURL.toString()%>"><%=project.getName()%></a></td>
-            <td><%= project.getDesc()%></td>
+            <td><a href="<%=projectURL.toString()%>" class='projectName'><%=project.getName()%></a></td>
+            <td class='projectDesc'><%= project.getDesc()%></td>
             <td class="memberships">
               <%for(String membership : project.getMemberships()) {
                   PortletURL unshareURL = renderResponse.createActionURL();
