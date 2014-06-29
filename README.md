@@ -74,12 +74,54 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 ## Creating a new project
 
-1. Open the MasterTask app. You will see the main screen of MasterTask:
+1. Open the MasterTask app. The MasterTask screen is displayed as follow. 
 
 	<img src="https://github.com/exo-codefest/2014-team-E/screenshots/mastertask_main_screen.png" width="400">
 
-	A list of projects will be displayed. If you have no project, there will be a message: *No project is available, please create one!*. 
+	A list of projects will be displayed. 
+	If you have no project, there will be a message: *No project is available, please create one!*. 
 
 1. Click **Create new project** to open the form.
 
-1. Enter title into 
+	<img src="https://github.com/exo-codefest/2014-team-E/screenshots/new_project_form.png" width="400">
+
+1. Enter title and description for your project.
+
+	```
+	The asterisk (*) mean the field is mandatory.
+	```
+
+1. Select a group to whom you want to share by clicking down-arrow icon to select and click **Add**.
+
+1. Click **Create** to finish.
+
+
+## Editing a project
+
+1. In the list of projects, click <img src="https://github.com/exo-codefest/2014-team-E/screenshots/edit_icon.png" width="10">. 
+   The **Edit project** form is displayed at the bottom of the projects list.
+   
+   <img src="https://github.com/exo-codefest/2014-team-E/screenshots/edit_project.png" width="300">
+
+2. Make changes to your desires, then click **Update** to finish or **Cancel* to delete your updates.
+
+## Deleting a project
+
+In the list of projects, simply click <img src="https://github.com/exo-codefest/2014-team-E/screenshots/delete_icon.png" width="10"> to delete a project.
+
+## Managing a project
+	A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simly. 
+	By clicking a specific project, you will be redirected to its details as follows:
+	
+	<img src="https://github.com/exo-codefest/2014-team-E/screenshots/project_details.png" width="300">
+	
+	Here is a list of tasks of the project. If this project does not have any task, one message will be shown: "No task is avaible, please create one!".
+
+
+	
+
+
+
+
+
+
