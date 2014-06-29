@@ -7,6 +7,7 @@
 <%@ page import="org.exoplatform.codefest.AbstractPortlet" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="org.exoplatform.services.organization.User" %>
+<%@ page import="org.exoplatform.task.model.Priority" %>
 <%@include file="includes/header.jsp" %>
 <%
     PortletURL url;
@@ -65,7 +66,24 @@
     <tr>
       <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>" <% if(task.getStatus().equals(Status.RESOLVED) ||  task.getStatus().equals(Status.REFUSED)) {%> class="done"<%}%>><%=task.getTitle()%></a></td>
-      <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getPriority()%></a></td>
+      <td class="text-center contain-btn">
+        <%--<a href="<%=detailURL.toString()%>"><%=task.getPriority()%></a>--%>
+        <%
+          ResourceURL changePriorityURL = renderResponse.createResourceURL();
+          changePriorityURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK);
+          changePriorityURL.setParameter(AbstractPortlet.PARAM_OBJECT_ID, task.getId());
+          changePriorityURL.setParameter(AbstractPortlet.PARAM_ACTION, "updatePriority");
+        %>
+        <div class="btn-group btn-priority" url="<%=changePriorityURL%>">
+          <button class="btn dropdown-toggle" data-toggle="dropdown"><span class="value"><%=task.getPriority()%></span> <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <%for(Priority priority : Priority.values()){
+            %>
+            <li><a class="change-priority" priority="<%=priority.priority()%>" href="javascript:void(0);"><%=priority.name()%></a></li>
+            <%}%>
+          </ul>
+        </div>
+      </td>
       <td class="text-center contain-btn">
         <%
           ResourceURL changeStatusURL = renderResponse.createResourceURL();

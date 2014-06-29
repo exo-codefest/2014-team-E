@@ -441,6 +441,32 @@
 
     return true;
   });
+  $('div.GitMasterPortlet').on('click', 'a.change-priority', function(e){
+    var $a = $(e.target).closest('a');
+    var $btn = $a.closest('.btn-priority');
+
+    var url = $btn.attr('url');
+    var priority = $a.attr('priority');
+
+    $.ajax({
+      url: url,
+      method: 'GET',
+      data: {
+        priority: priority
+      },
+      dataType: 'json',
+      success: function(response) {
+        if(response.code != 200) {
+          return;
+        }
+
+        var task = response.data;
+        $btn.find('button[data-toggle="dropdown"] > span.value').html(task.priorityName);
+      }
+    });
+
+    return true;
+  });
 
   $('#select_all_tasks').change(function() {
     var checkboxes = $(this).closest('form').find(':checkbox');

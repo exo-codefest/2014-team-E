@@ -26,6 +26,7 @@ import org.exoplatform.services.organization.OrganizationService;
 import org.exoplatform.services.organization.User;
 import org.exoplatform.task.TaskService;
 import org.exoplatform.task.model.Comment;
+import org.exoplatform.task.model.Priority;
 import org.exoplatform.task.model.Project;
 import org.exoplatform.task.model.Status;
 import org.exoplatform.task.model.Task;
@@ -125,6 +126,36 @@ public abstract class AbstractPortlet extends GenericPortlet {
 
             Task task = service.getTask(taskId);
             task.setStatus(Status.getStatus(Integer.parseInt(status)));
+
+            task = service.updateTask(task);
+
+            JSONObject json = new JSONObject();
+            json.put("id", task.getId());
+            json.put("title", task.getTitle());
+            json.put("created", task.getCreatedDate());
+            json.put("assignee", task.getAssignee());
+            JSONArray array = new JSONArray();
+            for(String l : task.getLabels()) {
+                array.put(l);
+            }
+            json.put("labels", array);
+            json.put("modified", task.getModifiedDate());
+            json.put("priority", task.getPriority().priority());
+            json.put("priorityName", task.getPriority().name());
+            json.put("status", task.getStatus().status());
+            json.put("statusName", task.getStatus().name());
+            json.put("reporter", task.getReporter());
+
+            result.put("code", 200);
+            result.put("message", "successfully");
+            result.put("data", json);
+        }
+        if("updatePriority".equals(action)) {
+            String taskId = request.getParameter(PARAM_OBJECT_ID);
+            String priority = request.getParameter("priority");
+
+            Task task = service.getTask(taskId);
+            task.setPriority(Priority.getPriority(Integer.parseInt(priority)));
 
             task = service.updateTask(task);
 
