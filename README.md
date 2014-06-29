@@ -110,7 +110,8 @@ See the following diagram to understand the progess of our team for MasterTask:
 In the list of projects, simply click <img src="screenshots/delete_icon.png" width="15"> to delete a project.
 
 ## Managing a project
-	A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simly. 
+
+A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simly. 
 	By clicking a specific project, you will be redirected to its details as follows:
 	
 	<img src="screenshots/project_details.png" width="300">
@@ -129,13 +130,11 @@ In the list of projects, simply click <img src="screenshots/delete_icon.png" wid
 
 ### Deleting a task
 	
-	Simply tick the checkbox corresponding to task you want to delete, then click **Delete** button at the left bottom.
-	You can delete multiple tasks at one time by ticking relevant checkboxes, then click **Delete** button.
+Simply tick the checkbox corresponding to task you want to delete, then click **Delete** button at the left bottom. You can delete multiple tasks at one time by ticking relevant checkboxes, then click **Delete** button.
 	
 ### Viewing task details
 
-	In the list of tasks, simply click one task you want to edit. 
-	Here you will see all information of the task, including: Title of task, Status, Reporter, Created time, Priority, Assignee, and Label, and a list of comments.
+In the list of tasks, simply click one task you want to edit. Here you will see all information of the task, including: Title of task, Status, Reporter, Created time, Priority, Assignee, and Label, and a list of comments.
 
 ### Editing a task
 
@@ -147,19 +146,19 @@ In the list of projects, simply click <img src="screenshots/delete_icon.png" wid
 	
 1. Add more details, or make changes on fields you like, including:
 
-* **Title**: Change title if you like.
+	* **Title**: Change title if you like.
 
-* **Priority**: Click the down arrow  to select a priority level for your task. Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED. 
+	* **Priority**: Click the down arrow  to select a priority level for your task. Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED. 
 	If you don't set priority, the default value will be UNDEFINED.
 	
-* **Status**: Click the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
+	* **Status**: Click the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
 	OPEN is auto set for Status when you create a new task quickly.
 	
-* **Assignee**: Click the down arrow to assign your task to one user. 
+	* **Assignee**: Click the down arrow to assign your task to one user. 
 	Remember that, only users who are in the **Shared Groups** of the **project** are listed in the drop-down menu. 
 	This means that you can only assign this task to one user who belongs to the group with the project has shared.
 
-* **Label**: Add labels to note your task, then click *Add* button or hit **Enter** key.
+	* **Label**: Add labels to note your task, then click *Add* button or hit **Enter** key.
 	The newly created label will be updated right above the Add Label form. 
 	Click **x** next to a label to remove it.
 
