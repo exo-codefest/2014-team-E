@@ -44,7 +44,7 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 <table>
 <tr><td>No</td><td>Features</td><td>Current Status</td></tr>
-<tr><td>1</td><td>Create project</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="20"/></td></tr>
+<tr><td>1</td><td>Create project</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="50"/></td></tr>
 <tr><td>2</td><td>Edit project</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
 <tr><td>3</td><td>Delete project</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
 <tr><td>4</td><td>Add label</td><td><img src="https://github.com/exo-codefest/2014-team-E/blob/master/screenshots/try_now_icon.png" alt="Implemented"/></td></tr>
