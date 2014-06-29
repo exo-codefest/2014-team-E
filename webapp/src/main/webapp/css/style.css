@@ -220,7 +220,7 @@
 	padding: 10px;
 }
 
-.dashboard .task.done {
+.dashboard .done .task {
 	text-decoration: line-through;
 }
 .GitMasterPortlet .task-label .badge {

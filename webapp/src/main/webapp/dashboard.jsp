@@ -31,19 +31,19 @@ List<Task> tasks = (List<Task>)renderRequest.getAttribute("open");
   </div>
   <div class="column">
     <div class="state">WON'T FIX</div>
-    <div class="sortable">
+    <div class="sortable done">
       <% tasks = (List<Task>)renderRequest.getAttribute("refused"); %>
       <% for(Task t : tasks) {%>
-      <div class="task draggable done"><%=t.getTitle() %></div>
+      <div class="task draggable"><%=t.getTitle() %></div>
       <%} %>
     </div>
   </div>
   <div class="column">
     <div class="state">RESOLVED</div>
-    <div class="sortable">
+    <div class="sortable done">
       <% tasks = (List<Task>)renderRequest.getAttribute("resolved"); %>
       <% for(Task t : tasks) {%>
-      <div class="task draggable done"><%=t.getTitle() %></div>
+      <div class="task draggable"><%=t.getTitle() %></div>
       <%} %>
     </div>
   </div>
