@@ -19,39 +19,39 @@ Nguyen The Tuyen | PT
 
 # Responsive
 
-	The MasterTask applications are based on Twitter Bootstrap to be fully responsive support.
+	The **MasterTask** app is based on Twitter Bootstrap to be fully responsive support.
 
 
 # What's MasterTask?
  
-With the aim of making easy for managing your jobs more effectively, our team would like to introduce MasterTask - a friendly and easy-to-use task manager.
-Even you are good at technique or not, this app is totally in your hand! 
-Use this app to control projects and their relevant tasks, then share with your group - so simple with MasterTask!
+With the aim of making easy for managing your jobs, our team would like to introduce **MasterTask** - a friendly and powerful task management tool.
+Even you are good at technique or not, this app is totally in your hands! 
+Use this app to control projects and their relevant tasks, then share with your group - so simple but effective with **MasterTask**!
 
-# All to manage your jobs better - MasterTask
+# Overview of MasterTask
 
-Because of time (2 days for app development) and limitation to members that are required by eXo Jury, 
+Because of limitations to time (2 days for app development) and members (maximum 4 members) as suggested by eXo Jury, 
 our team decided to finish some main points of our app, and next will be promising featutes and of course a cool delicated User Interface from BD team. 
-See the table to know which you can play now, and next features of **MasterTask** that will be introduced soon.
+See the table to know which you can play now, as well more features that will be introduced soon.
 
 
 <table>
-<tr><td>1</td><td>Creating new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>2</td><td>Editing project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>3</td><td>Deleting project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>5</td><td>Adding collaborators for projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>6</td><td>Sorting projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>7</td><td>Filtering projects by Project Name and Description <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>8</td><td>Adding task to project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>9</td><td>Editing task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>10</td><td>Removing all tasks by selecting all <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>11</td><td>Updating status for specific tasks <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>12</td><td>Sorting tasks by *Created Date* <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>13</td><td>Assigning one task to one <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>14</td><td>Setting priority to one task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>4</td><td>Addding label to task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>15</td><td>Fitering tasks by some criteria <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>16</td><td>Adding/Editing/Deleting a comment <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>1</td><td>Creating a new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>18</td><td>Updating into Activity Stream<img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>2</td><td>Editing a project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>19</td><td>Setting due date for a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>3</td><td>Deleting a project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>20</td><td>Add Repeat options for a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>5</td><td>Sharing a projects with groups <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>21</td><td>Making your tasks management more productive by sending timely reminders via notification and email <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>6</td><td>Sorting projects by 2 tabs <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>22</td><td>Adding description for a task<img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>7</td><td>Filtering projects by Project Name and Description <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>23</td><td>Adding subtasks to a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>8</td><td>Managing tasks of projects by Dashboard <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>24</td><td>Uploading a file into a task <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>9</td><td>Adding a task to project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>25</td><td>Inviting specific users via email <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>10</td><td>Editing a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>26</td><td>Adding/Editing description with CKEditor <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>11</td><td>Removing a task or all tasks at one time <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>27</td><td>Inline editing title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>12</td><td>Updating status for a specific task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>28</td><td>Synchronizing between Calendar and MasterTask <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>13</td><td>Assigning a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>29</td><td>Creating tasks and notes remotely by email to Project_Team@MasterTask.com <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>14</td><td>Setting priority to one task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>30</td><td>Quick adding a task right from Project Details view <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>15</td><td>Addding labels to a task <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>31</td><td>Adding Task Reporters to control progress more effectively <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>16</td><td>Fitering tasks by some criteria <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>32</td><td>Mention someone in title and description <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>17</td><td>Adding/Editing/Deleting a comment <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>33</td><td>Clean and very easy-to-use interface <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 </table>
 
 To make continuous improvements, we are always open to listen to your feedback and expectations. 
@@ -59,7 +59,14 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 <img src="screenshots/progress_diagram.png" width="600"/>
 
+**References:**
+
+* Track issues, bugs and improvements for **MasterTask**, and give your expectations or any feedback at https://github.com/exo-codefest/2014-team-E/issues.
+
+
 # How to use?
+
+To make easy for approach to **MasterTask**, use this link to access: 
 
 ## Creating new project
 
@@ -76,11 +83,12 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 1. Enter **Project name** (mandatory) and **Description** for your project.
 
-1. Select a group by clicking the down-arrow icon of **Shared Groups**, then click **Add**. 
+1. Share your project with a group by clicking the down-arrow icon of **Shared Groups**, then click **Add**. 
 	This means only members of the shared groups can see that project in their **Shared Projects** tab.
 	
 	```
 	* Repeat this step if you want to shared with many groups.
+	
 	* Click **x** next to each group that you don't want to share anymore.
 	```
 	
@@ -199,5 +207,3 @@ Here you will see all information of the task, including: Title of task, Status,
 2. At the bottom of this view, enter your comment to the text box, then click **Comment** button.
 
 3. Click <img src="screenshots/edit_icon.png" width="20"> to edit your comment, or <img src="screenshots/delete_icon.png" width="15"> to remove it.
-
-
