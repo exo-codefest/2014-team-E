@@ -168,11 +168,13 @@
   </tbody>
 </table>
 <%
+	String loadMoreCSS = "none";
 	ResourceURL nextURL = (ResourceURL)renderRequest.getAttribute("nextURL");
 	if (nextURL != null) {
+	    loadMoreCSS = "block";
+	}
 %>
-<a class="load-more-task" href="javascript:void(0);" nextURL="<%=nextURL%>"><span>Load more</span></a>
-<%} %>    
+<a class="load-more-task" href="javascript:void(0);" style="display: <%=loadMoreCSS%>" nextURL="<%=nextURL%>"><span>Load more</span></a>   
 <button class="btn btn-primary" type="submit" name="action" value="delete">Delete</button>
 </form>
 <%}%>

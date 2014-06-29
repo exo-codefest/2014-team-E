@@ -569,8 +569,18 @@
 		      dataType: 'text',
 		      success: function(response) {
 		        var $table = $portlet.find('.table-task');
-		        var currData = $table.find('tbody').html();
-		        $table.find('tbody').html(response);
+		        
+		        var idx = response.indexOf("<nextURL>");
+		        var content = response.substring(0, idx);		        
+		        var nextURL = response.substring(idx + 9);		      
+		        var $loadMore = $table.parent().find('.load-more-task');
+		        if (nextURL != 'null') {		        	
+		        	$loadMore.attr('nextURL', nextURL).show();
+		        } else {
+		        	$loadMore.hide();
+		        }
+		        
+		        $table.find('tbody').html(content);
 		      }
 		    });
 	}
@@ -605,9 +615,9 @@
 		        
 		        var nextURL = response.substring(idx + 9);
 		        if (nextURL != 'null') {
-		        	$loadMore.attr('nextURL', nextURL);		        	
+		        	$loadMore.attr('nextURL', nextURL).show();		        	
 		        } else {
-		        	$loadMore.remove();
+		        	$loadMore.hide();
 		        }
 		      }
 		    });

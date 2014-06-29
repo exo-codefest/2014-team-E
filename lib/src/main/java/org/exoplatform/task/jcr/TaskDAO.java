@@ -258,7 +258,8 @@ public class TaskDAO {
         if (query.getDateCreated() != 0) {
             sql.append(" exo:dateCreated >= ").append(query.getDateCreated());
         }
-
+        sql.append(" order by exo:createdDate DESC");
+        
         Session session = taskService.getSession();
         QueryImpl jcrQuery = (QueryImpl) session.getWorkspace().getQueryManager()
                 .createQuery(sql.toString(), javax.jcr.query.Query.SQL);
