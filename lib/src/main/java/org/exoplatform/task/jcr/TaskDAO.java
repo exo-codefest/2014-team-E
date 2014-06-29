@@ -244,7 +244,7 @@ public class TaskDAO {
             sql.append("%' ");
         }
 
-        if (query.getTitle() != null) {
+        if (query.getTitle() != null && !query.getTitle().trim().isEmpty()) {
             sql.append(" and contains(exo:title, '").append(Utils.queryEscape(query.getTitle()));
             sql.append("') ");
         }

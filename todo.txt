@@ -13,7 +13,7 @@ Rename application to "MasterTask"
 
 5. Sort the project list by Created Date (done)
 
-6. Filter projects by Project name and description (in client only by js) (Phuong)
+6. Filter projects by Project name and description (in client only by js) (done)
 
 7. Having two tabs [My Projects, Shared Projects] (done)
 

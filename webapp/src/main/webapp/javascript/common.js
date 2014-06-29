@@ -488,11 +488,61 @@
     } else {
         checkboxes.removeAttr('checked');
     }
-});
+  });
   
   // Dashboard
   $(function() {
     $(".draggable").draggable();
     $(".droppable").droppable();
   });
+
+  $('.GitMasterPortlet').on('click', '.filterPriority, .filterStatus', function(e) {
+	    var $target = $(e.target);
+	    var $filterTask = $target.closest('.filterTask');
+	    var current = $target.closest('.btn-group').find('button span').first();
+	    var eXoValue = $target.attr('eXoValue');
+	    current.html($target.html()).data('eXoValue', eXoValue ? eXoValue : null);
+	    
+	    var query = getTaskQuery($filterTask);	    
+
+	    var filterURL = $filterTask.attr('filterURL');
+	    searchTask(filterURL, query, $target.closest('.GitMasterPortlet'));
+	});
+	
+	var searchTaskTimeout = null;
+	$('.filterTaskTitle').on('keypress', function(e) {
+		    if (searchTaskTimeout != null) {
+		    	window.clearTimeout(searchTaskTimeout);
+		    }
+		    var $target = $(e.target);
+		    searchTaskTimeout = window.setTimeout(function() {
+			    var $filterTask = $target.closest('.filterTask');		    
+			    var query = getTaskQuery($filterTask);	    
+	
+			    var filterURL = $filterTask.attr('filterURL');
+			    searchTask(filterURL, query, $target.closest('.GitMasterPortlet'));
+		    }, 700);	    
+	});
+	
+	function searchTask(filterURL, query, $portlet) {
+		  $.ajax({
+		      url: filterURL,
+		      method: 'GET',
+		      data: query,
+		      dataType: 'text',
+		      success: function(response) {
+		        var $table = $portlet.find('.table-task');
+		        var currData = $table.find('tbody').html();
+		        $table.find('tbody').html(response);
+		      }
+		    });
+	}
+	
+	function getTaskQuery($filterTask) {
+		 var query = {};
+		 query.filterStatus = $filterTask.find('.filterTaskStatus .btn span').first().data('eXoValue');
+		 query.filterPriority = $filterTask.find('.filterTaskPriority .btn span').first().data('eXoValue');
+	   query.filterTitle = $filterTask.find('.filterTaskTitle').val();	  
+	   return query;
+	} 
 })($);

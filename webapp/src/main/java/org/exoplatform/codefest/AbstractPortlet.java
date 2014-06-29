@@ -18,6 +18,30 @@
  */
 package org.exoplatform.codefest;
 
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
+import javax.portlet.GenericPortlet;
+import javax.portlet.PortletContext;
+import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
+import javax.portlet.ResourceRequest;
+import javax.portlet.ResourceResponse;
+import javax.portlet.ResourceURL;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.exoplatform.commons.utils.ListAccess;
 import org.exoplatform.container.ExoContainer;
 import org.exoplatform.container.ExoContainerContext;
@@ -36,32 +60,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.portlet.ActionRequest;
-import javax.portlet.ActionResponse;
-import javax.portlet.GenericPortlet;
-import javax.portlet.PortletContext;
-import javax.portlet.PortletException;
-import javax.portlet.PortletURL;
-import javax.portlet.RenderRequest;
-import javax.portlet.RenderResponse;
-import javax.portlet.ResourceRequest;
-import javax.portlet.ResourceResponse;
-import javax.portlet.ResourceURL;
-
 /**
  * @author <a href="trongtt@gmail.com">Trong Tran</a>
  * @version $Revision$
@@ -73,6 +71,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
 
     public static final String OBJECT_TYPE_COMMENT = "comment";
     public static final String OBJECT_TYPE_TASK = "task";
+    public static final String OBJECT_TYPE_TASK_LIST = "taskList";
 
     TaskService service;
     OrganizationService orgService;
@@ -107,13 +106,71 @@ public abstract class AbstractPortlet extends GenericPortlet {
             } catch (JSONException ex) {
                 ex.printStackTrace();
             }
+        } else if(OBJECT_TYPE_TASK_LIST.equals(objectType)) {
+            try {
+                serveTaskList(request, response);
+            } catch (JSONException ex) {
+                ex.printStackTrace();
+            }
         } else {
             super.serveResource(request, response);
         }
     }
 
+    private void serveTaskList(ResourceRequest request, ResourceResponse response) throws JSONException, IOException, PortletException {
+        int offset = 0, limit = 15;
+        try {
+            offset = Integer.parseInt(request.getParameter("offset"));
+            limit = Integer.parseInt(request.getParameter("limit"));
+        } catch (NumberFormatException e) {}
+        
+        Priority priority = null;
+        try {
+            priority = Priority.getPriority(Integer.parseInt(request.getParameter("filterPriority")));
+        } catch (Exception e) {}
+        
+        Status status = null;
+        try {
+            status = Status.getStatus(Integer.parseInt(request.getParameter("filterStatus")));
+        } catch (Exception e) {}
+        
+        String title = request.getParameter("filterTitle");
+        Query query = new Query(title);
+        query.setPriority(priority);
+        query.setStatus(status);
+        
+        List<Task> tasks = service.findTasks(query, offset, limit);
+        request.setAttribute("tasks", tasks);
+        
+      //. Load all user of this project
+        String projectId = request.getParameter("projectId");
+        Project project = service.getProject(projectId);
+        Set<String> membershipts = project.getMemberships();
+        Map<String, User> users = new HashMap<String, User>();
+        try {
+            User u = orgService.getUserHandler().findUserByName(request.getRemoteUser());
+            users.put(u.getUserName(), u);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        for(String group : membershipts) {
+            try {
+                ListAccess<User> list = orgService.getUserHandler().findUsersByGroupId(group);
+                int size = list.getSize();
+                for(User u : list.load(0, size)) {
+                    users.put(u.getUserName(), u);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        request.setAttribute("usersInProject", users);
+
+        getPortletContext().getRequestDispatcher("/includes/task-row.jsp").forward(request, response);
+    }
+
     protected void serveTask(String action, ResourceRequest request, ResourceResponse response) throws PortletException, IOException, JSONException {
-        String user = request.getRemoteUser();
         PrintWriter out = response.getWriter();
 
         JSONObject result = new JSONObject();
