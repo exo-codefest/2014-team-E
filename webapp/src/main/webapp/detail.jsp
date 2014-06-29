@@ -74,7 +74,7 @@
             <%for(String username : usersInProject.keySet()) {
               User user = usersInProject.get(username);
             %>
-              <option value="<%=username%>"><%=user.getFullName()%></option>
+              <option value="<%=username%>" <%=(username.equals(task.getAssignee()) ? "selected=\"selected\"" : "")%>><%=user.getFullName()%></option>
             <%}%>
           </select>
         </div>
@@ -91,6 +91,7 @@
 
               <%} else {
                 for(String label : labels) {
+                  if(label == null || label.isEmpty()) continue;
                   if(labelVals.length() > 0) {
                     labelVals.append(',');
                   }
@@ -154,7 +155,7 @@
       <span class="label label-info priority-<%=task.getPriority().name().toLowerCase()%>"><%=task.getPriority()%></span>
     </div>
     <div class="span12">
-      <div class="span4">Assignee: <%=(task.getAssignee() == null ? "none" : task.getReporter())%></div>
+      <div class="span4">Assignee: <%=(task.getAssignee() == null ? "none" : task.getAssignee())%></div>
       <div class="span8">
         <%if(task.getLabels() != null && task.getLabels().size() > 0){%>
           <span>Label: </span>

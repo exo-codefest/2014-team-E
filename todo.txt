@@ -5,7 +5,7 @@ Rename application to "MasterTask"
 
 1. Adding “Create project” button to show the form (done)
 
-2. Add label style for membership
+2. Add label style for membership (done)
 
 3. Project form validation
 
