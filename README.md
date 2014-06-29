@@ -37,7 +37,7 @@ See the table to know which you can play now, and next features of **MasterTask*
 
 <table>
 <tr><td>1</td><td>Creating new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
-<tr><td>2</td><td>Editing project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
+<tr><td>2</td><td>[editing_project]:Editing project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>3</td><td>Deleting project <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>5</td><td>Adding collaborators for projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
 <tr><td>6</td><td>Sorting projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="40"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="40"/></td></tr>
@@ -63,9 +63,9 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 ## Creating a new project
 
-1. Open the *MasterTask* app. The MasterTask screen is displayed as follow. 
+1. Open the **MasterTask** app. The **MasterTask** screen is displayed as follow. 
 
-	<img src="screenshots/mastertask_main_screen.png" width="600">
+	<img src="screenshots/mastertask_main_screen.png" width="450">
 
 	A list of projects will be displayed. 
 	If you have no project, there will be a message: *No project is available, please create one!*. 
@@ -95,14 +95,14 @@ Currently, your projects are classified into types:
 
 To find your needed projects quickly, click either of tabs: **My Projects** or **Shared Projects**.
 
-## Editing a project 
+## ![Editing a project] [editing_project]
 
 1. In the list of projects, click <img src="screenshots/edit_icon.png" width="15">. 
    The **Edit project** form is displayed at the bottom of the projects list.
    
-   <img src="screenshots/edit_project.png" width="600">
+   <img src="screenshots/edit_project.png" width="450">
 
-2. Make changes to your desires, then click **Update** to finish or **Cancel* to delete your updates.
+2. Make changes to your desires, then click **Update** to finish or **Cancel** to delete your updates.
 
 ## Deleting a project
 
@@ -113,9 +113,13 @@ In the list of projects, simply click <img src="screenshots/delete_icon.png" wid
 A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simly. 
 By clicking a specific project, you will be redirected to its details as follows:
 
-<img src="screenshots/project_details.png" width="600">
+<img src="screenshots/project_details.png" width="650">
 	
-Here is a list of tasks of the project. If this project does not have any task, one message will be shown: "No task is avaible, please create one!".
+Here is a list of tasks of the project. 
+
+* If this project does not have any task, one message will be shown: "No task is available, please create one!".
+
+* The tasks that have been resolved or unresolved or refused are displayed with a strike-through.
 
 ### Creating a new task
 
@@ -136,8 +140,6 @@ Simply tick the checkbox corresponding to task you want to delete, then click **
 In the list of tasks, simply click one task you want to view. 
 Here you will see all information of the task, including: Title of task, Status, Reporter, Created time, Priority, Assignee, and Label, and a list of comments.
 
-
-
 ### Editing a task
 
 1. Open the details panel of a task.
@@ -148,15 +150,15 @@ Here you will see all information of the task, including: Title of task, Status,
 	
 1. Add more details, or make changes on fields you like, including:
 	<table>
-	<tr><td>**Title**</td><td>Change title if you like.</td></tr>
-	<tr><td>**Priority**</td><td>Click the down arrow  to select a priority level for your task. 
+	<tr><td>**Title**</td><td>Changes title if you like.</td></tr>
+	<tr><td>**Priority**</td><td>Clicks the down arrow  to select a priority level for your task. 
 	Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED.If you don't set priority, the default value will be UNDEFINED.</td></tr>
-	<tr><td>**Status**</td><td>Click the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
+	<tr><td>**Status**</td><td>Clicks the down arrow to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED. 
 	OPEN is auto set for Status when you create a new task quickly.</td></tr>
-	<tr><td>**Assignee**</td><td>Click the down arrow to assign your task to one user. 
+	<tr><td>**Assignee**</td><td>Clicks the down arrow to assign your task to one user. 
 	Remember that, only users who are in the **Shared Groups** of the **project** are listed in the drop-down menu. 
 	This means that you can only assign this task to one user who belongs to the group with the project has shared.</td></tr>
-	<tr><td>**Label**</td><td>Add labels to note your task, then click *Add* button or hit **Enter** key.
+	<tr><td>**Label**</td><td>Adds labels to note your task, then click *Add* button or hit **Enter** key.
 	The newly created label will be updated right above the Add Label form. 
 	Click **x** next to a label to remove it.</td></tr>
 	</table>
