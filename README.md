@@ -98,7 +98,7 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 ## Editing a project
 
-1. In the list of projects, click <img src="https://github.com/exo-codefest/2014-team-E/screenshots/edit_icon.png" width="10">. 
+1. In the list of projects, click <img src="https://github.com/exo-codefest/2014-team-E/screenshots/edit_icon.png" width="15">. 
    The **Edit project** form is displayed at the bottom of the projects list.
    
    <img src="https://github.com/exo-codefest/2014-team-E/screenshots/edit_project.png" width="300">
@@ -141,4 +141,4 @@ In the list of projects, simply click <img src="https://github.com/exo-codefest/
 
 1. Open the details panel of a task.
 
-1. Click  img src="https://github.com/exo-codefest/2014-team-E/screenshots/edit_task_icon.png" width="15">
+1. Click  <img src="https://github.com/exo-codefest/2014-team-E/screenshots/edit_task_icon.png" width="15">
