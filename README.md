@@ -23,50 +23,39 @@ Nguyen The Tuyen | PT
 
 
 # What's MasterTask?
-	MasterTask is the best way to manage and share your todo lists. 
-With the aim of making easy for controlling your job and life, our team would like to introduce MasterTask - a friendly and easy-to-use manager.
-Even you are good at technique or not, this app is totally in your hand! Use this to list to-do tasks, or note stuffs for your shopping, then share with your colleagues and friends. 
+ 
+With the aim of making easy for managing your jobs more effectively, our team would like to introduce MasterTask - a friendly and easy-to-use task manager.
+Even you are good at technique or not, this app is totally in your hand! 
+Use this to control projects and their relevant tasks, then share with your group - so simple with MasterTask!
 
-# Which benefits from MasterTask?
+# All to manage your jobs better - MasterTask
 
-* Easy to use and friendly to users
-* Manage projects and their tasks easily and flexibly
-
-# All to manage your jobs and life better - MasterTask
-
-We would like to summarize our ideas, which can be used now, and which will be next. 
-Why? Because of time limitation of two development days and limitation to the members that are required by eXo Jury, 
-we now have finished some main points of our product, and next will be promising featutes and of course delicated User Interface from BD team. 
-To make continuous improvement, we are always open to listen to your feedback and expectations. 
+We first would like to summarize our ideas, which functions you can be tried now, and which will be next. 
+Why? Because of time (2 days for app development) and limitation to members that are required by eXo Jury, 
+we decided to finish some main points of our app, and next will be promising featutes and of course a cool delicated User Interface from BD team. 
+To make continuous improvements, we are always open to listen to your feedback and expectations. 
 See the following diagram to understand the progess of our team for MasterTask: 
 
-<img src="screenshots/progress_diagram" alt="Implemented"/>
+<img src="screenshots/progress_diagram.png" width="700"/>
+
 
 <table>
-<tr><td>No</td><td>Features</td><td>Current Status</td></tr>
-<tr><td>1</td><td>Create project</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>2</td><td>Edit project</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>3</td><td>Delete project</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>4</td><td>Add label</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>5</td><td>Add collaborators for projects</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>6</td><td>Sort projects</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>7</td><td>Filter projects by Project Name and Description</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>8</td><td>Add task to project</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>9</td><td>Edit task</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>10</td><td>Remove all tasks by selecing all</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>11</td><td>Update status for specific tasks</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>12</td><td>Sort tasks by *Created Date*</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>13</td><td>Assign one task to one</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>14</td><td>Add priority to one task</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>15</td><td>Search task</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>16</td><td>Add comment for a task</td><td><img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td></tr>
-<tr><td>17</td><td></td><td><img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/> </td></tr>
-<tr><td>18</td><td></td><td><img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/> </td></tr>
-<tr><td>19</td><td></td><td><img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/> </td></tr>
-<tr><td>20</td><td></td><td><img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/> </td></tr>
-<tr><td>21</td><td></td><td><img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/> </td></tr>
-<tr><td>22</td><td></td><td><img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/> </td></tr>
-<tr><td>23</td><td></td><td><img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/> </td></tr>
+<tr><td>1</td><td>Creating new project <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>2</td><td>Editing project <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>3</td><td>Deleting project <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>5</td><td>Adding collaborators for projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>6</td><td>Sorting projects <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>7</td><td>Filtering projects by Project Name and Description <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>8</td><td>Adding task to project <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>9</td><td>Editing task <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>10</td><td>Removing all tasks by selecting all <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>11</td><td>Updating status for specific tasks <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>12</td><td>Sorting tasks by *Created Date* <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>13</td><td>Assigning one task to one <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>14</td><td>Setting priority to one task <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>4</td><td>Addding label to task <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>15</td><td>Fitering tasks by some criteria <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
+<tr><td>16</td><td>Adding/Editing/Deleting a comment <img src="screenshots/try_now_icon.png" alt="Implemented" width="45"/></td><td>17</td><td>Feature 1 <img src="screenshots/coming_soon_icon.png" alt="NextVersion" width="45"/></td></tr>
 </table>
 
 
@@ -76,14 +65,14 @@ See the following diagram to understand the progess of our team for MasterTask:
 
 1. Open the MasterTask app. The MasterTask screen is displayed as follow. 
 
-	<img src="screenshots/mastertask_main_screen.png" width="400">
+	<img src="screenshots/mastertask_main_screen.png" width="700">
 
 	A list of projects will be displayed. 
 	If you have no project, there will be a message: *No project is available, please create one!*. 
 
 1. Click **Create new project** to open the form.
 
-	<img src="screenshots/new_project_form.png" width="400">
+	<img src="screenshots/new_project_form.png" width="700">
 
 1. Enter title and description for your project.
 
@@ -101,7 +90,7 @@ See the following diagram to understand the progess of our team for MasterTask:
 1. In the list of projects, click <img src="screenshots/edit_icon.png" width="15">. 
    The **Edit project** form is displayed at the bottom of the projects list.
    
-   <img src="screenshots/edit_project.png" width="300">
+   <img src="screenshots/edit_project.png" width="700">
 
 2. Make changes to your desires, then click **Update** to finish or **Cancel* to delete your updates.
 
@@ -114,7 +103,7 @@ In the list of projects, simply click <img src="screenshots/delete_icon.png" wid
 A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simly. 
 By clicking a specific project, you will be redirected to its details as follows:
 
-<img src="screenshots/project_details.png" width="300">
+<img src="screenshots/project_details.png" width="700">
 	
 Here is a list of tasks of the project. If this project does not have any task, one message will be shown: "No task is avaible, please create one!".
 
@@ -124,7 +113,7 @@ Here is a list of tasks of the project. If this project does not have any task, 
 
 1. Put your cursor into the Quick Add form, then type the task title and hit **Enter** key.
 
-	<img src="screenshots/quick_add_task_form.png" width="300">
+	<img src="screenshots/quick_add_task_form.png" width="400">
 
 	Your newly created task will be updated into the list of tasks at the bottom.
 
@@ -145,7 +134,7 @@ Here you will see all information of the task, including: Title of task, Status,
 
 1. Click <img src="screenshots/edit_task_icon.png" width="50"> to open the **Edit** form. 
 	
-	<img src="screenshots/edit_task_form.png" width="300">
+	<img src="screenshots/edit_task_form.png" width="700">
 	
 1. Add more details, or make changes on fields you like, including:
 	<table>
@@ -170,6 +159,6 @@ Here you will see all information of the task, including: Title of task, Status,
 
 2. At the bottom of this view, enter your comment to the text box, then click **Comment** button.
 
-3. Click <img src="screenshots/edit_icon.png" width="15"> to edit your comment, or <img src="screenshots/delete_icon.png" width="15"> to remove it.
+3. Click <img src="screenshots/edit_icon.png" width="20"> to edit your comment, or <img src="screenshots/delete_icon.png" width="15"> to remove it.
 
 
