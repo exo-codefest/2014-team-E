@@ -85,7 +85,7 @@
           }
           if(!hasProject) {%>
 	          <tr>
-	            <td colspan="5">There are no project of your account, please create one!</td>
+	            <td colspan="5">No project is available, please create one!!</td>
 	          </tr>
 	       <%}%>
         </tbody>
