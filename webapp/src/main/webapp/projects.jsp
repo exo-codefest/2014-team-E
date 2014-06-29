@@ -240,7 +240,9 @@ if (p != null) {
 <%    
 } else {
 %>
-<button type="button" class="btn btn-primary createProject">Create new project</button>
+<div class='uiAction'>
+	<button type="button" class="btn btn-primary createProject">Create new project</button>
+</div>
 <div class="formCreateProject">
     <form id="form-create-project" action="<portlet:actionURL />" method="POST" class="form-horizontal">
         <fieldset>
@@ -286,6 +288,11 @@ if (p != null) {
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn btn-primary">Create</button>
+                    <%
+                      PortletURL cancelURL = renderResponse.createRenderURL();
+                      allProjectURL.setParameter("view", "projects");
+                    %>
+                    <button type="button" class="btn" onclick="window.location=<%=cancelURL.toString()%>">Cancel</button>
                 </div>
             </div>
         </fieldset>
