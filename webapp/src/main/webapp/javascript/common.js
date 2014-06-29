@@ -409,6 +409,13 @@
 
         var task = response.data;
         $btn.find('button[data-toggle="dropdown"] > span.value').html(task.statusName);
+
+        var $titleLink = $btn.closest('tr').find('td.title a');
+        if(task.status == 3 || task.status == 4) {
+          $titleLink.addClass('done');
+        } else {
+          $titleLink.removeClass('done');
+        }
       }
     });
 
