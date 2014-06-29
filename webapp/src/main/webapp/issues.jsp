@@ -38,7 +38,7 @@
 <table class="table table-hover table-task">
   <thead>
     <tr>
-      <th>#</th>
+      <th><input type="checkbox" id="select_all_tasks"></th>
       <th>Task</th>
       <th class="text-center">Priority</th>
       <th class="text-center">Status</th>
@@ -73,22 +73,3 @@
 </table>
 <button class="btn btn-primary" type="submit" name="action" value="delete">Delete</button>
 </form>
-<!-- 
-<div>
-    <form action="<portlet:actionURL />" method="POST" class="form-horizontal">
-        <fieldset>
-            <legend>Add new Task</legend>
-            <div>
-                <input type="hidden" name="objectType" value="task"/>
-                <input type="hidden" name="action" value="create"/>
-                <input type="hidden" name="projectId" value="<%=project.getId()%>"/>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="text" id="inputName" name="title" placeholder="Title of task">
-                    <button type="submit" class="btn">Create</button>
-                </div>
-            </div>
-        </fieldset>
-    </form>
-</div> -->

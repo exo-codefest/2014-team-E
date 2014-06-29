@@ -382,4 +382,13 @@
 
     return true;
   });
+
+  $('#select_all_tasks').change(function() {
+    var checkboxes = $(this).closest('form').find(':checkbox');
+    if($(this).is(':checked')) {
+        checkboxes.attr('checked', 'checked');
+    } else {
+        checkboxes.removeAttr('checked');
+    }
+});
 })($);
