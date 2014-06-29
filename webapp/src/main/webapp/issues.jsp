@@ -70,7 +70,7 @@
       <td><input type="checkbox" name="objectId" value="<%=task.getId()%>"/></td>
       <td><a href="<%=detailURL.toString()%>" <% if(task.getStatus().equals(Status.RESOLVED) ||  task.getStatus().equals(Status.REFUSED)) {%> class="done"<%}%>><%=task.getTitle()%></a></td>
       <td class="text-center"><a href="<%=detailURL.toString()%>"><%=task.getPriority()%></a></td>
-      <td class="text-center">
+      <td class="text-center status">
         <%
           ResourceURL changeStatusURL = renderResponse.createResourceURL();
           changeStatusURL.setParameter(AbstractPortlet.PARAM_OBJECT_TYPE, AbstractPortlet.OBJECT_TYPE_TASK);
@@ -87,7 +87,7 @@
           </ul>
         </div>
       </td>
-      <td class="text-center">
+      <td class="text-center assignee">
         <%--<%=task.getAssignee()%>--%>
         <%
           ResourceURL assignURL = renderResponse.createResourceURL();

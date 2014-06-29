@@ -89,17 +89,21 @@
     border: none;
 }
 
-td button.btn {
+td.status button.btn,
+td.assignee button.btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
 }
-td button.btn .caret {
+td.status button.btn .caret,
+td.assingee button.btn .caret{
     visibility: hidden;
 }
-td button.btn:hover {
+td.status button.btn:hover,
+td.assignee button.btn:hover{
     border-color: #ccc;
 }
-td button.btn:hover .caret {
+td.status button.btn:hover .caret,
+td.assignee button.btn:hover .caret{
     visibility: visible;
 }
