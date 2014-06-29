@@ -33,13 +33,18 @@
             </div>
             <div class="control-group mgB0">
                 <div class="controls">
-                    <input type="text" id="inputName" name="title" placeholder="Title of task">
+                    <input type="text" id="inputName" name="title" placeholder="Quick add new task here">
                     <button type="submit" class="btn hide">Create</button>
                 </div>
             </div>
         </fieldset>
     </form>
 </div>
+<%if(tasks.size() == 0){%>
+<div class="alert alert-info" id="">
+  <i class="uiIconInfo"></i> No task is available, please create one!
+</div>
+<%} else {%>
 <form action="<%=deleteURL.toString() %>" method="post">
 <table class="table table-hover table-task">
   <thead>
@@ -52,16 +57,7 @@
     </tr>
   </thead>
   <tbody>
-  <% if(tasks.size() == 0) {%>
-    <tr>
-      <td colspan="5">
-        <div class="alert alert-info" id="">
-            <i class="uiIconInfo"></i> No project is available, please create one!
-        </div>
-      </td>
-    </tr>
-  <%} else {
-      for(Task task : tasks) {
+  <% for(Task task : tasks) {
           PortletURL detailURL = renderResponse.createRenderURL();
           detailURL.setParameter("view", "detail");
           detailURL.setParameter("taskId", task.getId());
@@ -115,9 +111,9 @@
         </div>
       </td>
     </tr>
-        <%}
-    }%>
+  <%}%>
   </tbody>
 </table>
 <button class="btn btn-primary" type="submit" name="action" value="delete">Delete</button>
 </form>
+<%}%>

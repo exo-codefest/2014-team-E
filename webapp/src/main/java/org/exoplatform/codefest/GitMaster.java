@@ -138,6 +138,9 @@ public class GitMaster extends AbstractPortlet {
 
         if("create".equals(action)) {
             String title = request.getParameter("title");
+            if(title == null || title.isEmpty()) {
+                return;
+            }
             Task task = new Task(projectId, title);
             task.setStatus(Status.OPEN);
             task.setPriority(Priority.UNDEFINED);
