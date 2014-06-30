@@ -194,7 +194,7 @@ Click the **Projects** text on the breadcrumb to come back to main screen of pro
 In the list of tasks, **MasterTask** allows you to filter your search results by **Status** and **Priority**
 and search for your desired tasks by title quickly. 
 
-<img src="screenshots/filter_tasks.png" width="350">
+<img src="screenshots/filter_tasks.png" width="450">
 
 ### Creating a new task
 
@@ -230,11 +230,11 @@ Besides, to make more changes, you can edit in the Details view of each task as 
 
 	<img src="screenshots/task_details.png" width="650">
 
-1. Click <img src="screenshots/edit_task_icon.png" width="50"> to open the **Edit** form. 
+2. Click <img src="screenshots/edit_task_icon.png" width="50"> to open the **Edit** form. 
 	
 	<img src="screenshots/edit_task_form.png" width="500">
 	
-1. Add more details, or make changes on fields you like, including:
+3. Add more details, or make changes on fields you like, including:
 
 	* **Title**: Changes title if you like.
 
@@ -252,7 +252,7 @@ Besides, to make more changes, you can edit in the Details view of each task as 
 	The newly created label will be updated right above the Add Label form. 
 	Click **x** next to a label to remove it.
 
-1. Click **Update** button to finish your changes, or **Cancel** to exit the Edit Task form without changes.
+4. Click **Update** button to finish your changes, or **Cancel** to exit the Edit Task form without changes.
 
 ### Adding comment to a task
 
