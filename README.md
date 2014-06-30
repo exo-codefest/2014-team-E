@@ -236,19 +236,19 @@ Besides, to make more changes, you can edit in the Details view of each task as 
 	
 3. Add more details, or make changes on fields you like, including:
 
-	* **Title**: Changes title if you like.
+* **Title**: Changes title if you like.
 
-	* **Priority**: Clicks the down-arrow icon to select a priority level for your task. 
+* **Priority**: Clicks the down-arrow icon to select a priority level for your task. 
 	Currently, there are 4 levels: BLOCKER, MAJOR, MINOR and UNDEFINED. If you don't set priority, the default value will be UNDEFINED.
 
 	* **Status**: Clicks the down-arrow icon to update status for your task. Currently, there are 4 types: OPEN, IN PROGRESS, RESOLVED, REFUSED, 
 	in which OPEN is set for Status by default.
 	
-	* **Assignee**: Clicks the down-arrow icon to assign your task to one user. 
+* **Assignee**: Clicks the down-arrow icon to assign your task to one user. 
 	Remember that, only users who are in the **Shared Groups** of the **project** are listed in the drop-down menu. 
 	This means that you can only assign this task to one user who belongs to the group with the project has shared.
 	
-	* **Label**: Adds labels to note your task, then click **Add** button or hit **Enter** key.
+* **Label**: Adds labels to note your task, then click **Add** button or hit **Enter** key.
 	The newly created label will be updated right above the Add Label form. 
 	Click **x** next to a label to remove it.
 
