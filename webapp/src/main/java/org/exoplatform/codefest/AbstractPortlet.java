@@ -155,7 +155,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
         Set<String> membershipts = project.getMemberships();
         Map<String, User> users = new HashMap<String, User>();
         try {
-            User u = orgService.getUserHandler().findUserByName(request.getRemoteUser());
+            User u = orgService.getUserHandler().findUserByName(project.getOwner());
             users.put(u.getUserName(), u);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -545,7 +545,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 Set<String> membershipts = project.getMemberships();
                 Map<String, User> users = new HashMap<String, User>();
                 try {
-                    User u = orgService.getUserHandler().findUserByName(user);
+                    User u = orgService.getUserHandler().findUserByName(project.getOwner());
                     users.put(u.getUserName(), u);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -579,7 +579,7 @@ public abstract class AbstractPortlet extends GenericPortlet {
                 Set<String> membershipts = project.getMemberships();
                 Map<String, User> users = new HashMap<String, User>();
                 try {
-                    User u = orgService.getUserHandler().findUserByName(user);
+                    User u = orgService.getUserHandler().findUserByName(project.getOwner());
                     users.put(u.getUserName(), u);
                 } catch (Exception ex) {
                     ex.printStackTrace();
