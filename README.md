@@ -230,11 +230,11 @@ Besides, to make more changes, you can edit in the Details view of each task as 
 
 	<img src="screenshots/task_details.png" width="650">
 
-2. Click <img src="screenshots/edit_task_icon.png" width="50"> to open the **Edit** form. 
+1. Click <img src="screenshots/edit_task_icon.png" width="50"> to open the **Edit** form. 
 	
 	<img src="screenshots/edit_task_form.png" width="500">
 	
-3. Add more details, or make changes on fields you like, including:
+1. Add more details, or make changes on fields you like, including:
 
 * **Title**: Changes title if you like.
 
@@ -252,7 +252,7 @@ Besides, to make more changes, you can edit in the Details view of each task as 
 	The newly created label will be updated right above the Add Label form. 
 	Click **x** next to a label to remove it.
 
-4. Click **Update** button to finish your changes, or **Cancel** to exit the Edit Task form without changes.
+Finally, click **Update** button to finish your changes, or **Cancel** to exit the Edit Task form without changes.
 
 ### Adding comment to a task
 
