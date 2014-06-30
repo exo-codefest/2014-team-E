@@ -167,8 +167,6 @@ The projects that match with your input will be listed in the selected tab.
 
 In the list of projects, simply click <img src="screenshots/delete_icon.png" width="15"> to delete a project.
 
-## Managing a project
-
 A project can be considered to represent a team, and in each project, team members can manage their tasks easily and simply. 
 By clicking a specific project, you will be redirected to its details as follows:
 
@@ -184,7 +182,16 @@ Here you can:
 	For example, to set a new priority, hover your cursor over the current level in **Priority** column, then select another from the drop-down menu.
 	
 	<img src="screenshots/quick_set_priority.png" width="650">
+	
+### Using My Dashboard
 
+**MasterTask** allows you to access tasks assigned to you quickly in **My Dashboard**. 
+Click <img src="screenshots/dashboard_icon.png" width="15"> to be redirected to **My Dashboard**.
+
+	<img src="screenshots/dashboard_page.png" width="650">
+	
+	Here, you can see the current status of tasks assigned to you and change status by dragging and dropping one task between column.
+	
 ### Creating a new task
 
 1. Click the project to which you want to add a new task. You will be redirected to details panel of the project as above.
