@@ -182,15 +182,18 @@ Here you can:
 	For example, to set a new priority, hover your cursor over the current level in **Priority** column, then select another from the drop-down menu.
 	
 	<img src="screenshots/quick_set_priority.png" width="650">
+
+## Managing tasks
 	
 ### Using My Dashboard
 
 **MasterTask** allows you to access tasks assigned to you quickly in **My Dashboard**. 
 Click <img src="screenshots/dashboard_icon.png" width="15"> to be redirected to **My Dashboard**.
 
-	<img src="screenshots/dashboard_page.png" width="650">
+<img src="screenshots/dashboard_page.png" width="650">
 	
-	Here, you can see the current status of tasks assigned to you and change status by dragging and dropping one task between column.
+Here, you can see the current status of tasks assigned to you and change status by dragging and dropping one task between column. 
+Click the **Projects** text on the breadcrumb to come back to main screen of projects.
 	
 ### Creating a new task
 
