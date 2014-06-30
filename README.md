@@ -206,7 +206,7 @@ Here you can:
 ### Viewing task details
 
 In the list of tasks, simply click one task you want to view. 
-Here you will see all information of the task, including: **Title of task**, **Status**, **Reporter**, **Created time**, **Priority**, **Assignee**, **Label*, and **Comments**.
+Here you will see all information of the task, including: **Title of task**, **Status**, **Reporter**, **Created time**, **Priority**, **Assignee**, **Label**, and **Comments**.
 
 <img src="screenshots/task_details.png" width="650">
 
