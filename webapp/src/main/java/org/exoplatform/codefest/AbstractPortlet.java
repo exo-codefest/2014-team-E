@@ -132,9 +132,12 @@ public abstract class AbstractPortlet extends GenericPortlet {
         try {
             status = Status.getStatus(Integer.parseInt(request.getParameter("filterStatus")));
         } catch (Exception e) {}
-        
+
+        String projectId = request.getParameter("projectId");
+
         String title = request.getParameter("filterTitle");
         Query query = new Query(title);
+        query.setProjectId(projectId);
         query.setPriority(priority);
         query.setStatus(status);
         
@@ -150,7 +153,6 @@ public abstract class AbstractPortlet extends GenericPortlet {
         request.setAttribute("tasks", tasks);
         
       //. Load all user of this project
-        String projectId = request.getParameter("projectId");
         Project project = service.getProject(projectId);
         Set<String> membershipts = project.getMemberships();
         Map<String, User> users = new HashMap<String, User>();
